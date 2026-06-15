@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+<!-- ================================================================
+     KONFÍO SPORTS v7.5 — Plataforma deportiva premium de fútbol
+     KONFÍO SPORTS · Fútbol Legal y Gratis en Colombia
+     ================================================================ -->
+
+<meta http-equiv="Content-Security-Policy"
+  content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; base-uri 'self'; form-action 'self';">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+<meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#F97316">
+<meta name="color-scheme" content="dark">
+
+<title>KONFÍO SPORTS — Fútbol Gratis y Legal en Vivo | Selección, Mundial, Champions</title>
+<meta name="description" content="KONFÍO SPORTS: la app de fútbol gratis y legal en Colombia. Partidos de hoy en vivo, Selección Colombia, Liga BetPlay, Mundial, Champions League y canales oficiales de toda Latinoamérica. Sin piratería.">
+<meta name="keywords" content="futbol gratis en vivo, ver futbol online colombia, seleccion colombia en vivo, liga betplay, mundial 2026, champions league gratis, canales deportivos latinoamerica, konfio sports">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://konfiozinc.github.io/konfio-sports/">
+
+<meta property="og:type"        content="website">
+<meta property="og:site_name"   content="KONFÍO SPORTS">
+<meta property="og:title"       content="KONFÍO SPORTS — Fútbol Gratis y Legal en Vivo">
+<meta property="og:description" content="Partidos de hoy, Selección Colombia, Mundial, Champions y canales deportivos oficiales de toda Latinoamérica. 100% legal y gratis.">
+<meta property="og:image"       content="https://konfiozinc.github.io/konfio-sports/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url"         content="https://konfiozinc.github.io/konfio-sports/">
+<meta property="og:locale"      content="es_CO">
+
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="KONFÍO SPORTS — Fútbol Gratis y Legal en Vivo">
+<meta name="twitter:description" content="Partidos de hoy, Mundial, Champions y canales oficiales en Latinoamérica. 100% legal y gratis.">
+<meta name="twitter:image"       content="https://konfiozinc.github.io/konfio-sports/assets/og-image.jpg">
+
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="assets/favicon-16.png" type="image/png" sizes="16x16">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="KONFÍO SPORTS">
+<meta name="mobile-web-app-capable" content="yes">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://konfiozinc.github.io/konfio-sports/#website",
+      "url": "https://konfiozinc.github.io/konfio-sports/",
+      "name": "KONFÍO SPORTS",
+      "description": "Plataforma de fútbol gratis y legal: partidos del día, Selección Colombia, Mundial, Champions League y canales oficiales de Latinoamérica.",
+      "inLanguage": "es-CO",
+      "publisher": { "@id": "https://konfiozinc.github.io/#organization" }
+    },
+    {
+      "@type": "SportsOrganization",
+      "@id": "https://konfiozinc.github.io/konfio-sports/#org",
+      "name": "KONFÍO SPORTS",
+      "url": "https://konfiozinc.github.io/konfio-sports/",
+      "logo": "https://konfiozinc.github.io/konfio-sports/assets/icon-512.png",
+      "sport": "Soccer"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://konfiozinc.github.io/#organization",
+      "name": "KONFÍO SPORTS",
+      "url": "https://konfiozinc.github.io",
+      "description": "Fútbol gratis y legal en Colombia y Latinoamérica",
+      "founder": { "@type": "Person", "name": "Darwin Montalvo" }
+    }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css?v=konfio1">
+</head>
+
+<body>
+<a href="#main-content" class="skip-link">Ir al contenido principal</a>
+
+<div id="install-banner" role="banner" aria-label="Instalar aplicación">
+  <div><strong>KONFÍO SPORTS</strong> está disponible como app</div>
+  <div class="install-actions">
+    <button id="btn-install" class="btn-install" aria-label="Instalar KONFÍO SPORTS">Instalar</button>
+    <button id="btn-dismiss" class="btn-dismiss" aria-label="Descartar">✕</button>
+  </div>
+</div>
+
+<div id="splash" role="status" aria-label="Cargando KONFÍO SPORTS" aria-live="polite">
+  <div class="splash-logo">KONFÍO <span>SPORTS</span></div>
+  <div class="splash-bar"></div>
+</div>
+
+<canvas id="fx" aria-hidden="true"></canvas>
+
+<!-- ── NAV ─────────────────────────────────────────────────────── -->
+<header id="navbar">
+  <nav class="nav-inner" aria-label="Navegación principal">
+    <a href="#inicio" class="nav-brand" aria-label="KONFÍO SPORTS inicio">
+      <img src="assets/icon-192.png" alt="" width="34" height="34" loading="eager">
+      <b>KONFÍO</b><span>TV</span>
+    </a>
+    <div class="nav-links" role="list">
+      <a href="#inicio">Inicio</a>
+      <a href="#categorias">Competencias</a>
+      <a href="#partidos">Partidos</a>
+      <a href="#canales">Canales</a>
+      <a href="#categorias">Selecciones</a>
+      <a href="#mundial">Mundial</a>
+      <a href="#noticias">Noticias</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <span id="live-badge" class="live-badge" role="status" aria-live="polite">
+      <span class="lb-text">EN VIVO</span>
+    </span>
+    <a class="nav-cta" id="nav-cta" href="#" target="_blank" rel="noopener noreferrer" aria-label="Tarjeta digital KONFÍO SPORTS">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+      <span>Tarjeta Digital</span>
+    </a>
+  </nav>
+</header>
+
+<main id="main-content">
+<div class="wrap">
+
+  <!-- ── HERO 60/40 ──────────────────────────────────────────── -->
+  <section class="hero" id="inicio">
+    <div class="hero-left">
+      <p class="hero-brand">⚡ Fútbol en vivo · 100% legal</p>
+      <h1>KONFÍO SPORTS</h1>
+      <p class="hero-slogan">Fútbol Legal &amp; Gratis · 100% Oficial</p>
+      <p class="hero-desc">
+        Partidos en vivo, Selección Colombia, Liga BetPlay, Mundial y Champions League
+        en plataformas oficiales. Sin piratería, sin malware, sin registros raros.
+      </p>
+      <div class="hero-ctas">
+        <a href="#partidos" class="btn-hero-primary">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>
+          Ver Partidos de Hoy
+        </a>
+        <a href="#canales" class="btn-hero-secondary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><polyline points="17 2 12 7 7 2"/></svg>
+          Explorar Canales
+        </a>
+      </div>
+
+      <!-- COUNTDOWN -->
+      <div class="countdown-card" role="region" aria-label="Próximo partido importante">
+        <div class="countdown-label">⚡ Próximo Partido</div>
+        <div class="countdown-grid" id="countdown-grid" aria-live="polite">
+          <div class="countdown-unit"><div class="num" id="cd-days">--</div><div class="lbl">Días</div></div>
+          <div class="countdown-unit"><div class="num" id="cd-hours">--</div><div class="lbl">Horas</div></div>
+          <div class="countdown-unit"><div class="num" id="cd-mins">--</div><div class="lbl">Min</div></div>
+          <div class="countdown-unit"><div class="num" id="cd-secs">--</div><div class="lbl">Seg</div></div>
+        </div>
+        <div class="countdown-match" id="countdown-match">
+          <div class="countdown-crests" id="countdown-crests" aria-hidden="true"></div>
+          <div id="countdown-text">Cargando próximo partido…</div>
+        </div>
+      </div>
+
+      <!-- QUICK CATS: categorías principales visibles sin scroll -->
+      <div class="quick-cats" id="quick-cats" role="list" aria-label="Categorías principales"></div>
+    </div>
+
+    <!-- BALÓN OFICIAL 3D — producto insignia de KONFÍO SPORTS -->
+    <div class="hero-right">
+      <canvas id="hero-fx" aria-hidden="true"></canvas>
+
+      <!-- Plataforma holográfica -->
+      <div class="holo-ring" aria-hidden="true"></div>
+
+      <!-- Glow dinámico naranja + verde neón -->
+      <div class="ball-glow" aria-hidden="true"></div>
+
+      <!-- Estelas de velocidad + chispas deportivas -->
+      <div class="ball-trail" id="ball-trail" aria-hidden="true">
+        <div class="trail-line l1"></div>
+        <div class="trail-line l2"></div>
+        <div class="trail-line l3"></div>
+        <div class="spark sp1"></div>
+        <div class="spark sp2"></div>
+        <div class="spark sp3"></div>
+      </div>
+
+      <!-- Balón oficial KONFÍO SPORTS -->
+      <div class="ball-photo-wrap" id="ball-photo-wrap">
+        <img class="ball-photo" id="ball-photo"
+             src="assets/balon-oficial.webp"
+             alt=""
+             width="688" height="860" loading="eager" decoding="async" fetchpriority="high"
+             onerror="this.closest('.ball-photo-wrap').classList.add('img-error')">
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PARTIDOS DE HOY ─────────────────────────────────────────── -->
+  <section class="section" id="partidos" aria-labelledby="h-partidos">
+    <div class="section-head">
+      <div>
+        <h2 id="h-partidos">🔴 Partidos de <span class="accent">Hoy</span></h2>
+        <p>En vivo, próximos y finalizados · hora Colombia</p>
+      </div>
+      <span class="section-tag" id="live-count">cargando…</span>
+    </div>
+
+    <div class="chips" id="chips" role="list"></div>
+
+    <div class="today-box" role="region" aria-label="Partidos del día">
+      <div class="today-loading" id="match-loading" aria-live="polite">
+        <div class="spinner" aria-hidden="true"></div>
+        <span>Buscando partidos de hoy&hellip;</span>
+      </div>
+      <div id="match-list" style="display:none" role="list" aria-label="Lista de partidos"></div>
+      <div id="match-stamp" class="today-stamp" style="display:none">
+        <span id="stamp-text" aria-live="polite"></span>
+        <button class="btn-reload" id="btn-reload" aria-label="Actualizar partidos de hoy">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="12" height="12" aria-hidden="true"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+          Actualizar
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── MUNDIAL ─────────────────────────────────────────────────── -->
+  <section class="section" id="mundial" aria-labelledby="h-mundial">
+    <div class="section-head">
+      <div><h2 id="h-mundial">🏆 Copa <span class="accent">Mundial</span></h2></div>
+      <span class="section-tag">Protagonista</span>
+    </div>
+    <div class="mundial-card">
+      <div>
+        <h3>La Copa Mundial es <span class="accent">protagonista</span> en KONFÍO SPORTS</h3>
+        <p>
+          Sigue cada partido de la Selección Colombia y del Mundial en señal abierta,
+          oficial y gratuita con Caracol TV y Canal RCN. Revisa la sección
+          <strong>Partidos de Hoy</strong> para ver los encuentros del día con horario
+          de Colombia y el canal exacto de transmisión.
+        </p>
+        <div class="mundial-list">
+          <span class="mundial-tag">🇺🇸 🇲🇽 🇨🇦 Sede 2026</span>
+          <span class="mundial-tag">⚽ 48 selecciones</span>
+          <span class="mundial-tag">📺 Señal abierta gratuita</span>
+          <span class="mundial-tag">🇨🇴 Selección Colombia</span>
+        </div>
+      </div>
+      <div class="mundial-cta">
+        <a class="btn-hero-primary" href="https://www.caracoltv.com/senal-en-vivo" target="_blank" rel="noopener noreferrer">Caracol Play →</a>
+        <a class="btn-hero-secondary" href="https://www.canalrcn.com/senal-en-vivo/" target="_blank" rel="noopener noreferrer">Canal RCN →</a>
+        <a class="btn-hero-secondary" href="https://www.fifa.com/es/tournaments/mens/worldcup" target="_blank" rel="noopener noreferrer">Calendario FIFA →</a>
+      </div>
+    </div>
+
+    <div class="mundial-sub">
+      <!-- Próximos partidos de la Selección / Mundial -->
+      <div class="mundial-mini" role="region" aria-label="Próximos partidos de la Selección y el Mundial">
+        <div class="mundial-mini-head">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Próximos encuentros · Selección y Mundial
+        </div>
+        <div id="mundial-matches" role="list"></div>
+      </div>
+
+      <!-- Selecciones destacadas -->
+      <div class="mundial-mini" role="region" aria-label="Selecciones destacadas">
+        <div class="mundial-mini-head">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+          Selecciones destacadas
+        </div>
+        <div class="flag-grid" id="flag-grid" role="list"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CATEGORÍAS / COMPETENCIAS ──────────────────────────────── -->
+  <section class="section" id="categorias" aria-labelledby="h-cat">
+    <div class="section-head">
+      <div>
+        <h2 id="h-cat">⚽ <span class="accent">Competiciones</span> y Selecciones</h2>
+        <p>Toca una categoría para filtrar los partidos de hoy</p>
+      </div>
+      <span class="section-tag">10 competencias</span>
+    </div>
+    <div class="cat-grid" id="cat-grid" role="list"></div>
+  </section>
+
+  <!-- ── CANALES ─────────────────────────────────────────────────── -->
+  <section class="section" id="canales" aria-labelledby="h-canales">
+    <div class="section-head">
+      <div>
+        <h2 id="h-canales">📡 Canales <span class="accent">Oficiales</span></h2>
+        <p>Señales públicas y oficiales de fútbol en Latinoamérica y España</p>
+      </div>
+      <span class="section-tag">10 países</span>
+    </div>
+
+    <div class="search-row">
+      <label class="search-box" for="channel-search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="search" id="channel-search" placeholder="Buscar canal o país…" autocomplete="off">
+      </label>
+      <button class="fav-toggle" id="fav-toggle" aria-pressed="false">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        Favoritos
+      </button>
+    </div>
+
+    <p class="channel-note" style="margin-bottom:14px">
+      Al tocar <b style="color:var(--ink)">Ver canal</b> se abre el sitio oficial del canal — algunos incluyen publicidad propia.
+      El ícono <span style="color:#FF4d4d">▶</span> busca el canal en vivo en YouTube como alternativa.
+    </p>
+    <div id="history-row" class="history-row" style="display:none" aria-label="Vistos recientemente"></div>
+
+    <div class="country-tabs" id="country-tabs" role="list"></div>
+
+    <div class="channel-grid" id="channel-grid" role="list"></div>
+  </section>
+
+  <!-- ── NOTICIAS ────────────────────────────────────────────────── -->
+  <section class="section" id="noticias" aria-labelledby="h-noticias">
+    <div class="section-head">
+      <div>
+        <h2 id="h-noticias">📰 <span class="accent">Noticias</span> de Fútbol</h2>
+        <p>Fuentes oficiales para mantenerte informado</p>
+      </div>
+    </div>
+    <div class="news-grid" role="list">
+      <a class="news-card" role="listitem" href="https://news.google.com/search?q=futbol%20colombia&hl=es-419" target="_blank" rel="noopener noreferrer">
+        <div class="nc-ic" aria-hidden="true">🗞️</div>
+        <strong>Google Noticias</strong>
+        <span>Fútbol colombiano e internacional, actualizado al minuto</span>
+        <span class="nc-go">Abrir →</span>
+      </a>
+      <a class="news-card" role="listitem" href="https://www.fifa.com/es/news" target="_blank" rel="noopener noreferrer">
+        <div class="nc-ic" aria-hidden="true">🏆</div>
+        <strong>FIFA</strong>
+        <span>Noticias oficiales del Mundial y selecciones</span>
+        <span class="nc-go">Abrir →</span>
+      </a>
+      <a class="news-card" role="listitem" href="https://www.conmebol.com/noticias/" target="_blank" rel="noopener noreferrer">
+        <div class="nc-ic" aria-hidden="true">🌎</div>
+        <strong>CONMEBOL</strong>
+        <span>Libertadores, Sudamericana y Eliminatorias</span>
+        <span class="nc-go">Abrir →</span>
+      </a>
+      <a class="news-card" role="listitem" href="https://www.dimayor.com.co/noticias/" target="_blank" rel="noopener noreferrer">
+        <div class="nc-ic" aria-hidden="true">🇨🇴</div>
+        <strong>Dimayor</strong>
+        <span>Liga Colombiana y Selección Colombia</span>
+        <span class="nc-go">Abrir →</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── COMUNIDAD ───────────────────────────────────────────────── -->
+  <section class="section" id="comunidad" aria-labelledby="h-comunidad">
+    <div class="section-head">
+      <div><h2 id="h-comunidad">💬 <span class="accent">Comunidad</span> KONFÍO SPORTS</h2></div>
+    </div>
+    <div class="community-card">
+      <div>
+        <h3>Únete a la comunidad de hinchas</h3>
+        <p>Recibe avisos de partidos importantes, novedades del Mundial y la Selección Colombia directo en tu WhatsApp.</p>
+      </div>
+      <a class="btn-whatsapp" id="community-wa" href="#" target="_blank" rel="noopener noreferrer" aria-label="Unirse a la comunidad por WhatsApp">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Unirme por WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <!-- ── TRUST ───────────────────────────────────────────────────── -->
+  <section class="section" aria-labelledby="h-trust">
+    <div class="section-head"><div><h2 id="h-trust">¿Por qué <span class="accent">KONFÍO SPORTS</span>?</h2></div></div>
+    <div class="trust-grid" role="list">
+      <div class="trust-item" role="listitem"><div class="trust-icon" aria-hidden="true">⚖️</div><strong>Legal</strong><span>Solo señales oficiales</span></div>
+      <div class="trust-item" role="listitem"><div class="trust-icon" aria-hidden="true">🔒</div><strong>Seguro</strong><span>Sin malware</span></div>
+      <div class="trust-item" role="listitem"><div class="trust-icon" aria-hidden="true">💚</div><strong>Gratis</strong><span>Sin pagos ocultos</span></div>
+      <div class="trust-item" role="listitem"><div class="trust-icon" aria-hidden="true">🚫</div><strong>Sin Registro</strong><span>Acceso directo</span></div>
+      <div class="trust-item" role="listitem"><div class="trust-icon" aria-hidden="true">📡</div><strong>Oficial</strong><span>Canales públicos</span></div>
+      <div class="trust-item" role="listitem"><div class="trust-icon" aria-hidden="true">📱</div><strong>App PWA</strong><span>Instalable</span></div>
+    </div>
+    <div class="note">
+      <b>Importante:</b> KONFÍO SPORTS es un directorio de enlaces a señales oficiales, públicas y abiertas de cada país.
+      La disponibilidad de transmisiones deportivas depende de la programación de cada canal —
+      verifica siempre en el canal oficial. No incluimos canales de pago, con registro obligatorio ni enlaces piratas.
+    </div>
+  </section>
+
+  <!-- ── FOOTER / CONTACTO ───────────────────────────────────────── -->
+  <footer id="contacto">
+    <div class="kbrand">KONFÍO <span>SPORTS</span></div>
+    <p>Tarjetas digitales y experiencias web premium en Colombia</p>
+    <a class="footer-cta" id="footer-cta" href="#" target="_blank" rel="noopener noreferrer">
+      Quiero una tarjeta digital como esta →
+    </a>
+    <p class="disc">
+      KONFÍO SPORTS es un directorio de enlaces a plataformas y canales oficiales de terceros.
+      KONFÍO SPORTS no transmite ni aloja contenido deportivo propio.
+      Cada servicio se rige por sus propios términos y condiciones.
+    </p>
+  </footer>
+
+</div>
+</main>
+
+<div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+<!-- SHARE BAR -->
+<nav class="share-bar" id="share-bar" aria-label="Compartir KONFÍO SPORTS">
+  <span class="share-label" aria-hidden="true">Compartir</span>
+  <div class="share-divider" aria-hidden="true"></div>
+  <a class="s-btn" id="s-wa" href="#" target="_blank" rel="noopener noreferrer" aria-label="Compartir en WhatsApp">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="16" fill="#25D366"/><path fill="#fff" d="M16 7.2A8.8 8.8 0 007.2 16c0 1.55.41 3.06 1.19 4.38L7 25l4.74-1.37A8.8 8.8 0 1016 7.2zm0 16.1a7.3 7.3 0 01-3.72-1.02l-.27-.16-2.8.81.78-2.73-.18-.28A7.3 7.3 0 1116 23.3zm4-5.46c-.22-.11-1.3-.64-1.5-.71-.2-.08-.35-.11-.5.11-.15.22-.57.71-.7.86-.13.14-.26.16-.48.05-.22-.11-.93-.34-1.77-1.09-.65-.58-1.09-1.3-1.22-1.52-.13-.22-.01-.34.1-.45.1-.1.22-.26.33-.39.11-.13.14-.22.22-.37.07-.15.04-.28-.02-.39-.06-.11-.5-1.2-.68-1.64-.18-.43-.36-.37-.5-.38h-.43c-.15 0-.39.06-.6.28-.2.22-.78.76-.78 1.86 0 1.1.8 2.16.91 2.31.11.15 1.57 2.4 3.8 3.36.53.23.94.37 1.26.47.53.17 1.01.14 1.39.09.42-.06 1.3-.53 1.48-1.05.18-.51.18-.95.13-1.04-.05-.1-.19-.16-.41-.27z"/></svg>
+  </a>
+  <a class="s-btn" id="s-fb" href="#" target="_blank" rel="noopener noreferrer" aria-label="Compartir en Facebook">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="16" fill="#1877F2"/><path fill="#fff" d="M22 16h-4v-2c0-.83.34-1.33 1.5-1.33H22V9.1S20.9 9 19.65 9C16.7 9 15 10.7 15 13.7V16h-3v4h3v10h4V20h3.3L22 16z"/></svg>
+  </a>
+  <a class="s-btn" id="s-tt" href="#" target="_blank" rel="noopener noreferrer" aria-label="Compartir en TikTok">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="16" fill="#010101"/><path fill="#69C9D0" d="M21.5 10.3a4.5 4.5 0 01-1.1-.7 4.4 4.4 0 01-1.4-3h-2.6v10.1l-.01 5.5a2.6 2.6 0 01-2.59 2.3 2.6 2.6 0 01-2.6-2.6 2.6 2.6 0 012.6-2.6c.25 0 .5.04.72.1V17a5.2 5.2 0 00-.72-.05 5.25 5.25 0 00-5.25 5.25 5.25 5.25 0 005.25 5.25 5.25 5.25 0 005.24-5.25V14.5a7 7 0 004.08 1.3v-2.6a4.4 4.4 0 01-2.62-2.9z"/><path fill="#EE1D52" d="M21.5 10.3c.6.55 1.33.93 2.12 1.1v-2.6a4.4 4.4 0 01-2.12-1.1v2.6z" opacity=".9"/></svg>
+  </a>
+  <a class="s-btn" id="s-yt" href="#" target="_blank" rel="noopener noreferrer" aria-label="Ver en YouTube">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="16" fill="#FF0000"/><path fill="#fff" d="M25.8 11.8a2.5 2.5 0 00-1.76-1.77C22.55 9.6 16 9.6 16 9.6s-6.55 0-8.04.43a2.5 2.5 0 00-1.76 1.77C5.77 13.3 5.77 16 5.77 16s0 2.7.43 4.2a2.5 2.5 0 001.76 1.77C9.45 22.4 16 22.4 16 22.4s6.55 0 8.04-.43a2.5 2.5 0 001.76-1.77C26.23 18.7 26.23 16 26.23 16s0-2.7-.43-4.2zM13.8 18.8v-5.6l5.38 2.8-5.38 2.8z"/></svg>
+  </a>
+  <div class="share-divider" aria-hidden="true"></div>
+  <button class="s-btn" id="s-cp" aria-label="Copiar enlace">
+    <svg id="icon-copy" viewBox="0 0 28 28" fill="none" stroke="#F97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="10" y="10" width="13" height="13" rx="2"/><path d="M6 17H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v1"/></svg>
+    <svg id="icon-check" viewBox="0 0 28 28" fill="none" stroke="#22C55E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:none" aria-hidden="true"><polyline points="22 7 11 18 5 13"/></svg>
+  </button>
+</nav>
+
+<script src="script.js?v=konfio1"></script>
+</body>
+</html>
