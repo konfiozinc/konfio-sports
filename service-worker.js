@@ -3,7 +3,7 @@
    Estrategia: Cache-First assets · Network-First /api/
    ================================================================ */
 
-const CACHE_NAME  = 'konfio-sports-v1';
+const CACHE_NAME  = 'konfio-sports-v8';
 const OFFLINE_URL = '/konfio-sports/offline.html';
 
 const PRECACHE = [

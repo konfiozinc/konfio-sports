@@ -451,6 +451,26 @@ h1,h2,h3{font-family:'Cinzel',serif}
 .mundial-empty{padding:18px 16px;font-size:.82rem;color:var(--muted)}
 .mundial-empty a{color:var(--green2);font-weight:700}
 
+/* ── BRACKET FASE FINAL ──────────────────────────────────────── */
+.bracket{display:flex;align-items:stretch;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+.bracket::-webkit-scrollbar{display:none}
+.bracket-stage{
+  flex:1;min-width:130px;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  padding:16px 12px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px;
+  transition:border-color var(--trans),transform var(--trans);
+}
+.bracket-stage:hover{border-color:rgba(255,140,0,.35);transform:translateY(-2px)}
+.bracket-stage .bs-num{
+  width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
+  background:linear-gradient(120deg,var(--orange),var(--orange2));color:#1a0a00;font-weight:900;font-size:.9rem;
+}
+.bracket-stage strong{font-size:.88rem;font-weight:800}
+.bracket-stage small{font-size:.66rem;color:var(--muted);line-height:1.4}
+.bracket-stage.bs-final{border-color:rgba(0,255,136,.35);background:linear-gradient(135deg,rgba(0,255,136,.06),var(--panel))}
+.bracket-stage.bs-final .bs-num{background:linear-gradient(120deg,var(--green),var(--green2));font-size:1.1rem}
+.bracket-arrow{display:flex;align-items:center;color:var(--muted);font-size:1.1rem;flex:none}
+@media(max-width:760px){.bracket-arrow{display:none}.bracket-stage{min-width:150px}}
+
 /* ── NOTICIAS ────────────────────────────────────────────────── */
 .news-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
 .news-card{

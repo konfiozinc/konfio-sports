@@ -1,7 +1,7 @@
 {
   "name": "KONFÍO SPORTS - Fútbol Gratis y Legal en Vivo",
   "short_name": "KONFÍO SPORTS",
-  "description": "Partidos de hoy, Selección Colombia, Mundial, Champions y canales oficiales de Latinoamérica. 100% legal y gratis.",
+  "description": "Centro informativo del Mundial FIFA 2026: grupos, calendario oficial, Selección Colombia y canales de transmisión.",
   "start_url": "/konfio-sports/",
   "scope": "/konfio-sports/",
   "display": "standalone",
@@ -44,9 +44,9 @@
   ],
   "shortcuts": [
     {
-      "name": "Partidos de Hoy",
-      "short_name": "Hoy",
-      "url": "/konfio-sports/#partidos",
+      "name": "Selección Colombia",
+      "short_name": "Colombia",
+      "url": "/konfio-sports/#colombia",
       "icons": [
         {
           "src": "assets/icon-192.png",
@@ -55,9 +55,9 @@
       ]
     },
     {
-      "name": "Comunidad",
-      "short_name": "Comunidad",
-      "url": "/konfio-sports/#comunidad",
+      "name": "Grupos del Mundial",
+      "short_name": "Grupos",
+      "url": "/konfio-sports/#grupos",
       "icons": [
         {
           "src": "assets/icon-192.png",
