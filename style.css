@@ -28,3 +28,34 @@
   font-size: 1.05rem;
   color: #fff;
 }
+/* ── CANALES con logos ────────────────────────────────────────── */
+.channel-logo-container {
+  width: 46px;
+  height: 46px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 11px;
+  overflow: hidden;
+  background: var(--panel2);
+  border: 1px solid var(--line);
+}
+.channel-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+.channel-logo-fallback {
+  display: none; /* Se muestra solo si la imagen falla */
+  width: 46px;
+  height: 46px;
+  border-radius: 11px;
+  display: grid;
+  place-items: center;
+  font-family: 'Cinzel', serif;
+  font-weight: 900;
+  font-size: 1.05rem;
+  color: #fff;
+}
