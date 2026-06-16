@@ -1,5 +1,5 @@
 /* ================================================================
-   KONFÍO SPORTS v13 — script.js
+   KONFÍO SPORTS v14 — script.js
    ================================================================ */
 'use strict';
 
@@ -133,7 +133,7 @@ function renderGroups() {
   grid.innerHTML = Object.entries(WORLD_CUP_GROUPS).map(([letter, teams]) => {
     const isColombia = letter === COLOMBIA_GROUP;
     return `<div class="cat-card" style="${isColombia ? 'border-color:rgba(0,255,136,.4)' : ''}">
-      <div class="cat-ic" style="font-family:'Cinzel',serif;font-weight:900;font-size:1rem;color:${isColombia ? 'var(--green2)' : 'var(--orange2)'}">${letter}</div>
+      <div class="cat-ic" style="font-family:'Cinzel',serif;font-weight:900;font-size:.9rem;color:${isColombia ? 'var(--green2)' : 'var(--orange2)'}">${letter}</div>
       <span>${teams.join('<br>')}</span>
     </div>`;
   }).join('');
