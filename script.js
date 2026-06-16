@@ -390,13 +390,12 @@ function renderChannels() {
     const logoHtml = ch.logo
       ? `<img src="${ch.logo}" alt="${ch.name}" class="channel-logo-img" onerror="this.style.display='none';this.parentElement.querySelector('.channel-logo-fallback').style.display='grid';">`
       : '';
-    const fallbackHtml = `<div class="channel-logo channel-logo-fallback" style="background:${ch.color}">${ch.id.charAt(0).toUpperCase()}</div>`;
     return `
     <div class="channel-card" role="listitem">
       <div class="channel-top">
         <div class="channel-logo-container">
           ${logoHtml}
-          <div class="channel-logo channel-logo-fallback" style="background:${ch.color}; display:none;">${ch.id.charAt(0).toUpperCase()}</div>
+          <div class="channel-logo channel-logo-fallback" style="background:${ch.color}; display:${ch.logo ? 'none' : 'grid'};">${ch.id.charAt(0).toUpperCase()}</div>
         </div>
         <div class="channel-name">
           <strong>${ch.name}</strong>
