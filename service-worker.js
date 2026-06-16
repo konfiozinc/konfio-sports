@@ -45,17 +45,14 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
 
-  // Solo manejar GET del mismo origen
   if (event.request.method !== 'GET') return;
   if (url.origin !== self.location.origin && !url.pathname.startsWith('/api/')) return;
 
-  // /api/ → Network-First
   if (url.pathname.startsWith('/api/')) {
     event.respondWith(networkFirst(event.request));
     return;
   }
 
-  // Navegación HTML → Network-First con fallback offline
   if (event.request.mode === 'navigate') {
     event.respondWith(
       fetch(event.request)
@@ -69,7 +66,6 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  // Assets → Cache-First
   event.respondWith(cacheFirst(event.request));
 });
 
