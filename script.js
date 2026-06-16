@@ -80,23 +80,87 @@ const FEATURED_TEAMS = [
 /* ================================================================
    CANALES OFICIALES — SOLO GRATUITOS, LEGALES, SIN SUSCRIPCIÓN
    Cobertura: Colombia, Latinoamérica y España.
+   Cada canal incluye su logo (imagen local en assets/logos/).
    ================================================================ */
 const CHANNELS = [
   // Colombia
-  { id:'caracol', name:'Gol Caracol', tag:'Oficial · Colombia', url:'https://www.caracoltv.com/senal-vivo', color:'#003082', init:'C' },
-  { id:'rcn',     name:'RCN',         tag:'Oficial · Colombia', url:'https://www.canalrcn.com', color:'#E30613', init:'R' },
+  {
+    id: 'caracol',
+    name: 'Gol Caracol',
+    tag: 'Oficial · Colombia',
+    url: 'https://www.caracoltv.com/senal-vivo',
+    color: '#003082',
+    logo: 'assets/logos/gol-caracol.png' // Cambia por .svg si usas SVG
+  },
+  {
+    id: 'rcn',
+    name: 'RCN',
+    tag: 'Oficial · Colombia',
+    url: 'https://www.canalrcn.com',
+    color: '#E30613',
+    logo: 'assets/logos/rcn.png'
+  },
   // Global
-  { id:'fifa',    name:'FIFA+',       tag:'Oficial · Global',   url:'https://www.fifa.com/fifaplus', color:'#326295', init:'F' },
-  { id:'pluto',   name:'Pluto TV Deportes', tag:'Streaming gratuito', url:'https://pluto.tv/es/live-tv/pluto-tv-deportes', color:'#6A1B9A', init:'P' },
-  { id:'claro',   name:'Claro Sports', tag:'Streaming gratuito', url:'https://www.clarosports.com', color:'#1E88E5', init:'C' },
+  {
+    id: 'fifa',
+    name: 'FIFA+',
+    tag: 'Oficial · Global',
+    url: 'https://www.fifa.com/fifaplus',
+    color: '#326295',
+    logo: 'assets/logos/fifa-plus.png'
+  },
+  {
+    id: 'pluto',
+    name: 'Pluto TV Deportes',
+    tag: 'Streaming gratuito',
+    url: 'https://pluto.tv/es/live-tv/pluto-tv-deportes',
+    color: '#6A1B9A',
+    logo: 'assets/logos/pluto-tv.png'
+  },
+  {
+    id: 'claro',
+    name: 'Claro Sports',
+    tag: 'Streaming gratuito',
+    url: 'https://www.clarosports.com',
+    color: '#1E88E5',
+    logo: 'assets/logos/claro-sports.png'
+  },
   // España
-  { id:'rtve',    name:'RTVE Deportes', tag:'Oficial · España',  url:'https://www.rtve.es/deportes/', color:'#C62828', init:'R' },
+  {
+    id: 'rtve',
+    name: 'RTVE Deportes',
+    tag: 'Oficial · España',
+    url: 'https://www.rtve.es/deportes/',
+    color: '#C62828',
+    logo: 'assets/logos/rtve-deportes.png'
+  },
   // México
-  { id:'canal5',  name:'Canal 5 (Televisa)', tag:'Oficial · México', url:'https://www.televisa.com/envivo/canal5', color:'#F57C00', init:'5' },
+  {
+    id: 'canal5',
+    name: 'Canal 5 (Televisa)',
+    tag: 'Oficial · México',
+    url: 'https://www.televisa.com/envivo/canal5',
+    color: '#F57C00',
+    logo: 'assets/logos/canal5.png'
+  },
   // Argentina
-  { id:'telefe',  name:'Telefe',       tag:'Oficial · Argentina', url:'https://telefe.com/en-vivo/', color:'#1A237E', init:'T' },
+  {
+    id: 'telefe',
+    name: 'Telefe',
+    tag: 'Oficial · Argentina',
+    url: 'https://telefe.com/en-vivo/',
+    color: '#1A237E',
+    logo: 'assets/logos/telefe.png'
+  },
   // Chile
-  { id:'canal13', name:'Canal 13',     tag:'Oficial · Chile',   url:'https://www.13.cl/en-vivo', color:'#D32F2F', init:'13' },
+  {
+    id: 'canal13',
+    name: 'Canal 13',
+    tag: 'Oficial · Chile',
+    url: 'https://www.13.cl/en-vivo',
+    color: '#D32F2F',
+    logo: 'assets/logos/canal13.png'
+  },
 ];
 
 /* ================================================================
@@ -260,8 +324,6 @@ function renderFeaturedFlags() {
 
 /* ================================================================
    COUNTDOWN — próximo partido CONFIRMADO de Colombia.
-   Si no hay ningún partido con fecha/hora confirmada por venir,
-   se muestra el mensaje "Consulta el calendario oficial FIFA".
    ================================================================ */
 let countdownInterval = null;
 function getNextColombiaMatch() {
@@ -319,15 +381,25 @@ function updateCountdown() {
 }
 
 /* ================================================================
-   CANALES — renderiza la lista de canales (nueva versión con más canales)
+   CANALES — renderiza la lista de canales con logos oficiales
    ================================================================ */
 function renderChannels() {
   const grid = document.getElementById('channel-grid');
   if (!grid) return;
-  grid.innerHTML = CHANNELS.map(ch => `
+  grid.innerHTML = CHANNELS.map(ch => {
+    // Si el logo existe, usamos imagen; si no, mostramos la inicial en un círculo de color
+    const logoHtml = ch.logo
+      ? `<img src="${ch.logo}" alt="${ch.name}" class="channel-logo-img" onerror="this.style.display='none';this.parentElement.querySelector('.channel-logo-fallback').style.display='grid';">`
+      : '';
+    const fallbackHtml = `<div class="channel-logo channel-logo-fallback" style="background:${ch.color}">${ch.init || ch.name.charAt(0)}</div>`;
+    // Para mantener consistencia, siempre mostramos el contenedor con la imagen y el fallback oculto
+    return `
     <div class="channel-card" role="listitem">
       <div class="channel-top">
-        <div class="channel-logo" style="background:${ch.color}">${ch.init}</div>
+        <div class="channel-logo-container">
+          ${logoHtml}
+          <div class="channel-logo channel-logo-fallback" style="background:${ch.color}; display:none;">${ch.init || ch.name.charAt(0)}</div>
+        </div>
         <div class="channel-name">
           <strong>${ch.name}</strong>
           <small>${ch.tag}</small>
@@ -336,7 +408,8 @@ function renderChannels() {
       <div class="channel-actions">
         <a class="btn-channel" href="${ch.url}" target="_blank" rel="noopener noreferrer">Ver canal →</a>
       </div>
-    </div>`).join('');
+    </div>`;
+  }).join('');
 }
 
 /* ================================================================
