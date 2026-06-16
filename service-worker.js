@@ -1,9 +1,9 @@
 /* ================================================================
-   KONFÍO SPORTS v3 — service-worker.js
+   KONFÍO SPORTS v9 — service-worker.js
    Estrategia: Cache-First assets · Network-First /api/
    ================================================================ */
 
-const CACHE_NAME  = 'konfio-sports-v8';
+const CACHE_NAME  = 'konfio-sports-v9';
 const OFFLINE_URL = '/konfio-sports/offline.html';
 
 const PRECACHE = [
