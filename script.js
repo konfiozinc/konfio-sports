@@ -60,15 +60,25 @@ const FEATURED_TEAMS = [
 ];
 
 const CHANNELS = [
+  // Colombia
   { id: 'caracol', name: 'Gol Caracol', tag: 'Oficial · Colombia', url: 'https://www.caracoltv.com/senal-vivo', color: '#003082', logo: 'assets/logos/gol-caracol.png' },
   { id: 'rcn', name: 'RCN', tag: 'Oficial · Colombia', url: 'https://www.canalrcn.com', color: '#E30613', logo: 'assets/logos/rcn.png' },
+  // Global
   { id: 'fifa', name: 'FIFA+', tag: 'Oficial · Global', url: 'https://www.fifa.com/fifaplus', color: '#326295', logo: 'assets/logos/fifa-plus.png' },
   { id: 'pluto', name: 'Pluto TV Deportes', tag: 'Streaming gratuito', url: 'https://pluto.tv/es/live-tv/pluto-tv-deportes', color: '#6A1B9A', logo: 'assets/logos/pluto-tv.png' },
   { id: 'claro', name: 'Claro Sports', tag: 'Streaming gratuito', url: 'https://www.clarosports.com', color: '#1E88E5', logo: 'assets/logos/claro-sports.png' },
+  // España
   { id: 'rtve', name: 'RTVE Deportes', tag: 'Oficial · España', url: 'https://www.rtve.es/deportes/', color: '#C62828', logo: 'assets/logos/rtve-deportes.png' },
+  // México
   { id: 'canal5', name: 'Canal 5 (Televisa)', tag: 'Oficial · México', url: 'https://www.televisa.com/envivo/canal5', color: '#F57C00', logo: 'assets/logos/canal5.png' },
+  // Argentina
   { id: 'telefe', name: 'Telefe', tag: 'Oficial · Argentina', url: 'https://telefe.com/en-vivo/', color: '#1A237E', logo: 'assets/logos/telefe.png' },
+  // Chile
   { id: 'canal13', name: 'Canal 13', tag: 'Oficial · Chile', url: 'https://www.13.cl/en-vivo', color: '#D32F2F', logo: 'assets/logos/canal13.png' },
+  // NUEVOS CANALES
+  { id: 'dgo', name: 'DGO', tag: 'Streaming deportivo', url: 'https://www.dgo.com', color: '#1A1A2E', logo: 'assets/logos/dgo.png' },
+  { id: 'flujo', name: 'Flujo TV', tag: 'Streaming gratuito', url: 'https://flujotv.com', color: '#E74C3C', logo: 'assets/logos/flujo-tv.png' },
+  { id: 'tvl', name: 'TV Latino', tag: 'Canales latinos en vivo', url: 'https://tvlatino.io', color: '#2E86C1', logo: 'assets/logos/tv-latino.png' },
 ];
 
 // ---- Funciones auxiliares ----
