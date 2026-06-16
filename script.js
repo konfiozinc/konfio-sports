@@ -1,5 +1,5 @@
 /* ================================================================
-   KONFÍO SPORTS — script.js
+   KONFÍO SPORTS — script.js (v10)
    Centro informativo del Mundial FIFA 2026 (Canadá·México·EE.UU.)
    100% datos verificados — sorteo oficial 5/dic/2025 + calendario FIFA.
    Sin partidos, marcadores ni calendarios inventados.
@@ -78,12 +78,25 @@ const FEATURED_TEAMS = [
 ];
 
 /* ================================================================
-   CANALES OFICIALES — solo Caracol, RCN y FIFA (sin directorio)
+   CANALES OFICIALES — SOLO GRATUITOS, LEGALES, SIN SUSCRIPCIÓN
+   Cobertura: Colombia, Latinoamérica y España.
    ================================================================ */
 const CHANNELS = [
+  // Colombia
   { id:'caracol', name:'Gol Caracol', tag:'Oficial · Colombia', url:'https://www.caracoltv.com/senal-vivo', color:'#003082', init:'C' },
   { id:'rcn',     name:'RCN',         tag:'Oficial · Colombia', url:'https://www.canalrcn.com', color:'#E30613', init:'R' },
+  // Global
   { id:'fifa',    name:'FIFA+',       tag:'Oficial · Global',   url:'https://www.fifa.com/fifaplus', color:'#326295', init:'F' },
+  { id:'pluto',   name:'Pluto TV Deportes', tag:'Streaming gratuito', url:'https://pluto.tv/es/live-tv/pluto-tv-deportes', color:'#6A1B9A', init:'P' },
+  { id:'claro',   name:'Claro Sports', tag:'Streaming gratuito', url:'https://www.clarosports.com', color:'#1E88E5', init:'C' },
+  // España
+  { id:'rtve',    name:'RTVE Deportes', tag:'Oficial · España',  url:'https://www.rtve.es/deportes/', color:'#C62828', init:'R' },
+  // México
+  { id:'canal5',  name:'Canal 5 (Televisa)', tag:'Oficial · México', url:'https://www.televisa.com/envivo/canal5', color:'#F57C00', init:'5' },
+  // Argentina
+  { id:'telefe',  name:'Telefe',       tag:'Oficial · Argentina', url:'https://telefe.com/en-vivo/', color:'#1A237E', init:'T' },
+  // Chile
+  { id:'canal13', name:'Canal 13',     tag:'Oficial · Chile',   url:'https://www.13.cl/en-vivo', color:'#D32F2F', init:'13' },
 ];
 
 /* ================================================================
@@ -306,7 +319,7 @@ function updateCountdown() {
 }
 
 /* ================================================================
-   CANALES — Caracol, RCN, FIFA+ (sin búsqueda ni favoritos)
+   CANALES — renderiza la lista de canales (nueva versión con más canales)
    ================================================================ */
 function renderChannels() {
   const grid = document.getElementById('channel-grid');
