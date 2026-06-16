@@ -1,4 +1,4 @@
-const CACHE_NAME = 'konfio-sports-v14';
+const CACHE_NAME = 'konfio-sports-v15';
 const OFFLINE_URL = '/konfio-sports/offline.html';
 const PRECACHE = [
   '/konfio-sports/',
