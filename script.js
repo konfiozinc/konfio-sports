@@ -1,5 +1,5 @@
 /* ================================================================
-   KONFÍO SPORTS v15 — script.js
+   KONFÍO SPORTS v17 — script.js
    ================================================================ */
 'use strict';
 
@@ -63,7 +63,7 @@ const CHANNELS = [
   // Colombia
   { id: 'caracol', name: 'Gol Caracol', tag: 'Oficial · Colombia', url: 'https://www.caracoltv.com/senal-vivo', color: '#003082', logo: 'assets/logos/gol-caracol.png' },
   { id: 'rcn', name: 'RCN', tag: 'Oficial · Colombia', url: 'https://www.canalrcn.com', color: '#E30613', logo: 'assets/logos/rcn.png' },
-  // Global
+  // Global - Streaming gratuito
   { id: 'fifa', name: 'FIFA+', tag: 'Oficial · Global', url: 'https://www.fifa.com/fifaplus', color: '#326295', logo: 'assets/logos/fifa-plus.png' },
   { id: 'pluto', name: 'Pluto TV Deportes', tag: 'Streaming gratuito', url: 'https://pluto.tv/es/live-tv/pluto-tv-deportes', color: '#6A1B9A', logo: 'assets/logos/pluto-tv.png' },
   { id: 'claro', name: 'Claro Sports', tag: 'Streaming gratuito', url: 'https://www.clarosports.com', color: '#1E88E5', logo: 'assets/logos/claro-sports.png' },
@@ -76,9 +76,10 @@ const CHANNELS = [
   // Chile
   { id: 'canal13', name: 'Canal 13', tag: 'Oficial · Chile', url: 'https://www.13.cl/en-vivo', color: '#D32F2F', logo: 'assets/logos/canal13.png' },
   // NUEVOS CANALES
-  { id: 'dgo', name: 'DGO', tag: 'Streaming deportivo', url: 'https://www.dgo.com', color: '#1A1A2E', logo: 'assets/logos/dgo.png' },
-  { id: 'flujo', name: 'Flujo TV', tag: 'Streaming gratuito', url: 'https://flujotv.com', color: '#E74C3C', logo: 'assets/logos/flujo-tv.png' },
-  { id: 'tvl', name: 'TV Latino', tag: 'Canales latinos en vivo', url: 'https://tvlatino.io', color: '#2E86C1', logo: 'assets/logos/tv-latino.png' },
+  { id: 'oleada', name: 'Oleada TV', tag: 'Reproductor IPTV', url: 'https://play.google.com/store/apps/details?id=comiptv.poflixplayer', color: '#FF6F00', logo: 'assets/logos/oleada-tv.png' },
+  { id: 'emby', name: 'Emby', tag: 'Servidor multimedia', url: 'https://emby.media/', color: '#4A148C', logo: 'assets/logos/emby.png' },
+  { id: 'jellyfin', name: 'Jellyfin', tag: 'Servidor multimedia libre', url: 'https://jellyfin.org/', color: '#00BCD4', logo: 'assets/logos/jellyfin.png' },
+  { id: 'iptv', name: 'IPTV-org', tag: 'Listas M3U gratuitas', url: 'https://iptv-org.github.io/', color: '#E65100', logo: 'assets/logos/iptv-org.png' },
 ];
 
 // ---- Funciones auxiliares ----
