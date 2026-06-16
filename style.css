@@ -1,5 +1,5 @@
 /* ================================================================
-   KONFÍO SPORTS v14 — Estilos optimizados para móvil
+   KONFÍO SPORTS v15 — Estilos optimizados para móvil (balón reducido)
    ================================================================ */
 :root {
   --bg: #050505; --panel: #111418; --panel2: #161b20; --line: #1f262c;
@@ -56,7 +56,14 @@ h1,h2,h3 { font-family:'Cinzel',serif; }
 .live-badge.show { display:inline-flex; }
 @media (max-width:560px) { .live-badge .lb-text { display:none; } .nav-cta span { display:none; } }
 
-.hero { display:grid; grid-template-columns:60% 40%; gap:20px; align-items:center; padding:16px 0 6px; }
+/* ── HERO ──────────────────────────────────────────────────────── */
+.hero {
+  display:grid;
+  grid-template-columns:60% 40%;
+  gap:20px;
+  align-items:center;
+  padding:16px 0 6px;
+}
 .hero-left { display:flex; flex-direction:column; gap:12px; }
 .hero-brand { font-family:'Cinzel',serif; font-weight:900; letter-spacing:.18em; font-size:.65rem; color:var(--orange); text-transform:uppercase; }
 .hero h1 { font-weight:900; font-size:clamp(2rem,5vw,3.5rem); line-height:1.02; background:linear-gradient(120deg,#fff 25%,var(--orange) 60%,var(--green) 100%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
@@ -87,7 +94,14 @@ h1,h2,h3 { font-family:'Cinzel',serif; }
   .countdown-card { padding:10px; }
 }
 
-.hero-right { position:relative; display:grid; place-items:center; min-height:220px; perspective:1100px; }
+/* ── BALÓN ────────────────────────────────────────────────────── */
+.hero-right {
+  position:relative;
+  display:grid;
+  place-items:center;
+  min-height:220px;
+  perspective:1100px;
+}
 #hero-fx { position:absolute; inset:-25%; z-index:0; pointer-events:none; }
 .ball-glow { position:absolute; z-index:0; width:115%; aspect-ratio:1; border-radius:50%; background:radial-gradient(circle at 38% 32%, rgba(255,140,0,.58) 0%, transparent 45%), radial-gradient(circle at 66% 64%, rgba(0,255,136,.42) 0%, transparent 48%); filter:blur(46px); animation:glow-pulse 5s ease-in-out infinite; pointer-events:none; }
 .ball-trail { position:absolute; inset:-8%; z-index:0; pointer-events:none; }
@@ -117,25 +131,67 @@ h1,h2,h3 { font-family:'Cinzel',serif; }
 @keyframes holo-pulse { 0%,100%{ opacity:.7; transform:scale(1); } 50%{ opacity:1; transform:scaleX(1.06) scaleY(1.12); } }
 @keyframes pulse-dot { 0%,100%{ opacity:1; } 50%{ opacity:.4; } }
 
-@media (max-width:900px) {
-  .hero { grid-template-columns:1fr; padding-top:8px; }
-  .hero-right { order:-1; min-height:180px; }
-  .ball-photo-wrap { width:min(80%,200px); }
-  .hero-left { gap:8px; }
-  /* Ocultamos efectos pesados en móvil para evitar desbordes */
-  .ball-glow, .holo-ring, .ball-trail { display:none; }
-}
-@media (max-width:520px) {
-  .ball-photo-wrap { width:min(76%,150px); }
+/* ── RESPONSIVE: MÓVIL ────────────────────────────────────────── */
+@media (max-width:768px) {
+  .hero {
+    grid-template-columns:1fr;
+    padding-top:4px;
+    gap:12px;
+  }
+  .hero-right {
+    order:-1;
+    min-height:80px; /* Reducimos altura */
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:0;
+    margin-bottom:4px;
+  }
+  /* Ocultamos todos los efectos del balón en móvil */
+  .ball-glow, .holo-ring, .ball-trail, #hero-fx {
+    display:none !important;
+  }
+  .ball-photo-wrap {
+    width:70px !important;
+    max-width:70px !important;
+    animation:none !important;
+    transform:none !important;
+    transition:none !important;
+    margin:0 auto;
+    filter:none;
+  }
+  .ball-photo {
+    width:100% !important;
+    height:auto !important;
+    -webkit-mask-image:none !important;
+    mask-image:none !important;
+    filter:drop-shadow(0 4px 12px rgba(249,115,22,.5)) !important;
+    animation:none !important;
+  }
+  .ball-photo-wrap:hover {
+    transform:scale(1) !important;
+  }
+  /* Ajustamos texto */
   .hero h1 { font-size:1.8rem; }
   .hero-slogan { font-size:.75rem; }
   .hero-desc { font-size:.75rem; }
   .hero-brand { font-size:.55rem; }
   .btn-hero-primary, .btn-hero-secondary { font-size:.7rem; padding:8px 14px; }
   .wrap { padding:0 10px; }
-  .nav-links a { font-size:.65rem; padding:3px 6px; }
+  .nav-links a { font-size:.6rem; padding:3px 6px; }
 }
 
+@media (max-width:480px) {
+  .ball-photo-wrap { width:60px !important; max-width:60px !important; }
+  .hero h1 { font-size:1.5rem; }
+  .hero-slogan { font-size:.7rem; }
+  .hero-desc { font-size:.7rem; }
+  .countdown-unit .num { font-size:1.2rem; }
+  .countdown-card { padding:8px; }
+}
+
+/* ── RESTO DE ESTILOS (sin cambios) ────────────────────────────── */
 .quick-cats { display:flex; gap:5px; overflow-x:auto; margin-top:8px; padding-bottom:2px; scrollbar-width:none; -webkit-overflow-scrolling:touch; }
 .quick-cats::-webkit-scrollbar { display:none; }
 .qc-chip { flex:none; background:var(--panel); border:1px solid var(--line); border-radius:999px; padding:4px 10px; font-size:.65rem; font-weight:700; color:var(--ink); cursor:pointer; transition:all var(--trans); white-space:nowrap; }
