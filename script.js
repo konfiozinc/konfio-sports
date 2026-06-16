@@ -1,5 +1,5 @@
 /* ================================================================
-   KONFÍO SPORTS — script.js (v10)
+   KONFÍO SPORTS — script.js (v11)
    Centro informativo del Mundial FIFA 2026 (Canadá·México·EE.UU.)
    100% datos verificados — sorteo oficial 5/dic/2025 + calendario FIFA.
    Sin partidos, marcadores ni calendarios inventados.
@@ -90,7 +90,7 @@ const CHANNELS = [
     tag: 'Oficial · Colombia',
     url: 'https://www.caracoltv.com/senal-vivo',
     color: '#003082',
-    logo: 'assets/logos/gol-caracol.png' // Cambia por .svg si usas SVG
+    logo: 'assets/logos/gol-caracol.png'
   },
   {
     id: 'rcn',
@@ -387,18 +387,16 @@ function renderChannels() {
   const grid = document.getElementById('channel-grid');
   if (!grid) return;
   grid.innerHTML = CHANNELS.map(ch => {
-    // Si el logo existe, usamos imagen; si no, mostramos la inicial en un círculo de color
     const logoHtml = ch.logo
       ? `<img src="${ch.logo}" alt="${ch.name}" class="channel-logo-img" onerror="this.style.display='none';this.parentElement.querySelector('.channel-logo-fallback').style.display='grid';">`
       : '';
-    const fallbackHtml = `<div class="channel-logo channel-logo-fallback" style="background:${ch.color}">${ch.init || ch.name.charAt(0)}</div>`;
-    // Para mantener consistencia, siempre mostramos el contenedor con la imagen y el fallback oculto
+    const fallbackHtml = `<div class="channel-logo channel-logo-fallback" style="background:${ch.color}">${ch.id.charAt(0).toUpperCase()}</div>`;
     return `
     <div class="channel-card" role="listitem">
       <div class="channel-top">
         <div class="channel-logo-container">
           ${logoHtml}
-          <div class="channel-logo channel-logo-fallback" style="background:${ch.color}; display:none;">${ch.init || ch.name.charAt(0)}</div>
+          <div class="channel-logo channel-logo-fallback" style="background:${ch.color}; display:none;">${ch.id.charAt(0).toUpperCase()}</div>
         </div>
         <div class="channel-name">
           <strong>${ch.name}</strong>
