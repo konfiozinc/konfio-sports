@@ -48,8 +48,8 @@ const COLOMBIA_MATCHES = [
   {
     jornada: 'Jornada 2 · Grupo K',
     rival: 'RD Congo', flagRival: '🇨🇩',
-    fecha: '2026-06-23', hora: null,
-    horaConfirmada: false,
+    fecha: '2026-06-23', hora: '12:00',
+    horaConfirmada: true,
     sede: 'Estadio Akron · Guadalajara',
   },
   {
