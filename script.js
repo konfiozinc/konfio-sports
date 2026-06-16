@@ -1,5 +1,5 @@
 /* ================================================================
-   KONFÍO SPORTS — script.js (v11)
+   KONFÍO SPORTS — script.js (v12)
    Centro informativo del Mundial FIFA 2026 (Canadá·México·EE.UU.)
    100% datos verificados — sorteo oficial 5/dic/2025 + calendario FIFA.
    Sin partidos, marcadores ni calendarios inventados.
@@ -90,8 +90,7 @@ const CHANNELS = [
     tag: 'Oficial · Colombia',
     url: 'https://www.caracoltv.com/senal-vivo',
     color: '#003082',
-    logo: 'assets/logos/gol-caracol.png',
-    init: 'C'
+    logo: 'assets/logos/gol-caracol.png'
   },
   {
     id: 'rcn',
@@ -99,8 +98,7 @@ const CHANNELS = [
     tag: 'Oficial · Colombia',
     url: 'https://www.canalrcn.com',
     color: '#E30613',
-    logo: 'assets/logos/rcn.png',
-    init: 'R'
+    logo: 'assets/logos/rcn.png'
   },
   // Global
   {
@@ -109,8 +107,7 @@ const CHANNELS = [
     tag: 'Oficial · Global',
     url: 'https://www.fifa.com/fifaplus',
     color: '#326295',
-    logo: 'assets/logos/fifa-plus.png',
-    init: 'F'
+    logo: 'assets/logos/fifa-plus.png'
   },
   {
     id: 'pluto',
@@ -118,8 +115,7 @@ const CHANNELS = [
     tag: 'Streaming gratuito',
     url: 'https://pluto.tv/es/live-tv/pluto-tv-deportes',
     color: '#6A1B9A',
-    logo: 'assets/logos/pluto-tv.png',
-    init: 'P'
+    logo: 'assets/logos/pluto-tv.png'
   },
   {
     id: 'claro',
@@ -127,8 +123,7 @@ const CHANNELS = [
     tag: 'Streaming gratuito',
     url: 'https://www.clarosports.com',
     color: '#1E88E5',
-    logo: 'assets/logos/claro-sports.png',
-    init: 'C'
+    logo: 'assets/logos/claro-sports.png'
   },
   // España
   {
@@ -137,8 +132,7 @@ const CHANNELS = [
     tag: 'Oficial · España',
     url: 'https://www.rtve.es/deportes/',
     color: '#C62828',
-    logo: 'assets/logos/rtve-deportes.png',
-    init: 'R'
+    logo: 'assets/logos/rtve-deportes.png'
   },
   // México
   {
@@ -147,8 +141,7 @@ const CHANNELS = [
     tag: 'Oficial · México',
     url: 'https://www.televisa.com/envivo/canal5',
     color: '#F57C00',
-    logo: 'assets/logos/canal5.png',
-    init: '5'
+    logo: 'assets/logos/canal5.png'
   },
   // Argentina
   {
@@ -157,8 +150,7 @@ const CHANNELS = [
     tag: 'Oficial · Argentina',
     url: 'https://telefe.com/en-vivo/',
     color: '#1A237E',
-    logo: 'assets/logos/telefe.png',
-    init: 'T'
+    logo: 'assets/logos/telefe.png'
   },
   // Chile
   {
@@ -167,8 +159,7 @@ const CHANNELS = [
     tag: 'Oficial · Chile',
     url: 'https://www.13.cl/en-vivo',
     color: '#D32F2F',
-    logo: 'assets/logos/canal13.png',
-    init: '13'
+    logo: 'assets/logos/canal13.png'
   },
 ];
 
@@ -400,14 +391,14 @@ function renderChannels() {
     const logoHtml = ch.logo
       ? `<img src="${ch.logo}" alt="${ch.name}" class="channel-logo-img" onerror="this.style.display='none';this.parentElement.querySelector('.channel-logo-fallback').style.display='grid';">`
       : '';
-    const fallbackHtml = `<div class="channel-logo channel-logo-fallback" style="background:${ch.color}">${ch.init || ch.name.charAt(0)}</div>`;
-    // Para mantener consistencia, siempre mostramos el contenedor con la imagen y el fallback oculto
+    // Inicial para el fallback (usamos el id o las primeras letras)
+    const fallbackInitial = ch.init || ch.name.charAt(0).toUpperCase();
     return `
     <div class="channel-card" role="listitem">
       <div class="channel-top">
         <div class="channel-logo-container">
           ${logoHtml}
-          <div class="channel-logo-fallback" style="background:${ch.color}; display:none;">${ch.init || ch.name.charAt(0)}</div>
+          <div class="channel-logo-fallback" style="background:${ch.color}; display:${ch.logo ? 'none' : 'grid'};">${fallbackInitial}</div>
         </div>
         <div class="channel-name">
           <strong>${ch.name}</strong>
