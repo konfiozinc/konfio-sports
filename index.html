@@ -1,182 +1,742 @@
 <!DOCTYPE html>
-<html lang="es" dir="ltr">
+<html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=yes">
-<meta name="theme-color" content="#F97316">
-<title>KONFÍO SPORTS — Mundial FIFA 2026</title>
-<meta name="description" content="KONFÍO SPORTS: centro informativo del Mundial FIFA 2026. Grupos, calendario, Selección Colombia y canales oficiales.">
-<link rel="canonical" href="https://konfiozinc.github.io/konfio-sports/">
-<link rel="manifest" href="manifest.json">
-<link rel="icon" href="assets/favicon.ico">
-<link rel="stylesheet" href="style.css?v=17">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="robots" content="follow, index">
+  <title>KONFÍO SPORTS - Ver Canales de Fútbol en Vivo y Gratis</title>
+  <meta name="description" content="KONFÍO SPORTS: Ver canales de fútbol online en vivo y en directo. ESPN, DirectV Sports, TyC Sports, Win Sports+, TUDN, Fox Sports, ESPN Premium y TNT Sports. Fútbol gratis y legal para toda Latinoamérica.">
+  <link rel="canonical" href="https://konfiozinc.github.io/konfio-sports/">
+  <meta property="og:locale" content="es">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="KONFÍO SPORTS - Canales de Fútbol en Vivo y Gratis">
+  <meta property="og:description" content="KONFÍO SPORTS: Ver canales de fútbol online en vivo y en directo. ESPN, DirectV Sports, TyC Sports, Win Sports+, TUDN, Fox Sports, ESPN Premium y TNT Sports.">
+  <meta property="og:url" content="https://konfiozinc.github.io/konfio-sports/">
+  <meta property="og:site_name" content="KONFÍO SPORTS">
+  <meta property="og:image" content="https://konfiozinc.github.io/konfio-sports/assets/og-image.jpg">
+  <meta name="theme-color" content="#FF8C00">
+  
+  <link rel="icon" href="assets/favicon.ico" sizes="any">
+  <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="assets/favicon-16.png" type="image/png" sizes="16x16">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ================================================================
+       KONFÍO SPORTS — Estilo rediseñado
+       ================================================================ */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #050505;
+      --panel: #111418;
+      --panel2: #161b20;
+      --line: #1f262c;
+      --orange: #FF8C00;
+      --orange2: #FFA726;
+      --green: #2ECC71;
+      --green2: #00FF88;
+      --ink: #EDEDED;
+      --muted: #93999f;
+      --radius: 14px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding-top: 72px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    /* ── HEADER ──────────────────────────────────────────────────── */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(5, 5, 5, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+      padding: 0 20px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-family: 'Cinzel', serif;
+      font-weight: 900;
+      font-size: 1.3rem;
+      letter-spacing: 0.08em;
+      background: linear-gradient(120deg, var(--orange), var(--green2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      flex-shrink: 0;
+    }
+
+    .logo span {
+      -webkit-text-fill-color: var(--green2);
+    }
+
+    .navbar {
+      display: flex;
+      gap: 4px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      flex: 1;
+      justify-content: center;
+      padding: 0 12px;
+    }
+
+    .navbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .navbar a {
+      flex-shrink: 0;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--muted);
+      padding: 6px 12px;
+      border-radius: 999px;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .navbar a:hover {
+      color: var(--ink);
+      background: var(--panel2);
+    }
+
+    #menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--ink);
+      cursor: pointer;
+      padding: 6px;
+      flex-shrink: 0;
+    }
+
+    #menu-toggle svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    /* ── MENÚ MODAL ────────────────────────────────────────────── */
+    #menu-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+    }
+
+    #menu-modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 30px 24px;
+      max-width: 320px;
+      width: 90%;
+      position: relative;
+    }
+
+    #menu-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: none;
+      border: none;
+      color: var(--muted);
+      cursor: pointer;
+    }
+
+    #menu-close svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .modal-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .modal-nav a {
+      display: block;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--ink);
+      padding: 10px 16px;
+      border-radius: 10px;
+      transition: background 0.2s ease;
+      text-align: center;
+    }
+
+    .modal-nav a:hover {
+      background: var(--panel2);
+    }
+
+    /* ── MAIN ───────────────────────────────────────────────────── */
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 20px 16px 60px;
+    }
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      font-weight: 900;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      text-align: center;
+      background: linear-gradient(120deg, #fff 25%, var(--orange) 60%, var(--green2) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+    }
+
+    .description {
+      text-align: center;
+      color: var(--muted);
+      font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+      max-width: 760px;
+      margin: 0 auto 24px;
+      line-height: 1.7;
+    }
+
+    .description strong {
+      color: var(--green2);
+      font-weight: 700;
+    }
+
+    .channels-title {
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      font-size: clamp(1.2rem, 2vw, 1.6rem);
+      color: var(--orange);
+      text-align: center;
+      margin: 32px 0 20px;
+    }
+
+    /* ── CARDS ──────────────────────────────────────────────────── */
+    .cards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 140, 0, 0.4);
+    }
+
+    .card-image {
+      background: var(--panel2);
+      padding: 16px 12px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 80px;
+    }
+
+    .card-image img {
+      max-height: 56px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .card-content {
+      padding: 12px 14px 16px;
+      text-align: center;
+    }
+
+    .card-content h3 {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .card-content p {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .btn-watch {
+      display: inline-block;
+      font-weight: 700;
+      font-size: 0.8rem;
+      color: #1a0a00;
+      background: linear-gradient(120deg, var(--orange), var(--orange2));
+      padding: 8px 20px;
+      border-radius: 999px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-watch:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(255, 140, 0, 0.35);
+    }
+
+    /* ── FOOTER ──────────────────────────────────────────────────── */
+    footer {
+      text-align: center;
+      padding: 32px 20px 24px;
+      border-top: 1px solid var(--line);
+      margin-top: 20px;
+    }
+
+    .footer-title {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .footer-title strong {
+      color: var(--orange);
+      font-weight: 800;
+    }
+
+    .redes {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      list-style: none;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+
+    .redes a {
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .redes a:hover {
+      color: var(--orange);
+    }
+
+    /* ── RESPONSIVE ────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      body {
+        padding-top: 60px;
+      }
+
+      header {
+        height: 56px;
+        padding: 0 14px;
+      }
+
+      .logo {
+        font-size: 1.1rem;
+      }
+
+      .navbar {
+        display: none;
+      }
+
+      #menu-toggle {
+        display: block;
+      }
+
+      .cards-container {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 12px;
+      }
+
+      .card-image {
+        min-height: 60px;
+        padding: 12px 8px 4px;
+      }
+
+      .card-image img {
+        max-height: 42px;
+      }
+
+      .card-content {
+        padding: 8px 10px 12px;
+      }
+
+      .card-content h3 {
+        font-size: 0.8rem;
+      }
+
+      .btn-watch {
+        font-size: 0.7rem;
+        padding: 6px 14px;
+      }
+
+      main {
+        padding: 12px 12px 40px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .cards-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      .card-content p {
+        display: none;
+      }
+
+      .card-image img {
+        max-height: 36px;
+      }
+    }
+
+    /* ── SPLASH / LOADING ──────────────────────────────────────── */
+    #splash {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    #splash.hide {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .splash-logo {
+      font-family: 'Cinzel', serif;
+      font-weight: 900;
+      font-size: 2rem;
+      letter-spacing: 0.2em;
+      background: linear-gradient(120deg, var(--orange), var(--green2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: pulse 1.2s ease-in-out infinite;
+    }
+
+    .splash-bar {
+      width: 120px;
+      height: 3px;
+      background: var(--line);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .splash-bar::after {
+      content: '';
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, var(--orange), var(--green2));
+      animation: load-bar 1.6s ease forwards;
+    }
+
+    @keyframes load-bar {
+      from {
+        width: 0;
+      }
+      to {
+        width: 100%;
+      }
+    }
+
+    @keyframes pulse {
+      0%,
+      100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.55;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<a href="#main-content" class="skip-link">Ir al contenido principal</a>
 
-<div id="install-banner" role="banner">
-  <div><strong>KONFÍO SPORTS</strong> está disponible como app</div>
-  <div class="install-actions">
-    <button id="btn-install" class="btn-install">Instalar</button>
-    <button id="btn-dismiss" class="btn-dismiss">✕</button>
+  <!-- ── SPLASH ────────────────────────────────────────────────── -->
+  <div id="splash">
+    <div class="splash-logo">KONFÍO <span>SPORTS</span></div>
+    <div class="splash-bar"></div>
   </div>
-</div>
 
-<div id="splash"><div class="splash-logo">KONFÍO <span>SPORTS</span></div><div class="splash-bar"></div></div>
-<canvas id="fx" aria-hidden="true"></canvas>
+  <!-- ── HEADER ────────────────────────────────────────────────── -->
+  <header>
+    <a href="/" class="logo">KONFÍO <span>SPORTS</span></a>
 
-<header id="navbar">
-  <nav class="nav-inner">
-    <a href="#inicio" class="nav-brand"><b>KONFÍO</b><span>SPORTS</span></a>
-    <div class="nav-links">
-      <a href="#inicio">Inicio</a>
-      <a href="#grupos">Grupos</a>
-      <a href="#colombia">Colombia</a>
-      <a href="#fase-final">Fase Final</a>
-      <a href="#calendario">Calendario FIFA</a>
-      <a href="#canales">Canales</a>
-      <a href="#contacto">Contacto</a>
+    <nav class="navbar">
+      <a href="#espn">ESPN</a>
+      <a href="#directv">Directv Sports</a>
+      <a href="#tyc">TyC Sports</a>
+      <a href="#win">Win Sports+</a>
+      <a href="#fox">Fox Sports</a>
+      <a href="#tudn">TUDN</a>
+      <a href="#espn-premium">ESPN Premium</a>
+      <a href="#tnt">TNT Sports</a>
+    </nav>
+
+    <button id="menu-toggle" aria-label="Abrir menú">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+  </header>
+
+  <!-- ── MENÚ MODAL ────────────────────────────────────────────── -->
+  <div id="menu-modal">
+    <div class="modal-content">
+      <button id="menu-close" aria-label="Cerrar menú">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+      <nav class="modal-nav">
+        <a href="#espn">ESPN</a>
+        <a href="#directv">Directv Sports</a>
+        <a href="#tyc">TyC Sports</a>
+        <a href="#win">Win Sports+</a>
+        <a href="#fox">Fox Sports</a>
+        <a href="#tudn">TUDN</a>
+        <a href="#espn-premium">ESPN Premium</a>
+        <a href="#tnt">TNT Sports</a>
+      </nav>
     </div>
-    <span id="live-badge" class="live-badge"><span class="lb-text">EN VIVO</span></span>
-    <a class="nav-cta" id="nav-cta" href="#" target="_blank" rel="noopener">Tarjeta Digital</a>
-  </nav>
-</header>
+  </div>
 
-<main id="main-content">
-<div class="wrap">
-  <!-- HERO -->
-  <section class="hero" id="inicio">
-    <div class="hero-left">
-      <p class="hero-brand">🏆 Mundial FIFA 2026 · Canadá · México · EE. UU.</p>
-      <h1>KONFÍO SPORTS</h1>
-      <p class="hero-slogan">Centro Oficial del Mundial FIFA 2026</p>
-      <p class="hero-desc">Grupos, calendario y resultados oficiales del Mundial 2026. Toda la información de la Selección Colombia y enlaces directos a FIFA, Caracol y RCN — sin datos inventados, solo fuentes verificadas.</p>
-      <div class="hero-ctas">
-        <a href="#colombia" class="btn-hero-primary">Selección Colombia</a>
-        <a href="https://www.fifa.com/es/tournaments/mens/worldcup/canadamexicousa2026" target="_blank" rel="noopener" class="btn-hero-secondary">Calendario FIFA</a>
-      </div>
-      <!-- Countdown -->
-      <div class="countdown-card">
-        <div class="countdown-label">⚡ Próximo Partido · Colombia</div>
-        <div class="countdown-grid" id="countdown-grid">
-          <div class="countdown-unit"><div class="num" id="cd-days">--</div><div class="lbl">Días</div></div>
-          <div class="countdown-unit"><div class="num" id="cd-hours">--</div><div class="lbl">Horas</div></div>
-          <div class="countdown-unit"><div class="num" id="cd-mins">--</div><div class="lbl">Min</div></div>
-          <div class="countdown-unit"><div class="num" id="cd-secs">--</div><div class="lbl">Seg</div></div>
+  <!-- ── MAIN ──────────────────────────────────────────────────── -->
+  <main>
+    <h1>KONFÍO SPORTS</h1>
+
+    <p class="description">
+      <strong>KONFÍO SPORTS</strong> es tu plataforma para ver canales de fútbol online en vivo y en directo.<br>
+      Disfruta de <strong>ESPN, Directv Sports, TyC Sports, Win Sports+, Fox Sports, TUDN, ESPN Premium y TNT Sports</strong>.
+      Fútbol gratis para toda Latinoamérica y España.
+    </p>
+
+    <h2 class="channels-title">📺 Canales de Fútbol en Vivo</h2>
+
+    <div class="cards-container">
+
+      <!-- ESPN -->
+      <div class="card" id="espn">
+        <div class="card-image">
+          <img src="assets/logos/espn.png" alt="ESPN" loading="lazy" onerror="this.style.display='none'">
         </div>
-        <div class="countdown-match">
-          <div class="countdown-crests" id="countdown-crests"></div>
-          <div id="countdown-text">Cargando próximo partido…</div>
+        <div class="card-content">
+          <h3>ESPN</h3>
+          <p>Ver ESPN online en vivo y en directo.</p>
+          <a href="#" class="btn-watch" data-url="URL_ESPN">Ver Canal</a>
         </div>
       </div>
-      <div class="quick-cats" id="quick-cats" role="list"></div>
-    </div>
-    <div class="hero-right">
-      <canvas id="hero-fx" aria-hidden="true"></canvas>
-      <div class="holo-ring"></div>
-      <div class="ball-glow"></div>
-      <div class="ball-trail"><div class="trail-line l1"></div><div class="trail-line l2"></div><div class="trail-line l3"></div><div class="spark sp1"></div><div class="spark sp2"></div><div class="spark sp3"></div></div>
-      <div class="ball-photo-wrap" id="ball-photo-wrap">
-        <img class="ball-photo" id="ball-photo" src="assets/balon-oficial.webp" alt="" width="688" height="860" loading="eager" onerror="this.closest('.ball-photo-wrap').classList.add('img-error')">
+
+      <!-- Directv Sports -->
+      <div class="card" id="directv">
+        <div class="card-image">
+          <img src="assets/logos/directv-sports.png" alt="Directv Sports" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="card-content">
+          <h3>Directv Sports</h3>
+          <p>Ver DSports online en vivo y en directo.</p>
+          <a href="#" class="btn-watch" data-url="URL_DIRECTV">Ver Canal</a>
+        </div>
       </div>
-    </div>
-  </section>
 
-  <!-- GRUPOS -->
-  <section class="section" id="grupos">
-    <div class="section-head"><div><h2>⚽ Grupos del <span class="accent">Mundial 2026</span></h2><p>12 grupos de 4 selecciones · sorteo oficial del 5 de diciembre de 2025</p></div><span class="section-tag">48 selecciones</span></div>
-    <div class="cat-grid" id="groups-grid" role="list"></div>
-    <div class="note">Para resultados y tablas en vivo, consulta <a href="https://www.fifa.com/es/tournaments/mens/worldcup/canadamexicousa2026" target="_blank" rel="noopener" style="color:var(--green2);font-weight:700">FIFA.com</a>.</div>
-  </section>
-
-  <!-- COLOMBIA -->
-  <section class="section" id="colombia">
-    <div class="section-head"><div><h2>🇨🇴 Selección <span class="accent">Colombia</span></h2><p>Grupo K · Néstor Lorenzo · Calendario oficial</p></div><span class="section-tag">Grupo K</span></div>
-    <div class="mundial-sub">
-      <div class="mundial-mini">
-        <div class="mundial-mini-head">📅 Calendario · Fase de Grupos</div>
-        <div id="colombia-matches" role="list"></div>
+      <!-- TyC Sports -->
+      <div class="card" id="tyc">
+        <div class="card-image">
+          <img src="assets/logos/tyc-sports.png" alt="TyC Sports" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="card-content">
+          <h3>TyC Sports</h3>
+          <p>Ver TyC Sports online en vivo y en directo.</p>
+          <a href="#" class="btn-watch" data-url="URL_TYC">Ver Canal</a>
+        </div>
       </div>
-      <div class="mundial-mini">
-        <div class="mundial-mini-head">🏴 Rivales del Grupo K</div>
-        <div class="flag-grid" id="grupo-k-flags" role="list"></div>
-        <div class="mundial-empty">Clasifican los 2 primeros + 8 mejores terceros. Tabla en vivo: <a href="https://www.fifa.com/es/tournaments/mens/worldcup/canadamexicousa2026/standings" target="_blank" rel="noopener">FIFA.com →</a></div>
+
+      <!-- Win Sports+ -->
+      <div class="card" id="win">
+        <div class="card-image">
+          <img src="assets/logos/win-sports.png" alt="Win Sports+" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="card-content">
+          <h3>Win Sports+</h3>
+          <p>Ver Win Sports+ online en vivo y en directo.</p>
+          <a href="#" class="btn-watch" data-url="URL_WIN">Ver Canal</a>
+        </div>
       </div>
+
+      <!-- Fox Sports -->
+      <div class="card" id="fox">
+        <div class="card-image">
+          <img src="assets/logos/fox-sports.png" alt="Fox Sports" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="card-content">
+          <h3>Fox Sports</h3>
+          <p>Ver Fox Sports online en vivo y en directo.</p>
+          <a href="#" class="btn-watch" data-url="URL_FOX">Ver Canal</a>
+        </div>
+      </div>
+
+      <!-- TUDN -->
+      <div class="card" id="tudn">
+        <div class="card-image">
+          <img src="assets/logos/tudn.png" alt="TUDN" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="card-content">
+          <h3>TUDN</h3>
+          <p>Ver TUDN online en vivo y en directo.</p>
+          <a href="#" class="btn-watch" data-url="URL_TUDN">Ver Canal</a>
+        </div>
+      </div>
+
+      <!-- ESPN Premium -->
+      <div class="card" id="espn-premium">
+        <div class="card-image">
+          <img src="assets/logos/espn-premium.png" alt="ESPN Premium" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="card-content">
+          <h3>ESPN Premium</h3>
+          <p>Ver ESPN Premium en vivo y en directo.</p>
+          <a href="#" class="btn-watch" data-url="URL_ESPN_PREMIUM">Ver Canal</a>
+        </div>
+      </div>
+
+      <!-- TNT Sports -->
+      <div class="card" id="tnt">
+        <div class="card-image">
+          <img src="assets/logos/tnt-sports.png" alt="TNT Sports" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="card-content">
+          <h3>TNT Sports</h3>
+          <p>Ver TNT Sports online en vivo y en directo.</p>
+          <a href="#" class="btn-watch" data-url="URL_TNT">Ver Canal</a>
+        </div>
+      </div>
+
     </div>
-  </section>
 
-  <!-- FASE FINAL -->
-  <section class="section" id="fase-final">
-    <div class="section-head"><div><h2>🏆 Fase <span class="accent">Final</span></h2><p>Camino a la final · Mundial FIFA 2026</p></div></div>
-    <div class="bracket" role="list">
-      <div class="bracket-stage"><span class="bs-num">1</span><strong>Dieciseisavos</strong><small>Ronda de 32</small></div>
-      <div class="bracket-arrow">→</div>
-      <div class="bracket-stage"><span class="bs-num">2</span><strong>Octavos</strong><small>Ronda de 16</small></div>
-      <div class="bracket-arrow">→</div>
-      <div class="bracket-stage"><span class="bs-num">3</span><strong>Cuartos</strong><small>Ronda de 8</small></div>
-      <div class="bracket-arrow">→</div>
-      <div class="bracket-stage"><span class="bs-num">4</span><strong>Semifinales</strong><small>Ronda de 4</small></div>
-      <div class="bracket-arrow">→</div>
-      <div class="bracket-stage bs-final"><span class="bs-num">🏆</span><strong>Final</strong><small>19 jul · MetLife Stadium</small></div>
-    </div>
-    <div class="note">Tercer puesto: 18 de julio · Hard Rock Stadium, Miami. Bracket actualizado en <a href="https://www.fifa.com/es/tournaments/mens/worldcup/canadamexicousa2026/standings" target="_blank" rel="noopener" style="color:var(--green2);font-weight:700">FIFA.com</a>.</div>
-  </section>
+    <!-- ── FOOTER ────────────────────────────────────────────────── -->
+    <footer>
+      <div class="footer-title"><strong>KONFÍO SPORTS</strong> © 2026 — Todos los derechos reservados.</div>
+      <ul class="redes">
+        <li><a href="#">Aviso Legal</a></li>
+        <li><a href="#">Contacto</a></li>
+        <li><a href="https://konfiozinc.github.io/konfio-sports/">KONFÍO SPORTS</a></li>
+      </ul>
+    </footer>
 
-  <!-- CALENDARIO FIFA -->
-  <section class="section" id="calendario">
-    <div class="section-head"><div><h2>📅 Calendario <span class="accent">Oficial FIFA</span></h2></div></div>
-    <div class="news-grid">
-      <a class="news-card" href="https://www.fifa.com/es/tournaments/mens/worldcup/canadamexicousa2026/articles/calendario-fixture-mundial-2026-partidos-fechas" target="_blank"><div class="nc-ic">📅</div><strong>Calendario FIFA</strong><span>104 partidos, fechas y sedes</span><span class="nc-go">Abrir →</span></a>
-      <a class="news-card" href="https://www.fifa.com/es/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures" target="_blank"><div class="nc-ic">⚽</div><strong>Resultados FIFA</strong><span>Marcadores en vivo</span><span class="nc-go">Abrir →</span></a>
-      <a class="news-card" href="https://www.fifa.com/es/tournaments/mens/worldcup/canadamexicousa2026/standings" target="_blank"><div class="nc-ic">📊</div><strong>Clasificación FIFA</strong><span>Tablas de los 12 grupos</span><span class="nc-go">Abrir →</span></a>
-      <a class="news-card" href="https://www.fifa.com/es/tournaments/mens/worldcup/canadamexicousa2026" target="_blank"><div class="nc-ic">🌎</div><strong>Equipos FIFA</strong><span>Perfiles y plantillas</span><span class="nc-go">Abrir →</span></a>
-    </div>
-  </section>
+  </main>
 
-  <!-- PAÍSES DESTACADOS -->
-  <section class="section"><div class="section-head"><div><h2>🌍 Selecciones <span class="accent">Destacadas</span></h2></div></div><div class="flag-grid" id="featured-flags" role="list"></div></section>
+  <!-- ── SCRIPTS ────────────────────────────────────────────────── -->
+  <script>
+    // ── SPLASH ──────────────────────────────────────────────────
+    document.addEventListener('DOMContentLoaded', function() {
+      const splash = document.getElementById('splash');
+      setTimeout(function() {
+        splash.classList.add('hide');
+        setTimeout(function() {
+          splash.style.display = 'none';
+        }, 500);
+      }, 1600);
+    });
 
-  <!-- CANALES -->
-  <section class="section" id="canales">
-    <div class="section-head"><div><h2>📡 Canales <span class="accent">Oficiales</span></h2><p>Transmisión del Mundial 2026 en Colombia y a nivel global</p></div></div>
-    <div class="channel-grid" id="channel-grid" role="list"></div>
-  </section>
+    // ── MENÚ MÓVIL ──────────────────────────────────────────────
+    const menuToggle = document.getElementById('menu-toggle');
+    const menuModal = document.getElementById('menu-modal');
+    const menuClose = document.getElementById('menu-close');
 
-  <!-- TRUST -->
-  <section class="section"><div class="section-head"><div><h2>¿Por qué <span class="accent">KONFÍO SPORTS</span>?</h2></div></div>
-    <div class="trust-grid">
-      <div class="trust-item"><div class="trust-icon">✅</div><strong>Datos Reales</strong><span>Grupos y calendario oficial</span></div>
-      <div class="trust-item"><div class="trust-icon">🔒</div><strong>Seguro</strong><span>Sin malware</span></div>
-      <div class="trust-item"><div class="trust-icon">💚</div><strong>Gratis</strong><span>Sin pagos ocultos</span></div>
-      <div class="trust-item"><div class="trust-icon">🚫</div><strong>Sin Registro</strong><span>Acceso directo</span></div>
-      <div class="trust-item"><div class="trust-icon">📡</div><strong>Oficial</strong><span>FIFA · Caracol · RCN</span></div>
-      <div class="trust-item"><div class="trust-icon">📱</div><strong>App PWA</strong><span>Instalable</span></div>
-    </div>
-    <div class="note">KONFÍO SPORTS no es un sitio afiliado a la FIFA. Los enlaces remiten a fuentes oficiales.</div>
-  </section>
+    function openMenu() {
+      menuModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
 
-  <!-- FOOTER -->
-  <footer id="contacto">
-    <div class="kbrand">KONFÍO <span>SPORTS</span></div>
-    <p>Centro informativo del Mundial FIFA 2026 · Tarjetas digitales premium en Colombia</p>
-    <a class="footer-cta" id="footer-cta" href="#" target="_blank">Quiero una tarjeta digital como esta →</a>
-    <p class="disc">KONFÍO SPORTS es un proyecto independiente, no afiliado a la FIFA. "FIFA World Cup 2026" y nombres de selecciones son marcas de sus respectivos titulares.</p>
-  </footer>
-</div>
-</main>
+    function closeMenu() {
+      menuModal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
 
-<div id="toast-container"></div>
-<nav class="share-bar" id="share-bar">
-  <span class="share-label">Compartir</span>
-  <a class="s-btn" id="s-wa" href="#" target="_blank"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#25D366"/><path fill="#fff" d="M16 7.2A8.8 8.8 0 007.2 16c0 1.55.41 3.06 1.19 4.38L7 25l4.74-1.37A8.8 8.8 0 1016 7.2zm0 16.1a7.3 7.3 0 01-3.72-1.02l-.27-.16-2.8.81.78-2.73-.18-.28A7.3 7.3 0 1116 23.3zm4-5.46c-.22-.11-1.3-.64-1.5-.71-.2-.08-.35-.11-.5.11-.15.22-.57.71-.7.86-.13.14-.26.16-.48.05-.22-.11-.93-.34-1.77-1.09-.65-.58-1.09-1.3-1.22-1.52-.13-.22-.01-.34.1-.45.1-.1.22-.26.33-.39.11-.13.14-.22.22-.37.07-.15.04-.28-.02-.39-.06-.11-.5-1.2-.68-1.64-.18-.43-.36-.37-.5-.38h-.43c-.15 0-.39.06-.6.28-.2.22-.78.76-.78 1.86 0 1.1.8 2.16.91 2.31.11.15 1.57 2.4 3.8 3.36.53.23.94.37 1.26.47.53.17 1.01.14 1.39.09.42-.06 1.3-.53 1.48-1.05.18-.51.18-.95.13-1.04-.05-.1-.19-.16-.41-.27z"/></svg></a>
-  <a class="s-btn" id="s-fb" href="#" target="_blank"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#1877F2"/><path fill="#fff" d="M22 16h-4v-2c0-.83.34-1.33 1.5-1.33H22V9.1S20.9 9 19.65 9C16.7 9 15 10.7 15 13.7V16h-3v4h3v10h4V20h3.3L22 16z"/></svg></a>
-  <a class="s-btn" id="s-tt" href="#" target="_blank"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#000"/><path fill="#69C9D0" d="M21.5 10.3a4.5 4.5 0 01-1.1-.7 4.4 4.4 0 01-1.4-3h-2.6v10.1l-.01 5.5a2.6 2.6 0 01-2.59 2.3 2.6 2.6 0 01-2.6-2.6 2.6 2.6 0 012.6-2.6c.25 0 .5.04.72.1V17a5.2 5.2 0 00-.72-.05 5.25 5.25 0 00-5.25 5.25 5.25 5.25 0 005.25 5.25 5.25 5.25 0 005.24-5.25V14.5a7 7 0 004.08 1.3v-2.6a4.4 4.4 0 01-2.62-2.9z"/><path fill="#EE1D52" d="M21.5 10.3c.6.55 1.33.93 2.12 1.1v-2.6a4.4 4.4 0 01-2.12-1.1v2.6z"/></svg></a>
-  <a class="s-btn" id="s-yt" href="#" target="_blank"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#FF0000"/><path fill="#fff" d="M25.8 11.8a2.5 2.5 0 00-1.76-1.77C22.55 9.6 16 9.6 16 9.6s-6.55 0-8.04.43a2.5 2.5 0 00-1.76 1.77C5.77 13.3 5.77 16 5.77 16s0 2.7.43 4.2a2.5 2.5 0 001.76 1.77C9.45 22.4 16 22.4 16 22.4s6.55 0 8.04-.43a2.5 2.5 0 001.76-1.77C26.23 18.7 26.23 16 26.23 16s0-2.7-.43-4.2zM13.8 18.8v-5.6l5.38 2.8-5.38 2.8z"/></svg></a>
-  <button class="s-btn" id="s-cp"><svg viewBox="0 0 28 28" fill="none" stroke="#F97316" stroke-width="2"><rect x="10" y="10" width="13" height="13" rx="2"/><path d="M6 17H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v1"/></svg></button>
-</nav>
-<script src="script.js?v=17"></script>
+    menuToggle.addEventListener('click', openMenu);
+    menuClose.addEventListener('click', closeMenu);
+
+    // Cerrar al hacer clic fuera del modal
+    menuModal.addEventListener('click', function(e) {
+      if (e.target === menuModal) {
+        closeMenu();
+      }
+    });
+
+    // Cerrar al hacer clic en un enlace del menú
+    document.querySelectorAll('.modal-nav a').forEach(function(link) {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // ── REDIRECCIÓN DE CANALES ──────────────────────────────────
+    // Aquí debes pegar los enlaces reales de cada canal
+    // Ejemplo: const CHANNEL_URLS = { espn: 'https://...', ... }
+
+    // Los enlaces se asignan a los botones "Ver Canal"
+    document.querySelectorAll('.btn-watch').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        // Si tienes el enlace en data-url o quieres redirigir a una página interna
+        // const url = this.dataset.url;
+        // if (url) window.open(url, '_blank');
+        // alert('Enlace del canal: ' + this.dataset.url);
+      });
+    });
+
+    console.log('🔴 KONFÍO SPORTS — Tu plataforma de fútbol en vivo');
+  </script>
+
 </body>
 </html>
