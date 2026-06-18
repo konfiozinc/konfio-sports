@@ -181,12 +181,13 @@
       overflow: hidden;
       border: 1px solid #1f262c;
       background: #111418;
-      min-height: 300px;
+      min-height: 150px;
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 30px;
     }
-    #wraper p { color: #93999f; text-align: center; padding: 40px; }
+    #wraper p { color: #93999f; text-align: center; font-size: 1.1rem; }
 
     .channels-title {
       font-size: 1.4rem;
@@ -199,7 +200,7 @@
 
     .cards-container {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
       gap: 16px;
       margin: 0 auto;
     }
@@ -216,24 +217,25 @@
     }
     .card-image {
       width: 100%;
-      height: 140px;
+      height: 120px;
       overflow: hidden;
       background: #161b20;
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 10px;
     }
     .card-image img {
-      width: 100%;
-      height: 100%;
+      max-width: 100%;
+      max-height: 100%;
       object-fit: contain;
-      padding: 12px;
     }
     .card-content {
       padding: 14px 16px 16px;
+      text-align: center;
     }
     .card-content h3 {
-      font-size: .95rem;
+      font-size: 1rem;
       font-weight: 800;
       color: #ededed;
       margin-bottom: 4px;
@@ -250,9 +252,10 @@
       color: #1a0a00;
       font-weight: 800;
       font-size: .8rem;
-      padding: 8px 20px;
+      padding: 8px 24px;
       border-radius: 999px;
       transition: transform .18s ease, box-shadow .18s ease;
+      cursor: pointer;
     }
     .btn-watch:hover {
       transform: scale(1.03);
@@ -321,11 +324,11 @@
       h1 { font-size: 1.6rem; }
       .description { font-size: .8rem; }
       .cards-container { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
-      .card-image { height: 110px; }
+      .card-image { height: 90px; }
     }
     @media (max-width:480px) {
       .cards-container { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-      .card-image { height: 90px; }
+      .card-image { height: 70px; }
       .card-content { padding: 10px; }
       .card-content h3 { font-size: .75rem; }
       .card-content p { font-size: .6rem; }
@@ -390,10 +393,11 @@
     <p>📺 Próximamente: Agenda de partidos en vivo</p>
   </div>
 
-  <h3 class="channels-title">Ver Canales de Futbol Online en Vivo y en Directo</h3>
+  <h3 class="channels-title" id="canales">Ver Canales de Futbol Online en Vivo y en Directo</h3>
 
-  <div class="cards-container" id="canales">
+  <div class="cards-container">
 
+    <!-- ESPN -->
     <div class="card">
       <div class="card-image">
         <img src="https://cdn.futbol-libres.su/img/espn1.webp" alt="ESPN">
@@ -401,21 +405,23 @@
       <div class="card-content">
         <h3>ESPN</h3>
         <p>Ver ESPN online en vivo y en directo.</p>
-        <a href="#" class="btn-watch">Ver Canal</a>
+        <a href="https://www.espn.com.co/watch/" target="_blank" rel="noopener" class="btn-watch">Ver Canal</a>
       </div>
     </div>
 
+    <!-- DirecTV Sports / DGO -->
     <div class="card">
       <div class="card-image">
         <img src="https://cdn.futbol-libres.su/img/dsports.webp" alt="DirecTV Sports">
       </div>
       <div class="card-content">
-        <h3>DirecTV Sports</h3>
-        <p>Ver DSports online en vivo y en directo.</p>
-        <a href="#" class="btn-watch">Ver Canal</a>
+        <h3>DGO (DirecTV)</h3>
+        <p>Ver DGO online en vivo y en directo.</p>
+        <a href="https://www.dgo.com" target="_blank" rel="noopener" class="btn-watch">Ver Canal</a>
       </div>
     </div>
 
+    <!-- TyC Sports -->
     <div class="card">
       <div class="card-image">
         <img src="https://cdn.futbol-libres.su/img/tyc_sports.webp" alt="TyC Sports">
@@ -423,10 +429,11 @@
       <div class="card-content">
         <h3>TyC Sports</h3>
         <p>Ver TyC Sports online en vivo y en directo.</p>
-        <a href="#" class="btn-watch">Ver Canal</a>
+        <a href="https://www.tycsports.com/en-vivo/" target="_blank" rel="noopener" class="btn-watch">Ver Canal</a>
       </div>
     </div>
 
+    <!-- Win Sports+ -->
     <div class="card">
       <div class="card-image">
         <img src="https://cdn.futbol-libres.su/img/win_sports_plus.webp" alt="Win Sports+">
@@ -434,10 +441,11 @@
       <div class="card-content">
         <h3>Win Sports+</h3>
         <p>Ver Win Sports+ online en vivo y en directo.</p>
-        <a href="#" class="btn-watch">Ver Canal</a>
+        <a href="https://www.winsports.co/envivo" target="_blank" rel="noopener" class="btn-watch">Ver Canal</a>
       </div>
     </div>
 
+    <!-- Fox Sports -->
     <div class="card">
       <div class="card-image">
         <img src="https://cdn.futbol-libres.su/img/fox_sports.webp" alt="Fox Sports">
@@ -445,10 +453,11 @@
       <div class="card-content">
         <h3>Fox Sports</h3>
         <p>Ver Fox Sports online en vivo y en directo.</p>
-        <a href="#" class="btn-watch">Ver Canal</a>
+        <a href="https://www.foxsports.com/mx/" target="_blank" rel="noopener" class="btn-watch">Ver Canal</a>
       </div>
     </div>
 
+    <!-- TUDN -->
     <div class="card">
       <div class="card-image">
         <img src="https://cdn.futbol-libres.su/img/tudn.webp" alt="TUDN">
@@ -456,10 +465,11 @@
       <div class="card-content">
         <h3>TUDN</h3>
         <p>Ver TUDN online en vivo y en directo.</p>
-        <a href="#" class="btn-watch">Ver Canal</a>
+        <a href="https://www.tudn.com/" target="_blank" rel="noopener" class="btn-watch">Ver Canal</a>
       </div>
     </div>
 
+    <!-- ESPN Premium -->
     <div class="card">
       <div class="card-image">
         <img src="https://cdn.futbol-libres.su/img/espn_premium.webp" alt="ESPN Premium">
@@ -467,10 +477,11 @@
       <div class="card-content">
         <h3>ESPN Premium</h3>
         <p>Ver ESPN Premium en vivo y en directo.</p>
-        <a href="#" class="btn-watch">Ver Canal</a>
+        <a href="https://www.espn.com.co/watch/" target="_blank" rel="noopener" class="btn-watch">Ver Canal</a>
       </div>
     </div>
 
+    <!-- TNT Sports -->
     <div class="card">
       <div class="card-image">
         <img src="https://cdn.futbol-libres.su/img/tnt_sport.webp" alt="TNT Sports">
@@ -478,7 +489,7 @@
       <div class="card-content">
         <h3>TNT Sports</h3>
         <p>Ver TNT Sports online en vivo y en directo.</p>
-        <a href="#" class="btn-watch">Ver Canal</a>
+        <a href="https://www.tntsports.com/" target="_blank" rel="noopener" class="btn-watch">Ver Canal</a>
       </div>
     </div>
 
