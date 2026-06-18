@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="robots" content="follow, index">
   <title>KONFÍO SPORTS - Ver Canales de Fútbol en Vivo y Gratis</title>
-  <meta name="description" content="KONFÍO SPORTS: Ver canales de fútbol online en vivo y en directo. ESPN, DirectV Sports, TyC Sports, Win Sports+, TUDN, Fox Sports, ESPN Premium y TNT Sports. Fútbol gratis y legal para toda Latinoamérica.">
+  <meta name="description" content="KONFÍO SPORTS: Ver canales de fútbol online en vivo y en directo. ESPN, DirectV Sports, TyC Sports, Win Sports+, TUDN, Fox Sports, ESPN Premium, TNT Sports, Caracol TV y RCN TV. Fútbol gratis y legal para toda Latinoamérica.">
   <link rel="canonical" href="https://konfiozinc.github.io/konfio-sports/">
   <meta property="og:locale" content="es">
   <meta property="og:type" content="website">
   <meta property="og:title" content="KONFÍO SPORTS - Canales de Fútbol en Vivo y Gratis">
-  <meta property="og:description" content="KONFÍO SPORTS: Ver canales de fútbol online en vivo y en directo. ESPN, DirectV Sports, TyC Sports, Win Sports+, TUDN, Fox Sports, ESPN Premium y TNT Sports.">
+  <meta property="og:description" content="KONFÍO SPORTS: Ver canales de fútbol online en vivo y en directo. ESPN, DirectV Sports, TyC Sports, Win Sports+, TUDN, Fox Sports, ESPN Premium, TNT Sports, Caracol TV y RCN TV.">
   <meta property="og:url" content="https://konfiozinc.github.io/konfio-sports/">
   <meta property="og:site_name" content="KONFÍO SPORTS">
   <meta property="og:image" content="https://konfiozinc.github.io/konfio-sports/assets/og-image.jpg">
@@ -318,6 +318,8 @@
       padding: 8px 20px;
       border-radius: 999px;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+      border: none;
     }
 
     .btn-watch:hover {
@@ -515,6 +517,8 @@
     <a href="/" class="logo">KONFÍO <span>SPORTS</span></a>
 
     <nav class="navbar">
+      <a href="#caracol">Caracol TV</a>
+      <a href="#rcn">RCN TV</a>
       <a href="#espn">ESPN</a>
       <a href="#directv">Directv Sports</a>
       <a href="#tyc">TyC Sports</a>
@@ -541,6 +545,8 @@
         </svg>
       </button>
       <nav class="modal-nav">
+        <a href="#caracol">Caracol TV</a>
+        <a href="#rcn">RCN TV</a>
         <a href="#espn">ESPN</a>
         <a href="#directv">Directv Sports</a>
         <a href="#tyc">TyC Sports</a>
@@ -559,13 +565,37 @@
 
     <p class="description">
       <strong>KONFÍO SPORTS</strong> es tu plataforma para ver canales de fútbol online en vivo y en directo.<br>
-      Disfruta de <strong>ESPN, Directv Sports, TyC Sports, Win Sports+, Fox Sports, TUDN, ESPN Premium y TNT Sports</strong>.
+      Disfruta de <strong>Caracol TV, RCN TV, ESPN, Directv Sports, TyC Sports, Win Sports+, Fox Sports, TUDN, ESPN Premium y TNT Sports</strong>.
       Fútbol gratis para toda Latinoamérica y España.
     </p>
 
     <h2 class="channels-title">📺 Canales de Fútbol en Vivo</h2>
 
     <div class="cards-container">
+
+      <!-- CARACOL TV -->
+      <div class="card" id="caracol">
+        <div class="card-image">
+          <img src="assets/logos/caracol.png" alt="Caracol TV" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="card-content">
+          <h3>Caracol TV</h3>
+          <p>Ver Caracol TV online en vivo y en directo.</p>
+          <a href="https://www.caracoltv.com/senal-vivo" target="_blank" rel="noopener" class="btn-watch">Ver Canal</a>
+        </div>
+      </div>
+
+      <!-- RCN TV -->
+      <div class="card" id="rcn">
+        <div class="card-image">
+          <img src="assets/logos/rcn.png" alt="RCN TV" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="card-content">
+          <h3>RCN TV</h3>
+          <p>Ver RCN TV online en vivo y en directo.</p>
+          <a href="https://www.canalrcn.com" target="_blank" rel="noopener" class="btn-watch">Ver Canal</a>
+        </div>
+      </div>
 
       <!-- ESPN -->
       <div class="card" id="espn">
@@ -575,7 +605,7 @@
         <div class="card-content">
           <h3>ESPN</h3>
           <p>Ver ESPN online en vivo y en directo.</p>
-          <a href="#" class="btn-watch" data-url="URL_ESPN">Ver Canal</a>
+          <a href="https://www.espn.com.co" target="_blank" rel="noopener" class="btn-watch">Ver Canal</a>
         </div>
       </div>
 
@@ -587,7 +617,7 @@
         <div class="card-content">
           <h3>Directv Sports</h3>
           <p>Ver DSports online en vivo y en directo.</p>
-          <a href="#" class="btn-watch" data-url="URL_DIRECTV">Ver Canal</a>
+          <a href="https://www.directvsports.com" target="_blank" rel="noopener" class="btn-watch">Ver Canal</a>
         </div>
       </div>
 
@@ -599,7 +629,7 @@
         <div class="card-content">
           <h3>TyC Sports</h3>
           <p>Ver TyC Sports online en vivo y en directo.</p>
-          <a href="#" class="btn-watch" data-url="URL_TYC">Ver Canal</a>
+          <a href="https://www.tycsports.com" target="_blank" rel="noopener" class="btn-watch">Ver Canal</a>
         </div>
       </div>
 
@@ -611,7 +641,7 @@
         <div class="card-content">
           <h3>Win Sports+</h3>
           <p>Ver Win Sports+ online en vivo y en directo.</p>
-          <a href="#" class="btn-watch" data-url="URL_WIN">Ver Canal</a>
+          <a href="https://www.winsports.co" target="_blank" rel="noopener" class="btn-watch">Ver Canal</a>
         </div>
       </div>
 
@@ -623,7 +653,7 @@
         <div class="card-content">
           <h3>Fox Sports</h3>
           <p>Ver Fox Sports online en vivo y en directo.</p>
-          <a href="#" class="btn-watch" data-url="URL_FOX">Ver Canal</a>
+          <a href="https://www.foxsports.com.co" target="_blank" rel="noopener" class="btn-watch">Ver Canal</a>
         </div>
       </div>
 
@@ -635,7 +665,7 @@
         <div class="card-content">
           <h3>TUDN</h3>
           <p>Ver TUDN online en vivo y en directo.</p>
-          <a href="#" class="btn-watch" data-url="URL_TUDN">Ver Canal</a>
+          <a href="https://www.tudn.com" target="_blank" rel="noopener" class="btn-watch">Ver Canal</a>
         </div>
       </div>
 
@@ -647,7 +677,7 @@
         <div class="card-content">
           <h3>ESPN Premium</h3>
           <p>Ver ESPN Premium en vivo y en directo.</p>
-          <a href="#" class="btn-watch" data-url="URL_ESPN_PREMIUM">Ver Canal</a>
+          <a href="https://www.espn.com.co" target="_blank" rel="noopener" class="btn-watch">Ver Canal</a>
         </div>
       </div>
 
@@ -659,7 +689,7 @@
         <div class="card-content">
           <h3>TNT Sports</h3>
           <p>Ver TNT Sports online en vivo y en directo.</p>
-          <a href="#" class="btn-watch" data-url="URL_TNT">Ver Canal</a>
+          <a href="https://www.tntsports.com" target="_blank" rel="noopener" class="btn-watch">Ver Canal</a>
         </div>
       </div>
 
@@ -718,21 +748,6 @@
     // Cerrar al hacer clic en un enlace del menú
     document.querySelectorAll('.modal-nav a').forEach(function(link) {
       link.addEventListener('click', closeMenu);
-    });
-
-    // ── REDIRECCIÓN DE CANALES ──────────────────────────────────
-    // Aquí debes pegar los enlaces reales de cada canal
-    // Ejemplo: const CHANNEL_URLS = { espn: 'https://...', ... }
-
-    // Los enlaces se asignan a los botones "Ver Canal"
-    document.querySelectorAll('.btn-watch').forEach(function(btn) {
-      btn.addEventListener('click', function(e) {
-        e.preventDefault();
-        // Si tienes el enlace en data-url o quieres redirigir a una página interna
-        // const url = this.dataset.url;
-        // if (url) window.open(url, '_blank');
-        // alert('Enlace del canal: ' + this.dataset.url);
-      });
     });
 
     console.log('🔴 KONFÍO SPORTS — Tu plataforma de fútbol en vivo');
