@@ -1,757 +1,982 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" dir="ltr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="robots" content="follow, index">
-  <title>KONFÍO SPORTS - Ver Canales de Fútbol en Vivo y Gratis</title>
-  <meta name="description" content="KONFÍO SPORTS: Ver canales de fútbol online en vivo y en directo. ESPN, DirectV Sports, TyC Sports, Win Sports+, TUDN, Fox Sports, ESPN Premium, TNT Sports, Caracol TV y RCN TV. Fútbol gratis y legal para toda Latinoamérica.">
-  <link rel="canonical" href="https://konfiozinc.github.io/konfio-sports/">
-  <meta property="og:locale" content="es">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="KONFÍO SPORTS - Canales de Fútbol en Vivo y Gratis">
-  <meta property="og:description" content="KONFÍO SPORTS: Ver canales de fútbol online en vivo y en directo. ESPN, DirectV Sports, TyC Sports, Win Sports+, TUDN, Fox Sports, ESPN Premium, TNT Sports, Caracol TV y RCN TV.">
-  <meta property="og:url" content="https://konfiozinc.github.io/konfio-sports/">
-  <meta property="og:site_name" content="KONFÍO SPORTS">
-  <meta property="og:image" content="https://konfiozinc.github.io/konfio-sports/assets/og-image.jpg">
-  <meta name="theme-color" content="#FF8C00">
-  
-  <link rel="icon" href="assets/favicon.ico" sizes="any">
-  <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
-  <link rel="icon" href="assets/favicon-16.png" type="image/png" sizes="16x16">
-  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <link rel="manifest" href="manifest.json">
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-    /* ================================================================
-       KONFÍO SPORTS — Estilo rediseñado
-       ================================================================ */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --bg: #050505;
-      --panel: #111418;
-      --panel2: #161b20;
-      --line: #1f262c;
-      --orange: #FF8C00;
-      --orange2: #FFA726;
-      --green: #2ECC71;
-      --green2: #00FF88;
-      --ink: #EDEDED;
-      --muted: #93999f;
-      --radius: 14px;
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: 'Inter', system-ui, sans-serif;
-      line-height: 1.6;
-      min-height: 100vh;
-      padding-top: 72px;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-    }
-
-    /* ── HEADER ──────────────────────────────────────────────────── */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      background: rgba(5, 5, 5, 0.92);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--line);
-      padding: 0 20px;
-      height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      font-family: 'Cinzel', serif;
-      font-weight: 900;
-      font-size: 1.3rem;
-      letter-spacing: 0.08em;
-      background: linear-gradient(120deg, var(--orange), var(--green2));
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      flex-shrink: 0;
-    }
-
-    .logo span {
-      -webkit-text-fill-color: var(--green2);
-    }
-
-    .navbar {
-      display: flex;
-      gap: 4px;
-      overflow-x: auto;
-      scrollbar-width: none;
-      -webkit-overflow-scrolling: touch;
-      flex: 1;
-      justify-content: center;
-      padding: 0 12px;
-    }
-
-    .navbar::-webkit-scrollbar {
-      display: none;
-    }
-
-    .navbar a {
-      flex-shrink: 0;
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--muted);
-      padding: 6px 12px;
-      border-radius: 999px;
-      transition: all 0.2s ease;
-      white-space: nowrap;
-    }
-
-    .navbar a:hover {
-      color: var(--ink);
-      background: var(--panel2);
-    }
-
-    #menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      color: var(--ink);
-      cursor: pointer;
-      padding: 6px;
-      flex-shrink: 0;
-    }
-
-    #menu-toggle svg {
-      width: 28px;
-      height: 28px;
-    }
-
-    /* ── MENÚ MODAL ────────────────────────────────────────────── */
-    #menu-modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 2000;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      align-items: center;
-      justify-content: center;
-    }
-
-    #menu-modal.active {
-      display: flex;
-    }
-
-    .modal-content {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 30px 24px;
-      max-width: 320px;
-      width: 90%;
-      position: relative;
-    }
-
-    #menu-close {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      background: none;
-      border: none;
-      color: var(--muted);
-      cursor: pointer;
-    }
-
-    #menu-close svg {
-      width: 24px;
-      height: 24px;
-    }
-
-    .modal-nav {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-top: 8px;
-    }
-
-    .modal-nav a {
-      display: block;
-      font-weight: 700;
-      font-size: 1rem;
-      color: var(--ink);
-      padding: 10px 16px;
-      border-radius: 10px;
-      transition: background 0.2s ease;
-      text-align: center;
-    }
-
-    .modal-nav a:hover {
-      background: var(--panel2);
-    }
-
-    /* ── MAIN ───────────────────────────────────────────────────── */
-    main {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 20px 16px 60px;
-    }
-
-    h1 {
-      font-family: 'Cinzel', serif;
-      font-weight: 900;
-      font-size: clamp(1.8rem, 5vw, 2.8rem);
-      text-align: center;
-      background: linear-gradient(120deg, #fff 25%, var(--orange) 60%, var(--green2) 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 12px;
-    }
-
-    .description {
-      text-align: center;
-      color: var(--muted);
-      font-size: clamp(0.9rem, 1.2vw, 1.05rem);
-      max-width: 760px;
-      margin: 0 auto 24px;
-      line-height: 1.7;
-    }
-
-    .description strong {
-      color: var(--green2);
-      font-weight: 700;
-    }
-
-    .channels-title {
-      font-family: 'Cinzel', serif;
-      font-weight: 700;
-      font-size: clamp(1.2rem, 2vw, 1.6rem);
-      color: var(--orange);
-      text-align: center;
-      margin: 32px 0 20px;
-    }
-
-    /* ── CARDS ──────────────────────────────────────────────────── */
-    .cards-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 16px;
-    }
-
-    .card {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      overflow: hidden;
-      transition: transform 0.25s ease, border-color 0.25s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(255, 140, 0, 0.4);
-    }
-
-    .card-image {
-      background: var(--panel2);
-      padding: 16px 12px 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 80px;
-    }
-
-    .card-image img {
-      max-height: 56px;
-      width: auto;
-      object-fit: contain;
-    }
-
-    .card-content {
-      padding: 12px 14px 16px;
-      text-align: center;
-    }
-
-    .card-content h3 {
-      font-size: 0.95rem;
-      font-weight: 800;
-      color: var(--ink);
-      margin-bottom: 4px;
-    }
-
-    .card-content p {
-      font-size: 0.75rem;
-      color: var(--muted);
-      margin-bottom: 12px;
-    }
-
-    .btn-watch {
-      display: inline-block;
-      font-weight: 700;
-      font-size: 0.8rem;
-      color: #1a0a00;
-      background: linear-gradient(120deg, var(--orange), var(--orange2));
-      padding: 8px 20px;
-      border-radius: 999px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      cursor: pointer;
-      border: none;
-    }
-
-    .btn-watch:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(255, 140, 0, 0.35);
-    }
-
-    /* ── FOOTER ──────────────────────────────────────────────────── */
-    footer {
-      text-align: center;
-      padding: 32px 20px 24px;
-      border-top: 1px solid var(--line);
-      margin-top: 20px;
-    }
-
-    .footer-title {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    .footer-title strong {
-      color: var(--orange);
-      font-weight: 800;
-    }
-
-    .redes {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      list-style: none;
-      margin-top: 8px;
-      flex-wrap: wrap;
-    }
-
-    .redes a {
-      font-size: 0.75rem;
-      color: var(--muted);
-      font-weight: 600;
-      transition: color 0.2s ease;
-    }
-
-    .redes a:hover {
-      color: var(--orange);
-    }
-
-    /* ── RESPONSIVE ────────────────────────────────────────────── */
-    @media (max-width: 768px) {
-      body {
-        padding-top: 60px;
-      }
-
-      header {
-        height: 56px;
-        padding: 0 14px;
-      }
-
-      .logo {
-        font-size: 1.1rem;
-      }
-
-      .navbar {
-        display: none;
-      }
-
-      #menu-toggle {
-        display: block;
-      }
-
-      .cards-container {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        gap: 12px;
-      }
-
-      .card-image {
-        min-height: 60px;
-        padding: 12px 8px 4px;
-      }
-
-      .card-image img {
-        max-height: 42px;
-      }
-
-      .card-content {
-        padding: 8px 10px 12px;
-      }
-
-      .card-content h3 {
-        font-size: 0.8rem;
-      }
-
-      .btn-watch {
-        font-size: 0.7rem;
-        padding: 6px 14px;
-      }
-
-      main {
-        padding: 12px 12px 40px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .cards-container {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-      }
-
-      .card-content p {
-        display: none;
-      }
-
-      .card-image img {
-        max-height: 36px;
-      }
-    }
-
-    /* ── SPLASH / LOADING ──────────────────────────────────────── */
-    #splash {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      background: var(--bg);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      transition: opacity 0.5s ease, visibility 0.5s ease;
-    }
-
-    #splash.hide {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
-
-    .splash-logo {
-      font-family: 'Cinzel', serif;
-      font-weight: 900;
-      font-size: 2rem;
-      letter-spacing: 0.2em;
-      background: linear-gradient(120deg, var(--orange), var(--green2));
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: pulse 1.2s ease-in-out infinite;
-    }
-
-    .splash-bar {
-      width: 120px;
-      height: 3px;
-      background: var(--line);
-      border-radius: 999px;
-      overflow: hidden;
-    }
-
-    .splash-bar::after {
-      content: '';
-      display: block;
-      height: 100%;
-      background: linear-gradient(90deg, var(--orange), var(--green2));
-      animation: load-bar 1.6s ease forwards;
-    }
-
-    @keyframes load-bar {
-      from {
-        width: 0;
-      }
-      to {
-        width: 100%;
-      }
-    }
-
-    @keyframes pulse {
-      0%,
-      100% {
-        opacity: 1;
-      }
-      50% {
-        opacity: 0.55;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=yes">
+<meta name="theme-color" content="#F97316">
+<title>KONFÍO SPORTS — Mundial FIFA 2026 | Canales y Partidos Gratis</title>
+<meta name="description" content="KONFÍO SPORTS: centro informativo del Mundial FIFA 2026. Grupos, calendario, Selección Colombia y canales oficiales gratis.">
+<link rel="canonical" href="https://konfiozinc.github.io/konfio-sports/">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="assets/favicon.ico">
+<link rel="stylesheet" href="style.css?v=18">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* ================================================================
+   ESTILOS KONFÍO SPORTS V18 — Inspirado en Fútbol Libre TV
+   Mantiene toda la estructura original con nuevo diseño
+   ================================================================ */
+
+/* ── RESET Y BASE ────────────────────────────────────────────── */
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  background: #0a0a0f;
+  color: #ededed;
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+img, svg { display:block; max-width:100%; }
+a { color:inherit; text-decoration:none; }
+h1,h2,h3,h4 { font-family: 'Cinzel', serif; }
+
+/* ── SKIP LINK ────────────────────────────────────────────────── */
+.skip-link {
+  position:absolute; top:-100px; left:16px; z-index:9999;
+  background:#F97316; color:#080808; font-weight:700;
+  padding:8px 16px; border-radius:4px;
+}
+.skip-link:focus { top:16px; }
+:focus-visible { outline:3px solid #F97316 !important; outline-offset:3px !important; }
+
+/* ── SPLASH ────────────────────────────────────────────────────── */
+#splash {
+  position:fixed; inset:0; z-index:9000;
+  background:#0a0a0f;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center; gap:16px;
+  transition:opacity .5s;
+}
+#splash.hide { opacity:0; pointer-events:none; }
+.splash-logo {
+  font-family:'Cinzel',serif; font-weight:900; font-size:2rem;
+  letter-spacing:.2em; text-transform:uppercase;
+  background:linear-gradient(120deg,#F97316,#2ECC71);
+  -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+  animation:pulse 1.2s ease-in-out infinite;
+}
+.splash-logo span { -webkit-text-fill-color:#2ECC71; }
+.splash-bar { width:120px; height:3px; background:#1f262c; border-radius:999px; overflow:hidden; }
+.splash-bar::after {
+  content:''; display:block; height:100%;
+  background:linear-gradient(90deg,#F97316,#2ECC71);
+  animation:load-bar 1.6s ease forwards;
+}
+@keyframes load-bar { from { width:0; } to { width:100%; } }
+@keyframes pulse { 0%,100%{ opacity:1; } 50%{ opacity:.55; } }
+
+/* ── FX CANVAS ────────────────────────────────────────────────── */
+#fx {
+  position:fixed; inset:0; z-index:0;
+  opacity:.25; pointer-events:none;
+}
+
+/* ── WRAP ──────────────────────────────────────────────────────── */
+.wrap {
+  position:relative; z-index:1;
+  max-width:1180px; margin:0 auto; padding:0 16px;
+}
+
+/* ── INSTALL BANNER ───────────────────────────────────────────── */
+#install-banner {
+  position:fixed; top:0; left:0; right:0; z-index:850;
+  background:linear-gradient(90deg,#111418,#161b20);
+  border-bottom:1px solid #1f262c;
+  display:none; align-items:center; justify-content:space-between;
+  gap:12px; padding:10px 16px; font-size:.82rem; flex-wrap:wrap;
+}
+#install-banner.visible { display:flex; }
+.btn-install {
+  background:linear-gradient(120deg,#F97316,#2ECC71);
+  color:#06140a; font-weight:800; border:none;
+  border-radius:999px; padding:6px 14px;
+}
+.btn-dismiss {
+  background:transparent; border:1px solid #1f262c;
+  color:#93999f; border-radius:999px; padding:6px 12px;
+}
+
+/* ── NAVBAR ────────────────────────────────────────────────────── */
+#navbar {
+  position:sticky; top:0; z-index:500;
+  background:rgba(10,10,15,.92);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom:2px solid #1f262c;
+}
+.nav-inner {
+  display:flex; align-items:center; gap:12px;
+  height:64px; max-width:1180px; margin:0 auto; padding:0 12px;
+}
+.nav-brand {
+  flex:none; font-family:'Cinzel',serif; font-weight:900;
+  font-size:1.1rem; letter-spacing:.06em; white-space:nowrap;
+}
+.nav-brand b { color:#F97316; }
+.nav-brand span { color:#2ECC71; }
+.nav-links {
+  display:flex; align-items:center; gap:2px;
+  overflow-x:auto; flex:1;
+  scrollbar-width:none; -webkit-overflow-scrolling:touch;
+}
+.nav-links::-webkit-scrollbar { display:none; }
+.nav-links a {
+  flex:none; font-size:.75rem; font-weight:600;
+  color:#93999f; padding:6px 12px;
+  border-radius:999px; transition:all .18s ease; white-space:nowrap;
+}
+.nav-links a:hover,
+.nav-links a.active {
+  color:#ededed; background:#1f262c;
+}
+.nav-cta {
+  flex:none;
+  background:linear-gradient(120deg,#F97316,#F97316);
+  color:#1a0a00; font-weight:800; font-size:.7rem;
+  padding:6px 14px; border-radius:999px;
+  white-space:nowrap; transition:transform .18s ease;
+}
+.nav-cta:hover { transform:translateY(-1px); }
+.live-badge {
+  flex:none; display:none; align-items:center; gap:4px;
+  font-size:.6rem; font-weight:800; text-transform:uppercase;
+  color:#ff4a4a; background:rgba(255,74,74,.1);
+  border:1px solid rgba(255,74,74,.3);
+  border-radius:999px; padding:4px 10px; white-space:nowrap;
+}
+.live-badge::before {
+  content:''; width:6px; height:6px; border-radius:50%;
+  background:#ff4a4a; box-shadow:0 0 8px #ff4a4a;
+  animation:pulse-dot .9s infinite;
+}
+.live-badge.show { display:inline-flex; }
+@keyframes pulse-dot { 0%,100%{ opacity:1; } 50%{ opacity:.4; } }
+@media (max-width:560px) {
+  .live-badge .lb-text { display:none; }
+  .nav-cta span { display:none; }
+}
+
+/* ── HERO ──────────────────────────────────────────────────────── */
+.hero {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:30px; align-items:center;
+  padding:30px 0 15px;
+}
+.hero-left { display:flex; flex-direction:column; gap:14px; }
+.hero-brand {
+  font-family:'Cinzel',serif; font-weight:900;
+  letter-spacing:.18em; font-size:.7rem;
+  color:#F97316; text-transform:uppercase;
+}
+.hero h1 {
+  font-weight:900;
+  font-size:clamp(2.2rem,5vw,3.8rem); line-height:1.02;
+  background:linear-gradient(120deg,#fff 25%,#F97316 60%,#2ECC71 100%);
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.hero-slogan {
+  font-family:'Cinzel',serif; font-weight:600;
+  font-size:1rem; color:#ededed;
+}
+.hero-desc {
+  color:#93999f; font-size:.9rem; max-width:480px;
+}
+.hero-ctas {
+  display:flex; gap:10px; flex-wrap:wrap; margin-top:4px;
+}
+.btn-hero-primary {
+  display:inline-flex; align-items:center; gap:8px;
+  background:linear-gradient(120deg,#F97316,#F97316);
+  color:#1a0a00; font-weight:800; font-size:.85rem;
+  padding:12px 24px; border-radius:999px;
+  transition:transform .18s ease;
+}
+.btn-hero-primary:hover { transform:translateY(-2px); }
+.btn-hero-secondary {
+  display:inline-flex; align-items:center; gap:8px;
+  background:rgba(46,204,113,.08);
+  border:1px solid rgba(46,204,113,.35);
+  color:#2ECC71; font-weight:700; font-size:.8rem;
+  padding:11px 22px; border-radius:999px;
+  transition:transform .18s ease;
+}
+.btn-hero-secondary:hover { transform:translateY(-1px); }
+
+/* ── COUNTDOWN ────────────────────────────────────────────────── */
+.countdown-card {
+  margin-top:8px; background:#111418;
+  border:1px solid rgba(249,115,22,.18);
+  border-radius:16px; padding:16px 18px; max-width:520px;
+  box-shadow:0 12px 40px rgba(249,115,22,.08);
+}
+.countdown-label {
+  font-size:.65rem; font-weight:900; letter-spacing:.2em;
+  text-transform:uppercase; color:#F97316;
+  margin-bottom:8px; display:flex; align-items:center; gap:6px;
+}
+.countdown-label::before {
+  content:''; width:6px; height:6px; border-radius:50%;
+  background:#ff4a4a; box-shadow:0 0 10px #ff4a4a;
+  animation:pulse-dot 1s infinite;
+}
+.countdown-grid {
+  display:grid; grid-template-columns:repeat(4,1fr); gap:6px;
+}
+.countdown-unit {
+  text-align:center; background:#161b20;
+  border:1px solid #1f262c; border-radius:10px;
+  padding:8px 2px;
+}
+.countdown-unit .num {
+  font-family:'Cinzel',serif; font-weight:900;
+  font-size:1.8rem; line-height:1;
+  background:linear-gradient(160deg,#fff 35%,#F97316 100%);
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.countdown-unit .lbl {
+  font-size:.5rem; color:#93999f; text-transform:uppercase;
+  letter-spacing:.1em; margin-top:3px; font-weight:700;
+}
+.countdown-match {
+  margin-top:10px; display:flex; align-items:center;
+  gap:8px; font-size:.8rem; color:#ededed; flex-wrap:wrap;
+}
+.countdown-match b { color:#2ECC71; font-size:.85rem; }
+.countdown-match small {
+  display:block; color:#93999f; font-size:.65rem;
+}
+.countdown-crests {
+  display:flex; align-items:center; gap:4px; flex:none;
+}
+.countdown-crests .crest {
+  width:32px; height:32px; font-size:.7rem;
+  border:2px solid rgba(249,115,22,.3);
+  border-radius:50%; background:#161b20;
+  display:grid; place-items:center; font-weight:800;
+}
+.countdown-crests .crest-vs {
+  font-size:.55rem; font-weight:800; color:#93999f;
+}
+@media (max-width:480px) {
+  .countdown-unit .num { font-size:1.4rem; }
+  .countdown-crests .crest { width:26px; height:26px; font-size:.6rem; }
+  .countdown-card { padding:10px; }
+}
+
+/* ── HERO RIGHT (BALÓN) ──────────────────────────────────────── */
+.hero-right {
+  position:relative; display:grid; place-items:center;
+  min-height:280px; perspective:1100px;
+}
+.ball-glow {
+  position:absolute; z-index:0; width:115%; aspect-ratio:1;
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 38% 32%, rgba(249,115,22,.5) 0%, transparent 45%),
+    radial-gradient(circle at 66% 64%, rgba(46,204,113,.35) 0%, transparent 48%);
+  filter:blur(46px);
+  animation:glow-pulse 5s ease-in-out infinite;
+  pointer-events:none;
+}
+.ball-trail {
+  position:absolute; inset:-8%; z-index:0; pointer-events:none;
+}
+.trail-line {
+  position:absolute; height:4px; border-radius:999px; right:6%;
+  filter:blur(.6px); animation:trail-flow 1.5s ease-in-out infinite;
+}
+.trail-line.l1 {
+  top:26%; width:58%;
+  background:linear-gradient(90deg,transparent,rgba(249,115,22,.9) 55%,#F97316);
+  box-shadow:0 0 14px rgba(249,115,22,.6);
+}
+.trail-line.l2 {
+  top:46%; width:42%;
+  background:linear-gradient(90deg,transparent,rgba(46,204,113,.9) 55%,#2ECC71);
+  animation-delay:.18s;
+  box-shadow:0 0 14px rgba(46,204,113,.55);
+}
+.trail-line.l3 {
+  top:64%; width:28%;
+  background:linear-gradient(90deg,transparent,rgba(249,115,22,.8) 55%,#F97316);
+  animation-delay:.34s;
+}
+.spark {
+  position:absolute; border-radius:50%; pointer-events:none;
+  animation:spark-fly 1.4s ease-in-out infinite;
+}
+.spark.sp1 {
+  top:24%; right:28%; width:5px; height:5px;
+  background:#2ECC71; box-shadow:0 0 10px #2ECC71;
+  animation-delay:.1s;
+}
+.spark.sp2 {
+  top:48%; right:44%; width:4px; height:4px;
+  background:#F97316; box-shadow:0 0 8px #F97316;
+  animation-delay:.5s;
+}
+.spark.sp3 {
+  top:64%; right:20%; width:5px; height:5px;
+  background:#2ECC71; box-shadow:0 0 9px #2ECC71;
+  animation-delay:.9s;
+}
+@keyframes trail-flow {
+  0%,100%{ transform:translateX(0) scaleX(1); opacity:.9; }
+  50%{ transform:translateX(-12px) scaleX(.92); opacity:.4; }
+}
+@keyframes spark-fly {
+  0%{ transform:translate(0,0) scale(1); opacity:1; }
+  100%{ transform:translate(-20px,6px) scale(.2); opacity:0; }
+}
+.holo-ring {
+  position:absolute; z-index:0; bottom:6%;
+  width:70%; max-width:380px; aspect-ratio:3.4/1;
+  border-radius:50%;
+  background:radial-gradient(ellipse at center, rgba(46,204,113,.45) 0%, rgba(46,204,113,.14) 45%, transparent 75%);
+  filter:blur(14px);
+  animation:holo-pulse 3.2s ease-in-out infinite;
+  pointer-events:none;
+}
+.holo-ring::after {
+  content:''; position:absolute; inset:18% 8%; border-radius:50%;
+  border:1px solid rgba(46,204,113,.35);
+  box-shadow:0 0 30px rgba(46,204,113,.25);
+}
+@keyframes glow-pulse {
+  0%,100%{ opacity:.8; transform:scale(1); }
+  50%{ opacity:1; transform:scale(1.08); }
+}
+@keyframes holo-pulse {
+  0%,100%{ opacity:.7; transform:scale(1); }
+  50%{ opacity:1; transform:scaleX(1.06) scaleY(1.12); }
+}
+.ball-photo-wrap {
+  --parallax-x:0px; --parallax-y:0px;
+  --hover-ry:0deg; --hover-rx:0deg; --hover-scale:1;
+  position:relative; z-index:1;
+  width:min(92%,300px);
+  transform:translate(var(--parallax-x), var(--parallax-y))
+          rotateY(var(--hover-ry)) rotateX(var(--hover-rx))
+          scale(var(--hover-scale));
+  transition:transform .35s cubic-bezier(.22,1,.36,1);
+  animation:ball-entry 1.2s ease-out both;
+  transform-style:preserve-3d; will-change:transform;
+}
+.ball-photo-wrap:hover {
+  --hover-ry:12deg; --hover-rx:8deg; --hover-scale:1.05;
+}
+.ball-photo {
+  display:block; width:100%; height:auto;
+  -webkit-mask-image:radial-gradient(circle at 50% 46%, #000 58%, transparent 82%);
+  mask-image:radial-gradient(circle at 50% 46%, #000 58%, transparent 82%);
+  filter:drop-shadow(0 20px 50px rgba(249,115,22,.35));
+  animation:float 6s ease-in-out infinite;
+}
+.ball-photo-wrap.img-error .ball-photo { display:none; }
+.ball-photo-wrap.img-error::before {
+  content:''; display:block; width:100%; aspect-ratio:1;
+  border-radius:50%;
+  background:radial-gradient(circle at 32% 28%, #ffffff 0%, #e7e7e7 45%, #b9b9b9 100%);
+  box-shadow:0 0 70px 16px rgba(249,115,22,.5),0 0 140px 40px rgba(46,204,113,.28),
+            inset -22px -22px 50px rgba(0,0,0,.28), inset 10px 10px 30px rgba(255,255,255,.55);
+  filter:drop-shadow(0 20px 50px rgba(249,115,22,.35));
+  animation:float 6s ease-in-out infinite, ball-spin 20s linear infinite;
+}
+@keyframes ball-spin { from { transform:rotate(0deg); } to { transform:rotate(360deg); } }
+@keyframes float { 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-10px); } }
+@keyframes ball-entry {
+  from { opacity:0; transform:translateY(30px); }
+  to { opacity:1; transform:translateY(0); }
+}
+
+@media (max-width:900px) {
+  .hero { grid-template-columns:1fr; gap:10px; }
+  .hero-right { order:-1; min-height:180px; }
+  .ball-glow, .holo-ring, .ball-trail { display:none; }
+  .ball-photo-wrap { width:min(80%,160px); }
+  .hero-left { gap:8px; }
+}
+@media (max-width:480px) {
+  .ball-photo-wrap { width:min(76%,130px); }
+  .hero h1 { font-size:1.8rem; }
+  .hero-slogan { font-size:.75rem; }
+  .hero-desc { font-size:.75rem; }
+  .hero-brand { font-size:.55rem; }
+  .btn-hero-primary, .btn-hero-secondary { font-size:.7rem; padding:8px 14px; }
+}
+
+/* ── QUICK CATS ───────────────────────────────────────────────── */
+.quick-cats {
+  display:flex; gap:5px; overflow-x:auto;
+  margin-top:8px; padding-bottom:2px;
+  scrollbar-width:none; -webkit-overflow-scrolling:touch;
+}
+.quick-cats::-webkit-scrollbar { display:none; }
+.qc-chip {
+  flex:none; background:#111418; border:1px solid #1f262c;
+  border-radius:999px; padding:4px 12px;
+  font-size:.65rem; font-weight:700; color:#ededed;
+  cursor:pointer; transition:all .18s ease; white-space:nowrap;
+}
+.qc-chip:hover { border-color:rgba(249,115,22,.4); }
+
+/* ── SECTIONS ─────────────────────────────────────────────────── */
+.section { padding:28px 0; }
+.section-head {
+  display:flex; align-items:flex-end; justify-content:space-between;
+  gap:8px; margin-bottom:16px; flex-wrap:wrap;
+}
+.section-head h2 {
+  font-size:1.3rem; font-weight:800;
+}
+.section-head h2 .accent { color:#F97316; }
+.section-head p {
+  color:#93999f; font-size:.75rem; margin-top:2px;
+}
+.section-tag {
+  font-size:.55rem; font-weight:800; letter-spacing:.14em;
+  text-transform:uppercase; color:#2ECC71;
+  background:rgba(46,204,113,.08);
+  border:1px solid rgba(46,204,113,.25);
+  padding:3px 10px; border-radius:999px;
+}
+
+/* ── CATEGORÍAS (GRUPOS) ────────────────────────────────────── */
+.cat-grid {
+  display:grid; grid-template-columns:repeat(5,1fr); gap:10px;
+}
+@media (max-width:900px) { .cat-grid { grid-template-columns:repeat(3,1fr); } }
+@media (max-width:520px) { .cat-grid { grid-template-columns:repeat(2,1fr); } }
+.cat-card {
+  background:#111418; border:1px solid #1f262c;
+  border-radius:12px; padding:12px 8px; text-align:center;
+  transition:transform .18s ease, border-color .18s ease;
+}
+.cat-card:hover {
+  transform:translateY(-3px); border-color:rgba(249,115,22,.4);
+}
+.cat-card .cat-ic {
+  width:36px; height:36px; display:grid; place-items:center;
+  margin:0 auto 4px; border-radius:10px;
+  background:linear-gradient(145deg,rgba(249,115,22,.14),rgba(46,204,113,.08));
+}
+.cat-card span { font-size:.7rem; font-weight:700; line-height:1.2; }
+
+/* ── MATCHES ──────────────────────────────────────────────────── */
+.match {
+  display:flex; align-items:center; gap:10px;
+  padding:10px 12px; border-bottom:1px solid #1f262c;
+  flex-wrap:wrap;
+}
+.match:last-child { border-bottom:none; }
+.match-time {
+  font-family:'Cinzel',serif; font-weight:700; font-size:.7rem;
+  color:#F97316; min-width:40px; text-align:center; flex:none;
+}
+.match-time .tz {
+  font-size:.5rem; color:#93999f; display:block;
+}
+.match-crests {
+  display:flex; align-items:center; gap:3px; flex:none;
+}
+.crest {
+  width:24px; height:24px; border-radius:50%;
+  background:#161b20; border:1px solid #1f262c;
+  display:grid; place-items:center;
+  font-size:.55rem; font-weight:800; color:#ededed;
+}
+.crest-vs { font-size:.5rem; color:#93999f; font-weight:600; }
+.match-info { flex:1; min-width:0; }
+.match-info strong {
+  display:block; font-size:.8rem; font-weight:700;
+  line-height:1.2; white-space:nowrap; overflow:hidden;
+  text-overflow:ellipsis;
+}
+.match-info small { color:#93999f; font-size:.65rem; }
+.match-meta {
+  display:flex; flex-direction:column;
+  align-items:flex-end; gap:3px; flex:none;
+}
+.match-where {
+  font-size:.55rem; font-weight:800; text-transform:uppercase;
+  padding:2px 8px; border-radius:999px;
+  color:#2ECC71; background:rgba(46,204,113,.08);
+  border:1px solid rgba(46,204,113,.22);
+  white-space:nowrap;
+}
+.match-status {
+  font-size:.55rem; font-weight:800; text-transform:uppercase;
+  padding:2px 6px; border-radius:999px;
+}
+.match-status.live {
+  color:#ff4a4a; background:rgba(255,74,74,.12);
+  border:1px solid rgba(255,74,74,.25);
+  animation:pulse-dot .9s infinite;
+}
+.match-status.next {
+  color:#2ECC71; background:rgba(46,204,113,.08);
+  border:1px solid rgba(46,204,113,.2);
+}
+.match-status.done {
+  color:#93999f; background:rgba(138,138,144,.08);
+  border:1px solid #1f262c;
+}
+@media (max-width:480px) {
+  .match { padding:6px; gap:6px; }
+  .match-time { font-size:.6rem; min-width:32px; }
+  .match-info strong { font-size:.7rem; }
+}
+
+/* ── MUNDIAL SUB ──────────────────────────────────────────────── */
+.mundial-sub {
+  display:grid; grid-template-columns:1.4fr 1fr; gap:12px; margin-top:12px;
+}
+@media (max-width:760px) { .mundial-sub { grid-template-columns:1fr; } }
+.mundial-mini {
+  background:#111418; border:1px solid #1f262c;
+  border-radius:16px; overflow:hidden;
+}
+.mundial-mini-head {
+  padding:10px 14px 6px; font-size:.7rem; font-weight:800;
+  text-transform:uppercase; color:#2ECC71;
+  display:flex; align-items:center; gap:6px;
+}
+.flag-grid {
+  display:flex; flex-wrap:wrap; gap:6px;
+  padding:6px 14px 14px;
+}
+.flag-chip {
+  display:inline-flex; align-items:center; gap:5px;
+  background:#161b20; border:1px solid #1f262c;
+  border-radius:999px; padding:5px 10px;
+  font-size:.7rem; font-weight:700; color:#ededed;
+}
+.mundial-empty {
+  padding:12px 14px; font-size:.75rem; color:#93999f;
+}
+
+/* ── BRACKET ──────────────────────────────────────────────────── */
+.bracket {
+  display:flex; align-items:stretch; gap:6px;
+  overflow-x:auto; padding-bottom:4px;
+  scrollbar-width:none; -webkit-overflow-scrolling:touch;
+}
+.bracket::-webkit-scrollbar { display:none; }
+.bracket-stage {
+  flex:1; min-width:100px; background:#111418;
+  border:1px solid #1f262c; border-radius:12px;
+  padding:12px 8px; text-align:center;
+  display:flex; flex-direction:column; align-items:center; gap:4px;
+  transition:border-color .18s ease;
+}
+.bracket-stage .bs-num {
+  width:30px; height:30px; border-radius:50%; display:grid;
+  place-items:center; background:linear-gradient(120deg,#F97316,#F97316);
+  color:#1a0a00; font-weight:900; font-size:.8rem;
+}
+.bracket-stage strong { font-size:.8rem; font-weight:800; }
+.bracket-stage small { font-size:.6rem; color:#93999f; }
+.bracket-stage.bs-final {
+  border-color:rgba(46,204,113,.35);
+  background:linear-gradient(135deg,rgba(46,204,113,.06),#111418);
+}
+.bracket-stage.bs-final .bs-num {
+  background:linear-gradient(120deg,#2ECC71,#2ECC71);
+}
+.bracket-arrow {
+  display:flex; align-items:center; color:#93999f; font-size:.9rem; flex:none;
+}
+@media (max-width:760px) { .bracket-arrow { display:none; } .bracket-stage { min-width:90px; } }
+
+/* ── NEWS GRID ────────────────────────────────────────────────── */
+.news-grid {
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:10px;
+}
+.news-card {
+  background:#111418; border:1px solid #1f262c;
+  border-radius:12px; padding:14px;
+  display:flex; flex-direction:column; gap:4px;
+  transition:transform .18s ease, border-color .18s ease;
+}
+.news-card:hover {
+  transform:translateY(-3px); border-color:rgba(249,115,22,.35);
+}
+.news-card .nc-ic { font-size:1.2rem; }
+.news-card strong { font-size:.8rem; font-weight:800; }
+.news-card span { font-size:.7rem; color:#93999f; }
+.news-card .nc-go {
+  margin-top:auto; font-size:.7rem; font-weight:800; color:#F97316;
+}
+
+/* ── CANALES (ESTILO FÚTBOL LIBRE) ───────────────────────────── */
+.channels-title {
+  font-size:1.5rem; font-weight:800; color:#ededed;
+  text-align:center; margin-bottom:20px; font-family:'Cinzel',serif;
+}
+.channels-title .accent { color:#F97316; }
+
+.cards-container {
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:16px; margin:0 auto;
+}
+.card {
+  background:#111418; border:1px solid #1f262c;
+  border-radius:16px; overflow:hidden;
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.card:hover {
+  transform:translateY(-6px);
+  box-shadow:0 12px 40px rgba(249,115,22,.15);
+}
+.card-image {
+  width:100%; height:140px; overflow:hidden;
+  background:#161b20; display:flex; align-items:center; justify-content:center;
+}
+.card-image img {
+  width:100%; height:100%; object-fit:contain;
+  padding:8px;
+}
+.card-content {
+  padding:14px 16px 16px;
+}
+.card-content h3 {
+  font-size:.95rem; font-weight:800; color:#ededed;
+  margin-bottom:4px; font-family:'Inter',sans-serif;
+}
+.card-content p {
+  font-size:.75rem; color:#93999f; margin-bottom:12px;
+  line-height:1.4;
+}
+.btn-watch {
+  display:inline-block;
+  background:linear-gradient(120deg,#F97316,#F97316);
+  color:#1a0a00; font-weight:800; font-size:.8rem;
+  padding:8px 20px; border-radius:999px;
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+.btn-watch:hover {
+  transform:scale(1.03);
+  box-shadow:0 6px 20px rgba(249,115,22,.35);
+}
+
+/* ── TRUST ────────────────────────────────────────────────────── */
+.trust-grid {
+  display:grid; grid-template-columns:repeat(6,1fr); gap:8px;
+}
+@media (max-width:900px) { .trust-grid { grid-template-columns:repeat(3,1fr); } }
+@media (max-width:480px) { .trust-grid { grid-template-columns:repeat(2,1fr); } }
+.trust-item {
+  background:#111418; border:1px solid #1f262c;
+  border-radius:12px; padding:12px 8px; text-align:center;
+  transition:border-color .18s ease;
+}
+.trust-item:hover { border-color:rgba(249,115,22,.3); }
+.trust-icon { font-size:1.3rem; margin-bottom:4px; }
+.trust-item strong { display:block; font-size:.7rem; font-weight:800; margin-bottom:2px; }
+.trust-item span { font-size:.6rem; color:#93999f; line-height:1.3; }
+
+/* ── NOTE ────────────────────────────────────────────────────── */
+.note {
+  margin:8px 0 0; padding:12px 16px; border-radius:12px;
+  background:rgba(249,115,22,.05); border:1px solid rgba(249,115,22,.18);
+  font-size:.75rem; color:#d4cfc8;
+}
+.note b { color:#F97316; }
+
+/* ── FOOTER ───────────────────────────────────────────────────── */
+footer {
+  text-align:center; padding:32px 0 90px;
+}
+.kbrand {
+  font-family:'Cinzel',serif; font-weight:900;
+  letter-spacing:.18em; font-size:.95rem; color:#F97316;
+}
+.kbrand span { color:#2ECC71; }
+footer p { color:#93999f; font-size:.8rem; margin:8px 0 18px; }
+.footer-cta {
+  display:inline-flex; align-items:center; gap:8px;
+  background:linear-gradient(120deg,#F97316,#2ECC71);
+  color:#06140a; font-weight:800; font-size:.85rem;
+  padding:10px 24px; border-radius:999px;
+  transition:transform .18s ease;
+}
+.footer-cta:hover { transform:translateY(-2px); }
+.disc {
+  margin-top:16px; font-size:.6rem; color:#454550;
+  line-height:1.6; max-width:440px; margin-inline:auto;
+}
+
+/* ── TOAST ────────────────────────────────────────────────────── */
+#toast-container {
+  position:fixed; bottom:80px; left:50%;
+  transform:translateX(-50%); z-index:8000;
+  display:flex; flex-direction:column; align-items:center; gap:6px;
+  pointer-events:none;
+}
+.toast {
+  display:inline-flex; align-items:center; gap:6px;
+  background:rgba(17,20,24,.97); border:1px solid #1f262c;
+  backdrop-filter:blur(16px); border-radius:999px;
+  padding:8px 16px; font-size:.75rem; font-weight:700; color:#ededed;
+  box-shadow:0 4px 20px rgba(0,0,0,.5);
+  animation:toast-in .3s ease, toast-out .3s ease 2.4s forwards;
+}
+.toast.ok { border-color:rgba(46,204,113,.3); color:#2ECC71; }
+@keyframes toast-in { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+@keyframes toast-out { from { opacity:1; transform:translateY(0); } to { opacity:0; transform:translateY(-8px); } }
+
+/* ── SHARE BAR ────────────────────────────────────────────────── */
+.share-bar {
+  position:fixed; bottom:16px; left:50%;
+  display:flex; align-items:center; gap:4px;
+  background:rgba(10,12,14,.96); border:1px solid #1f262c;
+  border-radius:999px; padding:6px 12px;
+  backdrop-filter:blur(20px); box-shadow:0 8px 32px rgba(0,0,0,.7);
+  z-index:700; opacity:0; transform:translateX(-50%) translateY(20px);
+  transition:opacity .4s,transform .4s;
+}
+.share-bar.show { opacity:1; transform:translateX(-50%) translateY(0); }
+.share-label {
+  font-size:.6rem; font-weight:800; color:#93999f;
+  letter-spacing:.07em; text-transform:uppercase;
+  padding-right:4px; white-space:nowrap;
+}
+.s-btn {
+  width:32px; height:32px; border-radius:50%;
+  display:grid; place-items:center;
+  background:transparent; border:none; cursor:pointer;
+  transition:transform .18s ease; flex:none;
+}
+.s-btn:hover { transform:scale(1.1); }
+.s-btn svg { width:22px; height:22px; display:block; }
+@media (max-width:480px) { .share-label { display:none; } }
+
+/* ── ACCESSIBILITY ───────────────────────────────────────────── */
+@media (prefers-reduced-motion:reduce) {
+  *,*::before,*::after {
+    animation-duration:.01ms !important;
+    transition-duration:.01ms !important;
+  }
+  #fx,#hero-fx { display:none; }
+}
+</style>
 </head>
 
 <body>
+<a href="#main-content" class="skip-link">Ir al contenido principal</a>
 
-  <!-- ── SPLASH ────────────────────────────────────────────────── -->
-  <div id="splash">
-    <div class="splash-logo">KONFÍO <span>SPORTS</span></div>
-    <div class="splash-bar"></div>
+<div id="install-banner" role="banner">
+  <div><strong>KONFÍO SPORTS</strong> está disponible como app</div>
+  <div class="install-actions">
+    <button id="btn-install" class="btn-install">Instalar</button>
+    <button id="btn-dismiss" class="btn-dismiss">✕</button>
   </div>
+</div>
 
-  <!-- ── HEADER ────────────────────────────────────────────────── -->
-  <header>
-    <a href="/" class="logo">KONFÍO <span>SPORTS</span></a>
+<div id="splash"><div class="splash-logo">KONFÍO <span>SPORTS</span></div><div class="splash-bar"></div></div>
+<canvas id="fx" aria-hidden="true"></canvas>
 
-    <nav class="navbar">
-      <a href="#caracol">Caracol TV</a>
-      <a href="#rcn">RCN TV</a>
-      <a href="#espn">ESPN</a>
-      <a href="#directv">Directv Sports</a>
-      <a href="#tyc">TyC Sports</a>
-      <a href="#win">Win Sports+</a>
-      <a href="#fox">Fox Sports</a>
-      <a href="#tudn">TUDN</a>
-      <a href="#espn-premium">ESPN Premium</a>
-      <a href="#tnt">TNT Sports</a>
-    </nav>
-
-    <button id="menu-toggle" aria-label="Abrir menú">
-      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-      </svg>
-    </button>
-  </header>
-
-  <!-- ── MENÚ MODAL ────────────────────────────────────────────── -->
-  <div id="menu-modal">
-    <div class="modal-content">
-      <button id="menu-close" aria-label="Cerrar menú">
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-        </svg>
-      </button>
-      <nav class="modal-nav">
-        <a href="#caracol">Caracol TV</a>
-        <a href="#rcn">RCN TV</a>
-        <a href="#espn">ESPN</a>
-        <a href="#directv">Directv Sports</a>
-        <a href="#tyc">TyC Sports</a>
-        <a href="#win">Win Sports+</a>
-        <a href="#fox">Fox Sports</a>
-        <a href="#tudn">TUDN</a>
-        <a href="#espn-premium">ESPN Premium</a>
-        <a href="#tnt">TNT Sports</a>
-      </nav>
+<header id="navbar">
+  <nav class="nav-inner">
+    <a href="#inicio" class="nav-brand"><b>KONFÍO</b><span>SPORTS</span></a>
+    <div class="nav-links">
+      <a href="#inicio">Inicio</a>
+      <a href="#grupos">Grupos</a>
+      <a href="#colombia">Colombia</a>
+      <a href="#fase-final">Fase Final</a>
+      <a href="#calendario">Calendario FIFA</a>
+      <a href="#canales">Canales</a>
+      <a href="#contacto">Contacto</a>
     </div>
-  </div>
+    <span id="live-badge" class="live-badge"><span class="lb-text">EN VIVO</span></span>
+    <a class="nav-cta" id="nav-cta" href="#" target="_blank" rel="noopener">Tarjeta Digital</a>
+  </nav>
+</header>
 
-  <!-- ── MAIN ──────────────────────────────────────────────────── -->
-  <main>
-    <h1>KONFÍO SPORTS</h1>
+<main id="main-content">
+<div class="wrap">
 
-    <p class="description">
-      <strong>KONFÍO SPORTS</strong> es tu plataforma para ver canales de fútbol online en vivo y en directo.<br>
-      Disfruta de <strong>Caracol TV, RCN TV, ESPN, Directv Sports, TyC Sports, Win Sports+, Fox Sports, TUDN, ESPN Premium y TNT Sports</strong>.
-      Fútbol gratis para toda Latinoamérica y España.
-    </p>
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="inicio">
+    <div class="hero-left">
+      <p class="hero-brand">🏆 Mundial FIFA 2026 · Canadá · México · EE. UU.</p>
+      <h1>KONFÍO SPORTS</h1>
+      <p class="hero-slogan">Centro Oficial del Mundial FIFA 2026</p>
+      <p class="hero-desc">Grupos, calendario y resultados oficiales del Mundial 2026. Toda la información de la Selección Colombia y enlaces directos a FIFA, Caracol y RCN — sin datos inventados, solo fuentes verificadas.</p>
+      <div class="hero-ctas">
+        <a href="#colombia" class="btn-hero-primary">Selección Colombia</a>
+        <a href="https://www.fifa.com/es/tournaments/mens/worldcup/canadamexicousa2026" target="_blank" rel="noopener" class="btn-hero-secondary">Calendario FIFA</a>
+      </div>
 
-    <h2 class="channels-title">📺 Canales de Fútbol en Vivo</h2>
-
-    <div class="cards-container">
-
-      <!-- CARACOL TV -->
-      <div class="card" id="caracol">
-        <div class="card-image">
-          <img src="assets/logos/caracol.png" alt="Caracol TV" loading="lazy" onerror="this.style.display='none'">
+      <div class="countdown-card">
+        <div class="countdown-label">⚡ Próximo Partido · Colombia</div>
+        <div class="countdown-grid" id="countdown-grid">
+          <div class="countdown-unit"><div class="num" id="cd-days">--</div><div class="lbl">Días</div></div>
+          <div class="countdown-unit"><div class="num" id="cd-hours">--</div><div class="lbl">Horas</div></div>
+          <div class="countdown-unit"><div class="num" id="cd-mins">--</div><div class="lbl">Min</div></div>
+          <div class="countdown-unit"><div class="num" id="cd-secs">--</div><div class="lbl">Seg</div></div>
         </div>
-        <div class="card-content">
-          <h3>Caracol TV</h3>
-          <p>Ver Caracol TV online en vivo y en directo.</p>
-          <a href="https://www.caracoltv.com/senal-vivo" target="_blank" rel="noopener" class="btn-watch">Ver Canal</a>
+        <div class="countdown-match">
+          <div class="countdown-crests" id="countdown-crests"></div>
+          <div id="countdown-text">Cargando próximo partido…</div>
         </div>
       </div>
 
-      <!-- RCN TV -->
-      <div class="card" id="rcn">
-        <div class="card-image">
-          <img src="assets/logos/rcn.png" alt="RCN TV" loading="lazy" onerror="this.style.display='none'">
-        </div>
-        <div class="card-content">
-          <h3>RCN TV</h3>
-          <p>Ver RCN TV online en vivo y en directo.</p>
-          <a href="https://www.canalrcn.com" target="_blank" rel="noopener" class="btn-watch">Ver Canal</a>
-        </div>
-      </div>
-
-      <!-- ESPN -->
-      <div class="card" id="espn">
-        <div class="card-image">
-          <img src="assets/logos/espn.png" alt="ESPN" loading="lazy" onerror="this.style.display='none'">
-        </div>
-        <div class="card-content">
-          <h3>ESPN</h3>
-          <p>Ver ESPN online en vivo y en directo.</p>
-          <a href="https://www.espn.com.co" target="_blank" rel="noopener" class="btn-watch">Ver Canal</a>
-        </div>
-      </div>
-
-      <!-- Directv Sports -->
-      <div class="card" id="directv">
-        <div class="card-image">
-          <img src="assets/logos/directv-sports.png" alt="Directv Sports" loading="lazy" onerror="this.style.display='none'">
-        </div>
-        <div class="card-content">
-          <h3>Directv Sports</h3>
-          <p>Ver DSports online en vivo y en directo.</p>
-          <a href="https://www.directvsports.com" target="_blank" rel="noopener" class="btn-watch">Ver Canal</a>
-        </div>
-      </div>
-
-      <!-- TyC Sports -->
-      <div class="card" id="tyc">
-        <div class="card-image">
-          <img src="assets/logos/tyc-sports.png" alt="TyC Sports" loading="lazy" onerror="this.style.display='none'">
-        </div>
-        <div class="card-content">
-          <h3>TyC Sports</h3>
-          <p>Ver TyC Sports online en vivo y en directo.</p>
-          <a href="https://www.tycsports.com" target="_blank" rel="noopener" class="btn-watch">Ver Canal</a>
-        </div>
-      </div>
-
-      <!-- Win Sports+ -->
-      <div class="card" id="win">
-        <div class="card-image">
-          <img src="assets/logos/win-sports.png" alt="Win Sports+" loading="lazy" onerror="this.style.display='none'">
-        </div>
-        <div class="card-content">
-          <h3>Win Sports+</h3>
-          <p>Ver Win Sports+ online en vivo y en directo.</p>
-          <a href="https://www.winsports.co" target="_blank" rel="noopener" class="btn-watch">Ver Canal</a>
-        </div>
-      </div>
-
-      <!-- Fox Sports -->
-      <div class="card" id="fox">
-        <div class="card-image">
-          <img src="assets/logos/fox-sports.png" alt="Fox Sports" loading="lazy" onerror="this.style.display='none'">
-        </div>
-        <div class="card-content">
-          <h3>Fox Sports</h3>
-          <p>Ver Fox Sports online en vivo y en directo.</p>
-          <a href="https://www.foxsports.com.co" target="_blank" rel="noopener" class="btn-watch">Ver Canal</a>
-        </div>
-      </div>
-
-      <!-- TUDN -->
-      <div class="card" id="tudn">
-        <div class="card-image">
-          <img src="assets/logos/tudn.png" alt="TUDN" loading="lazy" onerror="this.style.display='none'">
-        </div>
-        <div class="card-content">
-          <h3>TUDN</h3>
-          <p>Ver TUDN online en vivo y en directo.</p>
-          <a href="https://www.tudn.com" target="_blank" rel="noopener" class="btn-watch">Ver Canal</a>
-        </div>
-      </div>
-
-      <!-- ESPN Premium -->
-      <div class="card" id="espn-premium">
-        <div class="card-image">
-          <img src="assets/logos/espn-premium.png" alt="ESPN Premium" loading="lazy" onerror="this.style.display='none'">
-        </div>
-        <div class="card-content">
-          <h3>ESPN Premium</h3>
-          <p>Ver ESPN Premium en vivo y en directo.</p>
-          <a href="https://www.espn.com.co" target="_blank" rel="noopener" class="btn-watch">Ver Canal</a>
-        </div>
-      </div>
-
-      <!-- TNT Sports -->
-      <div class="card" id="tnt">
-        <div class="card-image">
-          <img src="assets/logos/tnt-sports.png" alt="TNT Sports" loading="lazy" onerror="this.style.display='none'">
-        </div>
-        <div class="card-content">
-          <h3>TNT Sports</h3>
-          <p>Ver TNT Sports online en vivo y en directo.</p>
-          <a href="https://www.tntsports.com" target="_blank" rel="noopener" class="btn-watch">Ver Canal</a>
-        </div>
-      </div>
-
+      <div class="quick-cats" id="quick-cats" role="list"></div>
     </div>
 
-    <!-- ── FOOTER ────────────────────────────────────────────────── -->
-    <footer>
-      <div class="footer-title"><strong>KONFÍO SPORTS</strong> © 2026 — Todos los derechos reservados.</div>
-      <ul class="redes">
-        <li><a href="#">Aviso Legal</a></li>
-        <li><a href="#">Contacto</a></li>
-        <li><a href="https://konfiozinc.github.io/konfio-sports/">KONFÍO SPORTS</a></li>
-      </ul>
-    </footer>
+    <div class="hero-right">
+      <canvas id="hero-fx" aria-hidden="true"></canvas>
+      <div class="holo-ring"></div>
+      <div class="ball-glow"></div>
+      <div class="ball-trail">
+        <div class="trail-line l1"></div>
+        <div class="trail-line l2"></div>
+        <div class="trail-line l3"></div>
+        <div class="spark sp1"></div>
+        <div class="spark sp2"></div>
+        <div class="spark sp3"></div>
+      </div>
+      <div class="ball-photo-wrap" id="ball-photo-wrap">
+        <img class="ball-photo" id="ball-photo" src="assets/balon-oficial.webp" alt="" width="688" height="860" loading="eager" onerror="this.closest('.ball-photo-wrap').classList.add('img-error')">
+      </div>
+    </div>
+  </section>
 
-  </main>
+  <!-- ===== GRUPOS ===== -->
+  <section class="section" id="grupos">
+    <div class="section-head">
+      <div>
+        <h2>⚽ Grupos del <span class="accent">Mundial 2026</span></h2>
+        <p>12 grupos de 4 selecciones · sorteo oficial del 5 de diciembre de 2025</p>
+      </div>
+      <span class="section-tag">48 selecciones</span>
+    </div>
+    <div class="cat-grid" id="groups-grid" role="list"></div>
+    <div class="note">Para resultados y tablas en vivo, consulta <a href="https://www.fifa.com/es/tournaments/mens/worldcup/canadamexicousa2026" target="_blank" rel="noopener" style="color:#2ECC71;font-weight:700">FIFA.com</a>.</div>
+  </section>
 
-  <!-- ── SCRIPTS ────────────────────────────────────────────────── -->
-  <script>
-    // ── SPLASH ──────────────────────────────────────────────────
-    document.addEventListener('DOMContentLoaded', function() {
-      const splash = document.getElementById('splash');
-      setTimeout(function() {
-        splash.classList.add('hide');
-        setTimeout(function() {
-          splash.style.display = 'none';
-        }, 500);
-      }, 1600);
-    });
+  <!-- ===== COLOMBIA ===== -->
+  <section class="section" id="colombia">
+    <div class="section-head">
+      <div>
+        <h2>🇨🇴 Selección <span class="accent">Colombia</span></h2>
+        <p>Grupo K · Néstor Lorenzo · Calendario oficial</p>
+      </div>
+      <span class="section-tag">Grupo K</span>
+    </div>
+    <div class="mundial-sub">
+      <div class="mundial-mini">
+        <div class="mundial-mini-head">📅 Calendario · Fase de Grupos</div>
+        <div id="colombia-matches" role="list"></div>
+      </div>
+      <div class="mundial-mini">
+        <div class="mundial-mini-head">🏴 Rivales del Grupo K</div>
+        <div class="flag-grid" id="grupo-k-flags" role="list"></div>
+        <div class="mundial-empty">Clasifican los 2 primeros + 8 mejores terceros. Tabla en vivo: <a href="https://www.fifa.com/es/tournaments/mens/worldcup/canadamexicousa2026/standings" target="_blank" rel="noopener" style="color:#2ECC71;font-weight:700">FIFA.com →</a></div>
+      </div>
+    </div>
+  </section>
 
-    // ── MENÚ MÓVIL ──────────────────────────────────────────────
-    const menuToggle = document.getElementById('menu-toggle');
-    const menuModal = document.getElementById('menu-modal');
-    const menuClose = document.getElementById('menu-close');
+  <!-- ===== FASE FINAL ===== -->
+  <section class="section" id="fase-final">
+    <div class="section-head">
+      <div>
+        <h2>🏆 Fase <span class="accent">Final</span></h2>
+        <p>Camino a la final · Mundial FIFA 2026</p>
+      </div>
+    </div>
+    <div class="bracket" role="list">
+      <div class="bracket-stage"><span class="bs-num">1</span><strong>Dieciseisavos</strong><small>Ronda de 32</small></div>
+      <div class="bracket-arrow">→</div>
+      <div class="bracket-stage"><span class="bs-num">2</span><strong>Octavos</strong><small>Ronda de 16</small></div>
+      <div class="bracket-arrow">→</div>
+      <div class="bracket-stage"><span class="bs-num">3</span><strong>Cuartos</strong><small>Ronda de 8</small></div>
+      <div class="bracket-arrow">→</div>
+      <div class="bracket-stage"><span class="bs-num">4</span><strong>Semifinales</strong><small>Ronda de 4</small></div>
+      <div class="bracket-arrow">→</div>
+      <div class="bracket-stage bs-final"><span class="bs-num">🏆</span><strong>Final</strong><small>19 jul · MetLife Stadium</small></div>
+    </div>
+    <div class="note">Tercer puesto: 18 de julio · Hard Rock Stadium, Miami. Bracket actualizado en <a href="https://www.fifa.com/es/tournaments/mens/worldcup/canadamexicousa2026/standings" target="_blank" rel="noopener" style="color:#2ECC71;font-weight:700">FIFA.com</a>.</div>
+  </section>
 
-    function openMenu() {
-      menuModal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
+  <!-- ===== CALENDARIO FIFA ===== -->
+  <section class="section" id="calendario">
+    <div class="section-head">
+      <div>
+        <h2>📅 Calendario <span class="accent">Oficial FIFA</span></h2>
+      </div>
+    </div>
+    <div class="news-grid">
+      <a class="news-card" href="https://www.fifa.com/es/tournaments/mens/worldcup/canadamexicousa2026/articles/calendario-fixture-mundial-2026-partidos-fechas" target="_blank"><div class="nc-ic">📅</div><strong>Calendario FIFA</strong><span>104 partidos, fechas y sedes</span><span class="nc-go">Abrir →</span></a>
+      <a class="news-card" href="https://www.fifa.com/es/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures" target="_blank"><div class="nc-ic">⚽</div><strong>Resultados FIFA</strong><span>Marcadores en vivo</span><span class="nc-go">Abrir →</span></a>
+      <a class="news-card" href="https://www.fifa.com/es/tournaments/mens/worldcup/canadamexicousa2026/standings" target="_blank"><div class="nc-ic">📊</div><strong>Clasificación FIFA</strong><span>Tablas de los 12 grupos</span><span class="nc-go">Abrir →</span></a>
+      <a class="news-card" href="https://www.fifa.com/es/tournaments/mens/worldcup/canadamexicousa2026" target="_blank"><div class="nc-ic">🌎</div><strong>Equipos FIFA</strong><span>Perfiles y plantillas</span><span class="nc-go">Abrir →</span></a>
+    </div>
+  </section>
 
-    function closeMenu() {
-      menuModal.classList.remove('active');
-      document.body.style.overflow = '';
-    }
+  <!-- ===== PAÍSES DESTACADOS ===== -->
+  <section class="section">
+    <div class="section-head"><div><h2>🌍 Selecciones <span class="accent">Destacadas</span></h2></div></div>
+    <div class="flag-grid" id="featured-flags" role="list"></div>
+  </section>
 
-    menuToggle.addEventListener('click', openMenu);
-    menuClose.addEventListener('click', closeMenu);
+  <!-- ===== CANALES ===== -->
+  <section class="section" id="canales">
+    <div class="section-head">
+      <div>
+        <h2>📡 Canales <span class="accent">Oficiales</span></h2>
+        <p>Transmisión del Mundial 2026 en Colombia y a nivel global</p>
+      </div>
+    </div>
 
-    // Cerrar al hacer clic fuera del modal
-    menuModal.addEventListener('click', function(e) {
-      if (e.target === menuModal) {
-        closeMenu();
-      }
-    });
+    <h3 class="channels-title">Ver Canales de Fútbol Online en Vivo y en Directo</h3>
+    <div class="cards-container" id="channel-grid" role="list"></div>
+  </section>
 
-    // Cerrar al hacer clic en un enlace del menú
-    document.querySelectorAll('.modal-nav a').forEach(function(link) {
-      link.addEventListener('click', closeMenu);
-    });
+  <!-- ===== TRUST ===== -->
+  <section class="section">
+    <div class="section-head"><div><h2>¿Por qué <span class="accent">KONFÍO SPORTS</span>?</h2></div></div>
+    <div class="trust-grid">
+      <div class="trust-item"><div class="trust-icon">✅</div><strong>Datos Reales</strong><span>Grupos y calendario oficial</span></div>
+      <div class="trust-item"><div class="trust-icon">🔒</div><strong>Seguro</strong><span>Sin malware</span></div>
+      <div class="trust-item"><div class="trust-icon">💚</div><strong>Gratis</strong><span>Sin pagos ocultos</span></div>
+      <div class="trust-item"><div class="trust-icon">🚫</div><strong>Sin Registro</strong><span>Acceso directo</span></div>
+      <div class="trust-item"><div class="trust-icon">📡</div><strong>Oficial</strong><span>FIFA · Caracol · RCN</span></div>
+      <div class="trust-item"><div class="trust-icon">📱</div><strong>App PWA</strong><span>Instalable</span></div>
+    </div>
+    <div class="note">KONFÍO SPORTS no es un sitio afiliado a la FIFA. Los enlaces remiten a fuentes oficiales.</div>
+  </section>
 
-    console.log('🔴 KONFÍO SPORTS — Tu plataforma de fútbol en vivo');
-  </script>
+  <!-- ===== FOOTER ===== -->
+  <footer id="contacto">
+    <div class="kbrand">KONFÍO <span>SPORTS</span></div>
+    <p>Centro informativo del Mundial FIFA 2026 · Tarjetas digitales premium en Colombia</p>
+    <a class="footer-cta" id="footer-cta" href="#" target="_blank">Quiero una tarjeta digital como esta →</a>
+    <p class="disc">KONFÍO SPORTS es un proyecto independiente, no afiliado a la FIFA. "FIFA World Cup 2026" y nombres de selecciones son marcas de sus respectivos titulares.</p>
+  </footer>
 
+</div>
+</main>
+
+<div id="toast-container"></div>
+
+<nav class="share-bar" id="share-bar">
+  <span class="share-label">Compartir</span>
+  <a class="s-btn" id="s-wa" href="#" target="_blank"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#25D366"/><path fill="#fff" d="M16 7.2A8.8 8.8 0 007.2 16c0 1.55.41 3.06 1.19 4.38L7 25l4.74-1.37A8.8 8.8 0 1016 7.2zm0 16.1a7.3 7.3 0 01-3.72-1.02l-.27-.16-2.8.81.78-2.73-.18-.28A7.3 7.3 0 1116 23.3zm4-5.46c-.22-.11-1.3-.64-1.5-.71-.2-.08-.35-.11-.5.11-.15.22-.57.71-.7.86-.13.14-.26.16-.48.05-.22-.11-.93-.34-1.77-1.09-.65-.58-1.09-1.3-1.22-1.52-.13-.22-.01-.34.1-.45.1-.1.22-.26.33-.39.11-.13.14-.22.22-.37.07-.15.04-.28-.02-.39-.06-.11-.5-1.2-.68-1.64-.18-.43-.36-.37-.5-.38h-.43c-.15 0-.39.06-.6.28-.2.22-.78.76-.78 1.86 0 1.1.8 2.16.91 2.31.11.15 1.57 2.4 3.8 3.36.53.23.94.37 1.26.47.53.17 1.01.14 1.39.09.42-.06 1.3-.53 1.48-1.05.18-.51.18-.95.13-1.04-.05-.1-.19-.16-.41-.27z"/></svg></a>
+  <a class="s-btn" id="s-fb" href="#" target="_blank"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#1877F2"/><path fill="#fff" d="M22 16h-4v-2c0-.83.34-1.33 1.5-1.33H22V9.1S20.9 9 19.65 9C16.7 9 15 10.7 15 13.7V16h-3v4h3v10h4V20h3.3L22 16z"/></svg></a>
+  <a class="s-btn" id="s-tt" href="#" target="_blank"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#000"/><path fill="#69C9D0" d="M21.5 10.3a4.5 4.5 0 01-1.1-.7 4.4 4.4 0 01-1.4-3h-2.6v10.1l-.01 5.5a2.6 2.6 0 01-2.59 2.3 2.6 2.6 0 01-2.6-2.6 2.6 2.6 0 012.6-2.6c.25 0 .5.04.72.1V17a5.2 5.2 0 00-.72-.05 5.25 5.25 0 00-5.25 5.25 5.25 5.25 0 005.25 5.25 5.25 5.25 0 005.24-5.25V14.5a7 7 0 004.08 1.3v-2.6a4.4 4.4 0 01-2.62-2.9z"/><path fill="#EE1D52" d="M21.5 10.3c.6.55 1.33.93 2.12 1.1v-2.6a4.4 4.4 0 01-2.12-1.1v2.6z"/></svg></a>
+  <a class="s-btn" id="s-yt" href="#" target="_blank"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#FF0000"/><path fill="#fff" d="M25.8 11.8a2.5 2.5 0 00-1.76-1.77C22.55 9.6 16 9.6 16 9.6s-6.55 0-8.04.43a2.5 2.5 0 00-1.76 1.77C5.77 13.3 5.77 16 5.77 16s0 2.7.43 4.2a2.5 2.5 0 001.76 1.77C9.45 22.4 16 22.4 16 22.4s6.55 0 8.04-.43a2.5 2.5 0 001.76-1.77C26.23 18.7 26.23 16 26.23 16s0-2.7-.43-4.2zM13.8 18.8v-5.6l5.38 2.8-5.38 2.8z"/></svg></a>
+  <button class="s-btn" id="s-cp"><svg viewBox="0 0 28 28" fill="none" stroke="#F97316" stroke-width="2"><rect x="10" y="10" width="13" height="13" rx="2"/><path d="M6 17H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v1"/></svg></button>
+</nav>
+
+<script src="script.js?v=18"></script>
 </body>
 </html>
