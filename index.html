@@ -1,982 +1,224 @@
+Rediseña mi plataforma con estilos similar a este pero con mi nombre oficial de KONFÍO SPORTS, No modifiques este código solo debes integrarlo al odigo original pero sin cambiar nada, lo neceito tal cual esta
+
 <!DOCTYPE html>
-<html lang="es" dir="ltr">
+<html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=yes">
-<meta name="theme-color" content="#F97316">
-<title>KONFÍO SPORTS — Mundial FIFA 2026 | Canales y Partidos Gratis</title>
-<meta name="description" content="KONFÍO SPORTS: centro informativo del Mundial FIFA 2026. Grupos, calendario, Selección Colombia y canales oficiales gratis.">
-<link rel="canonical" href="https://konfiozinc.github.io/konfio-sports/">
-<link rel="manifest" href="manifest.json">
-<link rel="icon" href="assets/favicon.ico">
-<link rel="stylesheet" href="style.css?v=18">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-<style>
-/* ================================================================
-   ESTILOS KONFÍO SPORTS V18 — Inspirado en Fútbol Libre TV
-   Mantiene toda la estructura original con nuevo diseño
-   ================================================================ */
-
-/* ── RESET Y BASE ────────────────────────────────────────────── */
-* { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; }
-body {
-  background: #0a0a0f;
-  color: #ededed;
-  font-family: 'Inter', system-ui, sans-serif;
-  line-height: 1.6;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-}
-img, svg { display:block; max-width:100%; }
-a { color:inherit; text-decoration:none; }
-h1,h2,h3,h4 { font-family: 'Cinzel', serif; }
-
-/* ── SKIP LINK ────────────────────────────────────────────────── */
-.skip-link {
-  position:absolute; top:-100px; left:16px; z-index:9999;
-  background:#F97316; color:#080808; font-weight:700;
-  padding:8px 16px; border-radius:4px;
-}
-.skip-link:focus { top:16px; }
-:focus-visible { outline:3px solid #F97316 !important; outline-offset:3px !important; }
-
-/* ── SPLASH ────────────────────────────────────────────────────── */
-#splash {
-  position:fixed; inset:0; z-index:9000;
-  background:#0a0a0f;
-  display:flex; flex-direction:column;
-  align-items:center; justify-content:center; gap:16px;
-  transition:opacity .5s;
-}
-#splash.hide { opacity:0; pointer-events:none; }
-.splash-logo {
-  font-family:'Cinzel',serif; font-weight:900; font-size:2rem;
-  letter-spacing:.2em; text-transform:uppercase;
-  background:linear-gradient(120deg,#F97316,#2ECC71);
-  -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
-  animation:pulse 1.2s ease-in-out infinite;
-}
-.splash-logo span { -webkit-text-fill-color:#2ECC71; }
-.splash-bar { width:120px; height:3px; background:#1f262c; border-radius:999px; overflow:hidden; }
-.splash-bar::after {
-  content:''; display:block; height:100%;
-  background:linear-gradient(90deg,#F97316,#2ECC71);
-  animation:load-bar 1.6s ease forwards;
-}
-@keyframes load-bar { from { width:0; } to { width:100%; } }
-@keyframes pulse { 0%,100%{ opacity:1; } 50%{ opacity:.55; } }
-
-/* ── FX CANVAS ────────────────────────────────────────────────── */
-#fx {
-  position:fixed; inset:0; z-index:0;
-  opacity:.25; pointer-events:none;
-}
-
-/* ── WRAP ──────────────────────────────────────────────────────── */
-.wrap {
-  position:relative; z-index:1;
-  max-width:1180px; margin:0 auto; padding:0 16px;
-}
-
-/* ── INSTALL BANNER ───────────────────────────────────────────── */
-#install-banner {
-  position:fixed; top:0; left:0; right:0; z-index:850;
-  background:linear-gradient(90deg,#111418,#161b20);
-  border-bottom:1px solid #1f262c;
-  display:none; align-items:center; justify-content:space-between;
-  gap:12px; padding:10px 16px; font-size:.82rem; flex-wrap:wrap;
-}
-#install-banner.visible { display:flex; }
-.btn-install {
-  background:linear-gradient(120deg,#F97316,#2ECC71);
-  color:#06140a; font-weight:800; border:none;
-  border-radius:999px; padding:6px 14px;
-}
-.btn-dismiss {
-  background:transparent; border:1px solid #1f262c;
-  color:#93999f; border-radius:999px; padding:6px 12px;
-}
-
-/* ── NAVBAR ────────────────────────────────────────────────────── */
-#navbar {
-  position:sticky; top:0; z-index:500;
-  background:rgba(10,10,15,.92);
-  backdrop-filter:blur(14px);
-  -webkit-backdrop-filter:blur(14px);
-  border-bottom:2px solid #1f262c;
-}
-.nav-inner {
-  display:flex; align-items:center; gap:12px;
-  height:64px; max-width:1180px; margin:0 auto; padding:0 12px;
-}
-.nav-brand {
-  flex:none; font-family:'Cinzel',serif; font-weight:900;
-  font-size:1.1rem; letter-spacing:.06em; white-space:nowrap;
-}
-.nav-brand b { color:#F97316; }
-.nav-brand span { color:#2ECC71; }
-.nav-links {
-  display:flex; align-items:center; gap:2px;
-  overflow-x:auto; flex:1;
-  scrollbar-width:none; -webkit-overflow-scrolling:touch;
-}
-.nav-links::-webkit-scrollbar { display:none; }
-.nav-links a {
-  flex:none; font-size:.75rem; font-weight:600;
-  color:#93999f; padding:6px 12px;
-  border-radius:999px; transition:all .18s ease; white-space:nowrap;
-}
-.nav-links a:hover,
-.nav-links a.active {
-  color:#ededed; background:#1f262c;
-}
-.nav-cta {
-  flex:none;
-  background:linear-gradient(120deg,#F97316,#F97316);
-  color:#1a0a00; font-weight:800; font-size:.7rem;
-  padding:6px 14px; border-radius:999px;
-  white-space:nowrap; transition:transform .18s ease;
-}
-.nav-cta:hover { transform:translateY(-1px); }
-.live-badge {
-  flex:none; display:none; align-items:center; gap:4px;
-  font-size:.6rem; font-weight:800; text-transform:uppercase;
-  color:#ff4a4a; background:rgba(255,74,74,.1);
-  border:1px solid rgba(255,74,74,.3);
-  border-radius:999px; padding:4px 10px; white-space:nowrap;
-}
-.live-badge::before {
-  content:''; width:6px; height:6px; border-radius:50%;
-  background:#ff4a4a; box-shadow:0 0 8px #ff4a4a;
-  animation:pulse-dot .9s infinite;
-}
-.live-badge.show { display:inline-flex; }
-@keyframes pulse-dot { 0%,100%{ opacity:1; } 50%{ opacity:.4; } }
-@media (max-width:560px) {
-  .live-badge .lb-text { display:none; }
-  .nav-cta span { display:none; }
-}
-
-/* ── HERO ──────────────────────────────────────────────────────── */
-.hero {
-  display:grid; grid-template-columns:1fr 1fr;
-  gap:30px; align-items:center;
-  padding:30px 0 15px;
-}
-.hero-left { display:flex; flex-direction:column; gap:14px; }
-.hero-brand {
-  font-family:'Cinzel',serif; font-weight:900;
-  letter-spacing:.18em; font-size:.7rem;
-  color:#F97316; text-transform:uppercase;
-}
-.hero h1 {
-  font-weight:900;
-  font-size:clamp(2.2rem,5vw,3.8rem); line-height:1.02;
-  background:linear-gradient(120deg,#fff 25%,#F97316 60%,#2ECC71 100%);
-  -webkit-background-clip:text; background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-.hero-slogan {
-  font-family:'Cinzel',serif; font-weight:600;
-  font-size:1rem; color:#ededed;
-}
-.hero-desc {
-  color:#93999f; font-size:.9rem; max-width:480px;
-}
-.hero-ctas {
-  display:flex; gap:10px; flex-wrap:wrap; margin-top:4px;
-}
-.btn-hero-primary {
-  display:inline-flex; align-items:center; gap:8px;
-  background:linear-gradient(120deg,#F97316,#F97316);
-  color:#1a0a00; font-weight:800; font-size:.85rem;
-  padding:12px 24px; border-radius:999px;
-  transition:transform .18s ease;
-}
-.btn-hero-primary:hover { transform:translateY(-2px); }
-.btn-hero-secondary {
-  display:inline-flex; align-items:center; gap:8px;
-  background:rgba(46,204,113,.08);
-  border:1px solid rgba(46,204,113,.35);
-  color:#2ECC71; font-weight:700; font-size:.8rem;
-  padding:11px 22px; border-radius:999px;
-  transition:transform .18s ease;
-}
-.btn-hero-secondary:hover { transform:translateY(-1px); }
-
-/* ── COUNTDOWN ────────────────────────────────────────────────── */
-.countdown-card {
-  margin-top:8px; background:#111418;
-  border:1px solid rgba(249,115,22,.18);
-  border-radius:16px; padding:16px 18px; max-width:520px;
-  box-shadow:0 12px 40px rgba(249,115,22,.08);
-}
-.countdown-label {
-  font-size:.65rem; font-weight:900; letter-spacing:.2em;
-  text-transform:uppercase; color:#F97316;
-  margin-bottom:8px; display:flex; align-items:center; gap:6px;
-}
-.countdown-label::before {
-  content:''; width:6px; height:6px; border-radius:50%;
-  background:#ff4a4a; box-shadow:0 0 10px #ff4a4a;
-  animation:pulse-dot 1s infinite;
-}
-.countdown-grid {
-  display:grid; grid-template-columns:repeat(4,1fr); gap:6px;
-}
-.countdown-unit {
-  text-align:center; background:#161b20;
-  border:1px solid #1f262c; border-radius:10px;
-  padding:8px 2px;
-}
-.countdown-unit .num {
-  font-family:'Cinzel',serif; font-weight:900;
-  font-size:1.8rem; line-height:1;
-  background:linear-gradient(160deg,#fff 35%,#F97316 100%);
-  -webkit-background-clip:text; background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-.countdown-unit .lbl {
-  font-size:.5rem; color:#93999f; text-transform:uppercase;
-  letter-spacing:.1em; margin-top:3px; font-weight:700;
-}
-.countdown-match {
-  margin-top:10px; display:flex; align-items:center;
-  gap:8px; font-size:.8rem; color:#ededed; flex-wrap:wrap;
-}
-.countdown-match b { color:#2ECC71; font-size:.85rem; }
-.countdown-match small {
-  display:block; color:#93999f; font-size:.65rem;
-}
-.countdown-crests {
-  display:flex; align-items:center; gap:4px; flex:none;
-}
-.countdown-crests .crest {
-  width:32px; height:32px; font-size:.7rem;
-  border:2px solid rgba(249,115,22,.3);
-  border-radius:50%; background:#161b20;
-  display:grid; place-items:center; font-weight:800;
-}
-.countdown-crests .crest-vs {
-  font-size:.55rem; font-weight:800; color:#93999f;
-}
-@media (max-width:480px) {
-  .countdown-unit .num { font-size:1.4rem; }
-  .countdown-crests .crest { width:26px; height:26px; font-size:.6rem; }
-  .countdown-card { padding:10px; }
-}
-
-/* ── HERO RIGHT (BALÓN) ──────────────────────────────────────── */
-.hero-right {
-  position:relative; display:grid; place-items:center;
-  min-height:280px; perspective:1100px;
-}
-.ball-glow {
-  position:absolute; z-index:0; width:115%; aspect-ratio:1;
-  border-radius:50%;
-  background:
-    radial-gradient(circle at 38% 32%, rgba(249,115,22,.5) 0%, transparent 45%),
-    radial-gradient(circle at 66% 64%, rgba(46,204,113,.35) 0%, transparent 48%);
-  filter:blur(46px);
-  animation:glow-pulse 5s ease-in-out infinite;
-  pointer-events:none;
-}
-.ball-trail {
-  position:absolute; inset:-8%; z-index:0; pointer-events:none;
-}
-.trail-line {
-  position:absolute; height:4px; border-radius:999px; right:6%;
-  filter:blur(.6px); animation:trail-flow 1.5s ease-in-out infinite;
-}
-.trail-line.l1 {
-  top:26%; width:58%;
-  background:linear-gradient(90deg,transparent,rgba(249,115,22,.9) 55%,#F97316);
-  box-shadow:0 0 14px rgba(249,115,22,.6);
-}
-.trail-line.l2 {
-  top:46%; width:42%;
-  background:linear-gradient(90deg,transparent,rgba(46,204,113,.9) 55%,#2ECC71);
-  animation-delay:.18s;
-  box-shadow:0 0 14px rgba(46,204,113,.55);
-}
-.trail-line.l3 {
-  top:64%; width:28%;
-  background:linear-gradient(90deg,transparent,rgba(249,115,22,.8) 55%,#F97316);
-  animation-delay:.34s;
-}
-.spark {
-  position:absolute; border-radius:50%; pointer-events:none;
-  animation:spark-fly 1.4s ease-in-out infinite;
-}
-.spark.sp1 {
-  top:24%; right:28%; width:5px; height:5px;
-  background:#2ECC71; box-shadow:0 0 10px #2ECC71;
-  animation-delay:.1s;
-}
-.spark.sp2 {
-  top:48%; right:44%; width:4px; height:4px;
-  background:#F97316; box-shadow:0 0 8px #F97316;
-  animation-delay:.5s;
-}
-.spark.sp3 {
-  top:64%; right:20%; width:5px; height:5px;
-  background:#2ECC71; box-shadow:0 0 9px #2ECC71;
-  animation-delay:.9s;
-}
-@keyframes trail-flow {
-  0%,100%{ transform:translateX(0) scaleX(1); opacity:.9; }
-  50%{ transform:translateX(-12px) scaleX(.92); opacity:.4; }
-}
-@keyframes spark-fly {
-  0%{ transform:translate(0,0) scale(1); opacity:1; }
-  100%{ transform:translate(-20px,6px) scale(.2); opacity:0; }
-}
-.holo-ring {
-  position:absolute; z-index:0; bottom:6%;
-  width:70%; max-width:380px; aspect-ratio:3.4/1;
-  border-radius:50%;
-  background:radial-gradient(ellipse at center, rgba(46,204,113,.45) 0%, rgba(46,204,113,.14) 45%, transparent 75%);
-  filter:blur(14px);
-  animation:holo-pulse 3.2s ease-in-out infinite;
-  pointer-events:none;
-}
-.holo-ring::after {
-  content:''; position:absolute; inset:18% 8%; border-radius:50%;
-  border:1px solid rgba(46,204,113,.35);
-  box-shadow:0 0 30px rgba(46,204,113,.25);
-}
-@keyframes glow-pulse {
-  0%,100%{ opacity:.8; transform:scale(1); }
-  50%{ opacity:1; transform:scale(1.08); }
-}
-@keyframes holo-pulse {
-  0%,100%{ opacity:.7; transform:scale(1); }
-  50%{ opacity:1; transform:scaleX(1.06) scaleY(1.12); }
-}
-.ball-photo-wrap {
-  --parallax-x:0px; --parallax-y:0px;
-  --hover-ry:0deg; --hover-rx:0deg; --hover-scale:1;
-  position:relative; z-index:1;
-  width:min(92%,300px);
-  transform:translate(var(--parallax-x), var(--parallax-y))
-          rotateY(var(--hover-ry)) rotateX(var(--hover-rx))
-          scale(var(--hover-scale));
-  transition:transform .35s cubic-bezier(.22,1,.36,1);
-  animation:ball-entry 1.2s ease-out both;
-  transform-style:preserve-3d; will-change:transform;
-}
-.ball-photo-wrap:hover {
-  --hover-ry:12deg; --hover-rx:8deg; --hover-scale:1.05;
-}
-.ball-photo {
-  display:block; width:100%; height:auto;
-  -webkit-mask-image:radial-gradient(circle at 50% 46%, #000 58%, transparent 82%);
-  mask-image:radial-gradient(circle at 50% 46%, #000 58%, transparent 82%);
-  filter:drop-shadow(0 20px 50px rgba(249,115,22,.35));
-  animation:float 6s ease-in-out infinite;
-}
-.ball-photo-wrap.img-error .ball-photo { display:none; }
-.ball-photo-wrap.img-error::before {
-  content:''; display:block; width:100%; aspect-ratio:1;
-  border-radius:50%;
-  background:radial-gradient(circle at 32% 28%, #ffffff 0%, #e7e7e7 45%, #b9b9b9 100%);
-  box-shadow:0 0 70px 16px rgba(249,115,22,.5),0 0 140px 40px rgba(46,204,113,.28),
-            inset -22px -22px 50px rgba(0,0,0,.28), inset 10px 10px 30px rgba(255,255,255,.55);
-  filter:drop-shadow(0 20px 50px rgba(249,115,22,.35));
-  animation:float 6s ease-in-out infinite, ball-spin 20s linear infinite;
-}
-@keyframes ball-spin { from { transform:rotate(0deg); } to { transform:rotate(360deg); } }
-@keyframes float { 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-10px); } }
-@keyframes ball-entry {
-  from { opacity:0; transform:translateY(30px); }
-  to { opacity:1; transform:translateY(0); }
-}
-
-@media (max-width:900px) {
-  .hero { grid-template-columns:1fr; gap:10px; }
-  .hero-right { order:-1; min-height:180px; }
-  .ball-glow, .holo-ring, .ball-trail { display:none; }
-  .ball-photo-wrap { width:min(80%,160px); }
-  .hero-left { gap:8px; }
-}
-@media (max-width:480px) {
-  .ball-photo-wrap { width:min(76%,130px); }
-  .hero h1 { font-size:1.8rem; }
-  .hero-slogan { font-size:.75rem; }
-  .hero-desc { font-size:.75rem; }
-  .hero-brand { font-size:.55rem; }
-  .btn-hero-primary, .btn-hero-secondary { font-size:.7rem; padding:8px 14px; }
-}
-
-/* ── QUICK CATS ───────────────────────────────────────────────── */
-.quick-cats {
-  display:flex; gap:5px; overflow-x:auto;
-  margin-top:8px; padding-bottom:2px;
-  scrollbar-width:none; -webkit-overflow-scrolling:touch;
-}
-.quick-cats::-webkit-scrollbar { display:none; }
-.qc-chip {
-  flex:none; background:#111418; border:1px solid #1f262c;
-  border-radius:999px; padding:4px 12px;
-  font-size:.65rem; font-weight:700; color:#ededed;
-  cursor:pointer; transition:all .18s ease; white-space:nowrap;
-}
-.qc-chip:hover { border-color:rgba(249,115,22,.4); }
-
-/* ── SECTIONS ─────────────────────────────────────────────────── */
-.section { padding:28px 0; }
-.section-head {
-  display:flex; align-items:flex-end; justify-content:space-between;
-  gap:8px; margin-bottom:16px; flex-wrap:wrap;
-}
-.section-head h2 {
-  font-size:1.3rem; font-weight:800;
-}
-.section-head h2 .accent { color:#F97316; }
-.section-head p {
-  color:#93999f; font-size:.75rem; margin-top:2px;
-}
-.section-tag {
-  font-size:.55rem; font-weight:800; letter-spacing:.14em;
-  text-transform:uppercase; color:#2ECC71;
-  background:rgba(46,204,113,.08);
-  border:1px solid rgba(46,204,113,.25);
-  padding:3px 10px; border-radius:999px;
-}
-
-/* ── CATEGORÍAS (GRUPOS) ────────────────────────────────────── */
-.cat-grid {
-  display:grid; grid-template-columns:repeat(5,1fr); gap:10px;
-}
-@media (max-width:900px) { .cat-grid { grid-template-columns:repeat(3,1fr); } }
-@media (max-width:520px) { .cat-grid { grid-template-columns:repeat(2,1fr); } }
-.cat-card {
-  background:#111418; border:1px solid #1f262c;
-  border-radius:12px; padding:12px 8px; text-align:center;
-  transition:transform .18s ease, border-color .18s ease;
-}
-.cat-card:hover {
-  transform:translateY(-3px); border-color:rgba(249,115,22,.4);
-}
-.cat-card .cat-ic {
-  width:36px; height:36px; display:grid; place-items:center;
-  margin:0 auto 4px; border-radius:10px;
-  background:linear-gradient(145deg,rgba(249,115,22,.14),rgba(46,204,113,.08));
-}
-.cat-card span { font-size:.7rem; font-weight:700; line-height:1.2; }
-
-/* ── MATCHES ──────────────────────────────────────────────────── */
-.match {
-  display:flex; align-items:center; gap:10px;
-  padding:10px 12px; border-bottom:1px solid #1f262c;
-  flex-wrap:wrap;
-}
-.match:last-child { border-bottom:none; }
-.match-time {
-  font-family:'Cinzel',serif; font-weight:700; font-size:.7rem;
-  color:#F97316; min-width:40px; text-align:center; flex:none;
-}
-.match-time .tz {
-  font-size:.5rem; color:#93999f; display:block;
-}
-.match-crests {
-  display:flex; align-items:center; gap:3px; flex:none;
-}
-.crest {
-  width:24px; height:24px; border-radius:50%;
-  background:#161b20; border:1px solid #1f262c;
-  display:grid; place-items:center;
-  font-size:.55rem; font-weight:800; color:#ededed;
-}
-.crest-vs { font-size:.5rem; color:#93999f; font-weight:600; }
-.match-info { flex:1; min-width:0; }
-.match-info strong {
-  display:block; font-size:.8rem; font-weight:700;
-  line-height:1.2; white-space:nowrap; overflow:hidden;
-  text-overflow:ellipsis;
-}
-.match-info small { color:#93999f; font-size:.65rem; }
-.match-meta {
-  display:flex; flex-direction:column;
-  align-items:flex-end; gap:3px; flex:none;
-}
-.match-where {
-  font-size:.55rem; font-weight:800; text-transform:uppercase;
-  padding:2px 8px; border-radius:999px;
-  color:#2ECC71; background:rgba(46,204,113,.08);
-  border:1px solid rgba(46,204,113,.22);
-  white-space:nowrap;
-}
-.match-status {
-  font-size:.55rem; font-weight:800; text-transform:uppercase;
-  padding:2px 6px; border-radius:999px;
-}
-.match-status.live {
-  color:#ff4a4a; background:rgba(255,74,74,.12);
-  border:1px solid rgba(255,74,74,.25);
-  animation:pulse-dot .9s infinite;
-}
-.match-status.next {
-  color:#2ECC71; background:rgba(46,204,113,.08);
-  border:1px solid rgba(46,204,113,.2);
-}
-.match-status.done {
-  color:#93999f; background:rgba(138,138,144,.08);
-  border:1px solid #1f262c;
-}
-@media (max-width:480px) {
-  .match { padding:6px; gap:6px; }
-  .match-time { font-size:.6rem; min-width:32px; }
-  .match-info strong { font-size:.7rem; }
-}
-
-/* ── MUNDIAL SUB ──────────────────────────────────────────────── */
-.mundial-sub {
-  display:grid; grid-template-columns:1.4fr 1fr; gap:12px; margin-top:12px;
-}
-@media (max-width:760px) { .mundial-sub { grid-template-columns:1fr; } }
-.mundial-mini {
-  background:#111418; border:1px solid #1f262c;
-  border-radius:16px; overflow:hidden;
-}
-.mundial-mini-head {
-  padding:10px 14px 6px; font-size:.7rem; font-weight:800;
-  text-transform:uppercase; color:#2ECC71;
-  display:flex; align-items:center; gap:6px;
-}
-.flag-grid {
-  display:flex; flex-wrap:wrap; gap:6px;
-  padding:6px 14px 14px;
-}
-.flag-chip {
-  display:inline-flex; align-items:center; gap:5px;
-  background:#161b20; border:1px solid #1f262c;
-  border-radius:999px; padding:5px 10px;
-  font-size:.7rem; font-weight:700; color:#ededed;
-}
-.mundial-empty {
-  padding:12px 14px; font-size:.75rem; color:#93999f;
-}
-
-/* ── BRACKET ──────────────────────────────────────────────────── */
-.bracket {
-  display:flex; align-items:stretch; gap:6px;
-  overflow-x:auto; padding-bottom:4px;
-  scrollbar-width:none; -webkit-overflow-scrolling:touch;
-}
-.bracket::-webkit-scrollbar { display:none; }
-.bracket-stage {
-  flex:1; min-width:100px; background:#111418;
-  border:1px solid #1f262c; border-radius:12px;
-  padding:12px 8px; text-align:center;
-  display:flex; flex-direction:column; align-items:center; gap:4px;
-  transition:border-color .18s ease;
-}
-.bracket-stage .bs-num {
-  width:30px; height:30px; border-radius:50%; display:grid;
-  place-items:center; background:linear-gradient(120deg,#F97316,#F97316);
-  color:#1a0a00; font-weight:900; font-size:.8rem;
-}
-.bracket-stage strong { font-size:.8rem; font-weight:800; }
-.bracket-stage small { font-size:.6rem; color:#93999f; }
-.bracket-stage.bs-final {
-  border-color:rgba(46,204,113,.35);
-  background:linear-gradient(135deg,rgba(46,204,113,.06),#111418);
-}
-.bracket-stage.bs-final .bs-num {
-  background:linear-gradient(120deg,#2ECC71,#2ECC71);
-}
-.bracket-arrow {
-  display:flex; align-items:center; color:#93999f; font-size:.9rem; flex:none;
-}
-@media (max-width:760px) { .bracket-arrow { display:none; } .bracket-stage { min-width:90px; } }
-
-/* ── NEWS GRID ────────────────────────────────────────────────── */
-.news-grid {
-  display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:10px;
-}
-.news-card {
-  background:#111418; border:1px solid #1f262c;
-  border-radius:12px; padding:14px;
-  display:flex; flex-direction:column; gap:4px;
-  transition:transform .18s ease, border-color .18s ease;
-}
-.news-card:hover {
-  transform:translateY(-3px); border-color:rgba(249,115,22,.35);
-}
-.news-card .nc-ic { font-size:1.2rem; }
-.news-card strong { font-size:.8rem; font-weight:800; }
-.news-card span { font-size:.7rem; color:#93999f; }
-.news-card .nc-go {
-  margin-top:auto; font-size:.7rem; font-weight:800; color:#F97316;
-}
-
-/* ── CANALES (ESTILO FÚTBOL LIBRE) ───────────────────────────── */
-.channels-title {
-  font-size:1.5rem; font-weight:800; color:#ededed;
-  text-align:center; margin-bottom:20px; font-family:'Cinzel',serif;
-}
-.channels-title .accent { color:#F97316; }
-
-.cards-container {
-  display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
-  gap:16px; margin:0 auto;
-}
-.card {
-  background:#111418; border:1px solid #1f262c;
-  border-radius:16px; overflow:hidden;
-  transition:transform .25s ease, box-shadow .25s ease;
-}
-.card:hover {
-  transform:translateY(-6px);
-  box-shadow:0 12px 40px rgba(249,115,22,.15);
-}
-.card-image {
-  width:100%; height:140px; overflow:hidden;
-  background:#161b20; display:flex; align-items:center; justify-content:center;
-}
-.card-image img {
-  width:100%; height:100%; object-fit:contain;
-  padding:8px;
-}
-.card-content {
-  padding:14px 16px 16px;
-}
-.card-content h3 {
-  font-size:.95rem; font-weight:800; color:#ededed;
-  margin-bottom:4px; font-family:'Inter',sans-serif;
-}
-.card-content p {
-  font-size:.75rem; color:#93999f; margin-bottom:12px;
-  line-height:1.4;
-}
-.btn-watch {
-  display:inline-block;
-  background:linear-gradient(120deg,#F97316,#F97316);
-  color:#1a0a00; font-weight:800; font-size:.8rem;
-  padding:8px 20px; border-radius:999px;
-  transition:transform .18s ease, box-shadow .18s ease;
-}
-.btn-watch:hover {
-  transform:scale(1.03);
-  box-shadow:0 6px 20px rgba(249,115,22,.35);
-}
-
-/* ── TRUST ────────────────────────────────────────────────────── */
-.trust-grid {
-  display:grid; grid-template-columns:repeat(6,1fr); gap:8px;
-}
-@media (max-width:900px) { .trust-grid { grid-template-columns:repeat(3,1fr); } }
-@media (max-width:480px) { .trust-grid { grid-template-columns:repeat(2,1fr); } }
-.trust-item {
-  background:#111418; border:1px solid #1f262c;
-  border-radius:12px; padding:12px 8px; text-align:center;
-  transition:border-color .18s ease;
-}
-.trust-item:hover { border-color:rgba(249,115,22,.3); }
-.trust-icon { font-size:1.3rem; margin-bottom:4px; }
-.trust-item strong { display:block; font-size:.7rem; font-weight:800; margin-bottom:2px; }
-.trust-item span { font-size:.6rem; color:#93999f; line-height:1.3; }
-
-/* ── NOTE ────────────────────────────────────────────────────── */
-.note {
-  margin:8px 0 0; padding:12px 16px; border-radius:12px;
-  background:rgba(249,115,22,.05); border:1px solid rgba(249,115,22,.18);
-  font-size:.75rem; color:#d4cfc8;
-}
-.note b { color:#F97316; }
-
-/* ── FOOTER ───────────────────────────────────────────────────── */
-footer {
-  text-align:center; padding:32px 0 90px;
-}
-.kbrand {
-  font-family:'Cinzel',serif; font-weight:900;
-  letter-spacing:.18em; font-size:.95rem; color:#F97316;
-}
-.kbrand span { color:#2ECC71; }
-footer p { color:#93999f; font-size:.8rem; margin:8px 0 18px; }
-.footer-cta {
-  display:inline-flex; align-items:center; gap:8px;
-  background:linear-gradient(120deg,#F97316,#2ECC71);
-  color:#06140a; font-weight:800; font-size:.85rem;
-  padding:10px 24px; border-radius:999px;
-  transition:transform .18s ease;
-}
-.footer-cta:hover { transform:translateY(-2px); }
-.disc {
-  margin-top:16px; font-size:.6rem; color:#454550;
-  line-height:1.6; max-width:440px; margin-inline:auto;
-}
-
-/* ── TOAST ────────────────────────────────────────────────────── */
-#toast-container {
-  position:fixed; bottom:80px; left:50%;
-  transform:translateX(-50%); z-index:8000;
-  display:flex; flex-direction:column; align-items:center; gap:6px;
-  pointer-events:none;
-}
-.toast {
-  display:inline-flex; align-items:center; gap:6px;
-  background:rgba(17,20,24,.97); border:1px solid #1f262c;
-  backdrop-filter:blur(16px); border-radius:999px;
-  padding:8px 16px; font-size:.75rem; font-weight:700; color:#ededed;
-  box-shadow:0 4px 20px rgba(0,0,0,.5);
-  animation:toast-in .3s ease, toast-out .3s ease 2.4s forwards;
-}
-.toast.ok { border-color:rgba(46,204,113,.3); color:#2ECC71; }
-@keyframes toast-in { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
-@keyframes toast-out { from { opacity:1; transform:translateY(0); } to { opacity:0; transform:translateY(-8px); } }
-
-/* ── SHARE BAR ────────────────────────────────────────────────── */
-.share-bar {
-  position:fixed; bottom:16px; left:50%;
-  display:flex; align-items:center; gap:4px;
-  background:rgba(10,12,14,.96); border:1px solid #1f262c;
-  border-radius:999px; padding:6px 12px;
-  backdrop-filter:blur(20px); box-shadow:0 8px 32px rgba(0,0,0,.7);
-  z-index:700; opacity:0; transform:translateX(-50%) translateY(20px);
-  transition:opacity .4s,transform .4s;
-}
-.share-bar.show { opacity:1; transform:translateX(-50%) translateY(0); }
-.share-label {
-  font-size:.6rem; font-weight:800; color:#93999f;
-  letter-spacing:.07em; text-transform:uppercase;
-  padding-right:4px; white-space:nowrap;
-}
-.s-btn {
-  width:32px; height:32px; border-radius:50%;
-  display:grid; place-items:center;
-  background:transparent; border:none; cursor:pointer;
-  transition:transform .18s ease; flex:none;
-}
-.s-btn:hover { transform:scale(1.1); }
-.s-btn svg { width:22px; height:22px; display:block; }
-@media (max-width:480px) { .share-label { display:none; } }
-
-/* ── ACCESSIBILITY ───────────────────────────────────────────── */
-@media (prefers-reduced-motion:reduce) {
-  *,*::before,*::after {
-    animation-duration:.01ms !important;
-    transition-duration:.01ms !important;
-  }
-  #fx,#hero-fx { display:none; }
-}
-</style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="follow, index">
+  <title>Fútbol Libre - Ver Partidos de Fútbol y Canales de Futbol en Vivo Gratis</title>
+  <meta name="description" content="En Futbol Libre Puedes ver Partidos de Futbol y Canales de Futbol online en vivo y directo. Ver partidos de Fútbol Libre Copa Libertadores, Copa Sudamericana, Boca Juniors y River Plate, Fox Sports, TNT Sports, ESPN, DIRECTV y TyC Canales Gratis.">
+  <link rel="canonical" href="https://futbol-libres.su/">
+  <meta property="og:locale" content="es">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Fútbol Libre - Ver Partidos de Fútbol y Canales de Futbol en Vivo Gratis">
+  <meta property="og:description" content="En Futbol Libre Puedes ver Partidos de Futbol y Canales de Futbol online en vivo y directo. Ver partidos de Fútbol Libre Copa Libertadores, Copa Sudamericana, Boca Juniors y River Plate, Fox Sports, TNT Sports, ESPN, DIRECTV y TyC Canales Gratis.">
+  <meta property="og:url" content="https://futbol-libres.su/">
+  <meta property="og:site_name" content="Fútbol Libre TV">
+  <meta property="article:modified_time" content="2026-02-12T19:16:55+00:00">
+  <meta property="og:image" content="https://cdn.futbol-libres.su/futbol-libre-tv-logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="apple-touch-icon" sizes="57x57" href="https://cdn.futbol-libres.su/favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="https://cdn.futbol-libres.su/favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="https://cdn.futbol-libres.su/favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="https://cdn.futbol-libres.su/favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="https://cdn.futbol-libres.su/favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="https://cdn.futbol-libres.su/favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="https://cdn.futbol-libres.su/favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.futbol-libres.su/favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image" href="https://cdn.futbol-libres.su/futbol-libre-favicon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="https://cdn.futbol-libres.su/favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.futbol-libres.su/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.futbol-libres.su/favicon/favicon-16x16.png">
+  <link rel="manifest" href="https://cdn.futbol-libres.su/favicon/manifest.json">
+  <link rel="stylesheet" href="https://cdn.futbol-libres.su/css/style.css?v=1.49">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/luxon/3.4.4/luxon.min.js"></script>
+  <script src="https://cdn.futbol-libres.su/js/menu.js?v=1.06"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://futbol-libres.su/","url":"https://futbol-libres.su/","name":"Fútbol Libre - Ver Partidos de Fútbol y Canales de Futbol en Vivo Gratis","isPartOf":{"@id":"https://futbol-libres.su/#website"},"about":{"@id":"https://futbol-libres.su/#organization"},"primaryImageOfPage":{"@id":"https://futbol-libres.su/#primaryimage"},"image":{"@id":"https://futbol-libres.su/#primaryimage"},"thumbnailUrl":"https://cdn.futbol-libres.su/futbol-libre-tv-logo.png","datePublished":"2022-12-17T10:04:20+00:00","dateModified":"2026-02-12T19:16:55+00:00","description":"En Futbol Libre Puedes ver Partidos de Futbol y Canales de Futbol online en vivo y directo. Ver partidos de Fútbol Libre Copa Libertadores, Copa Sudamericana, Boca Juniors y River Plate, Fox Sports, TNT Sports, ESPN, DIRECTV y TyC Canales Gratis.","breadcrumb":{"@id":"https://futbol-libres.su/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://futbol-libres.su/"]}]},{"@type":"ImageObject","inLanguage":"en-US","@id":"https://futbol-libres.su/#primaryimage","url":"https://cdn.futbol-libres.su/futbol-libre-tv-logo.png","contentUrl":"https://cdn.futbol-libres.su/futbol-libre-tv-logo.png","width":308,"height":227},{"@type":"BreadcrumbList","@id":"https://futbol-libres.su/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home"}]},{"@type":"WebSite","@id":"https://futbol-libres.su/#website","url":"https://futbol-libres.su/","name":"Fútbol Libre TV","description":"Ver Partidos de Fútbol y Canales de Futbol en Vivo Gratis","publisher":{"@id":"https://futbol-libres.su/#organization"},"alternateName":"Futbol Libre","potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://futbol-libres.su/?s={search_term_string}"},"query-input":{"@type":"PropertyValueSpecification","valueRequired":true,"valueName":"search_term_string"}}],"inLanguage":"en-US"},{"@type":"Organization","@id":"https://futbol-libres.su/#organization","name":"Fútbol Libre TV","alternateName":"Futbol Libre","url":"https://futbol-libres.su/","logo":{"@type":"ImageObject","inLanguage":"en-US","@id":"https://futbol-libres.su/#/schema/logo/image/","url":"https://cdn.futbol-libres.su/futbol-libre-tv-logo.png","contentUrl":"https://cdn.futbol-libres.su/futbol-libre-tv-logo.png","width":221,"height":59,"caption":"Fútbol Libre TV"},"image":{"@id":"https://futbol-libres.su/#/schema/logo/image/"}}]}</script>
+  <link rel="preconnect" href="https://cdn.futbol-libres.su">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://code.jquery.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 </head>
 
 <body>
-<a href="#main-content" class="skip-link">Ir al contenido principal</a>
+  <header>
+    <a href="/" class="logo">Fútbol Libre</a>
+    <nav class="navbar">
+      <a href="/espn-1/">ESPN</a>
+      <a href="/directv-sports/">DirectTV Sports</a>
+      <a href="/tyc-sports/">TyC Sports</a>
+      <a href="/win-sports-premium/">Win Sports+</a>
+      <a href="/tudn/">TUDN</a>
+      <a href="/fox-sports/">Fox Sports</a>
+    </nav>
+    <button id="menu-toggle">
+      <svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+  </header>
 
-<div id="install-banner" role="banner">
-  <div><strong>KONFÍO SPORTS</strong> está disponible como app</div>
-  <div class="install-actions">
-    <button id="btn-install" class="btn-install">Instalar</button>
-    <button id="btn-dismiss" class="btn-dismiss">✕</button>
+  <div id="menu-modal">
+    <div class="modal-content">
+      <button id="menu-close">
+        <svg class="close-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+      <nav class="modal-nav">
+      <a href="/espn-1/">ESPN</a>
+      <a href="/directv-sports/">DirectTV Sports</a>
+      <a href="/tyc-sports/">TyC Sports</a>
+      <a href="/win-sports-premium/">Win Sports+</a>
+      <a href="/tudn/">TUDN</a>
+      <a href="/fox-sports/">Fox Sports</a>
+      </nav>
+    </div>
   </div>
-</div>
 
-<div id="splash"><div class="splash-logo">KONFÍO <span>SPORTS</span></div><div class="splash-bar"></div></div>
-<canvas id="fx" aria-hidden="true"></canvas>
+  <main>
+    <h1>Fútbol Libre TV</h1>
 
-<header id="navbar">
-  <nav class="nav-inner">
-    <a href="#inicio" class="nav-brand"><b>KONFÍO</b><span>SPORTS</span></a>
-    <div class="nav-links">
-      <a href="#inicio">Inicio</a>
-      <a href="#grupos">Grupos</a>
-      <a href="#colombia">Colombia</a>
-      <a href="#fase-final">Fase Final</a>
-      <a href="#calendario">Calendario FIFA</a>
-      <a href="#canales">Canales</a>
-      <a href="#contacto">Contacto</a>
+      <p class="description">
+      <strong>Futbol Libre es una plataforma donde puedes ver todos tus Partidos de Futbol favoritos gratis. Ver Fútbol Libre TV online en vivo y en directo. Canales gratis de stream para ver partidos del fútbol argentino, Liga Profesional, Copa Libertadores, Liga 1, Copa Sudamericana, LaLiga, Serie A, Primera División, Liga Pro y Champions League entre otros.</strong>
+    </p>
+    
+    <center><h2>Ver Futbol Libre Para Todos en Vivo</h2></center>
+      
+    <div id="wraper">
+        <iframe allowfullscreen="true" scrolling="auto" src="/agenda/" frameborder="0" width="100%" height="500"></iframe>
+      <ul id="menu"></ul>
     </div>
-    <span id="live-badge" class="live-badge"><span class="lb-text">EN VIVO</span></span>
-    <a class="nav-cta" id="nav-cta" href="#" target="_blank" rel="noopener">Tarjeta Digital</a>
-  </nav>
-</header>
 
-<main id="main-content">
-<div class="wrap">
-
-  <!-- ===== HERO ===== -->
-  <section class="hero" id="inicio">
-    <div class="hero-left">
-      <p class="hero-brand">🏆 Mundial FIFA 2026 · Canadá · México · EE. UU.</p>
-      <h1>KONFÍO SPORTS</h1>
-      <p class="hero-slogan">Centro Oficial del Mundial FIFA 2026</p>
-      <p class="hero-desc">Grupos, calendario y resultados oficiales del Mundial 2026. Toda la información de la Selección Colombia y enlaces directos a FIFA, Caracol y RCN — sin datos inventados, solo fuentes verificadas.</p>
-      <div class="hero-ctas">
-        <a href="#colombia" class="btn-hero-primary">Selección Colombia</a>
-        <a href="https://www.fifa.com/es/tournaments/mens/worldcup/canadamexicousa2026" target="_blank" rel="noopener" class="btn-hero-secondary">Calendario FIFA</a>
-      </div>
-
-      <div class="countdown-card">
-        <div class="countdown-label">⚡ Próximo Partido · Colombia</div>
-        <div class="countdown-grid" id="countdown-grid">
-          <div class="countdown-unit"><div class="num" id="cd-days">--</div><div class="lbl">Días</div></div>
-          <div class="countdown-unit"><div class="num" id="cd-hours">--</div><div class="lbl">Horas</div></div>
-          <div class="countdown-unit"><div class="num" id="cd-mins">--</div><div class="lbl">Min</div></div>
-          <div class="countdown-unit"><div class="num" id="cd-secs">--</div><div class="lbl">Seg</div></div>
+    <h3 class="channels-title">Ver Canales de Futbol Online en Vivo y en Directo</h3>
+    
+    <div class="cards-container">
+      <div class="card">
+        <div class="card-image">
+          <img src="https://cdn.futbol-libres.su/img/espn1.webp" alt="ESPN">
         </div>
-        <div class="countdown-match">
-          <div class="countdown-crests" id="countdown-crests"></div>
-          <div id="countdown-text">Cargando próximo partido…</div>
+        <div class="card-content">
+          <h3>ESPN</h3>
+          <p>Ver ESPN online en vivo y en directo.</p>
+          <a href="/espn-1/" class="btn-watch">Ver Canal</a>
         </div>
       </div>
 
-      <div class="quick-cats" id="quick-cats" role="list"></div>
-    </div>
+      <div class="card">
+        <div class="card-image">
+          <img src="https://cdn.futbol-libres.su/img/dsports.webp" alt="DirecTV Sports">
+        </div>
+        <div class="card-content">
+          <h3>DirecTV Sports</h3>
+          <p>Ver DSports online en vivo y en directo.</p>
+          <a href="/directv-sports/" class="btn-watch">Ver Canal</a>
+        </div>
+      </div>
 
-    <div class="hero-right">
-      <canvas id="hero-fx" aria-hidden="true"></canvas>
-      <div class="holo-ring"></div>
-      <div class="ball-glow"></div>
-      <div class="ball-trail">
-        <div class="trail-line l1"></div>
-        <div class="trail-line l2"></div>
-        <div class="trail-line l3"></div>
-        <div class="spark sp1"></div>
-        <div class="spark sp2"></div>
-        <div class="spark sp3"></div>
+      <div class="card">
+        <div class="card-image">
+          <img src="https://cdn.futbol-libres.su/img/tyc_sports.webp" alt="TyC Sports">
+        </div>
+        <div class="card-content">
+          <h3>TyC Sports</h3>
+          <p>Ver TyC Sports online en vivo y en directo.</p>
+          <a href="/tyc-sports/" class="btn-watch">Ver Canal</a>
+        </div>
       </div>
-      <div class="ball-photo-wrap" id="ball-photo-wrap">
-        <img class="ball-photo" id="ball-photo" src="assets/balon-oficial.webp" alt="" width="688" height="860" loading="eager" onerror="this.closest('.ball-photo-wrap').classList.add('img-error')">
-      </div>
-    </div>
-  </section>
 
-  <!-- ===== GRUPOS ===== -->
-  <section class="section" id="grupos">
-    <div class="section-head">
-      <div>
-        <h2>⚽ Grupos del <span class="accent">Mundial 2026</span></h2>
-        <p>12 grupos de 4 selecciones · sorteo oficial del 5 de diciembre de 2025</p>
+      <div class="card">
+        <div class="card-image">
+          <img src="https://cdn.futbol-libres.su/img/win_sports_plus.webp" alt="Win Sports+">
+        </div>
+        <div class="card-content">
+          <h3>Win Sports+</h3>
+          <p>Ver Win Sports+ online en vivo y en directo.</p>
+          <a href="/win-sports-premium/" class="btn-watch">Ver Canal</a>
+        </div>
       </div>
-      <span class="section-tag">48 selecciones</span>
-    </div>
-    <div class="cat-grid" id="groups-grid" role="list"></div>
-    <div class="note">Para resultados y tablas en vivo, consulta <a href="https://www.fifa.com/es/tournaments/mens/worldcup/canadamexicousa2026" target="_blank" rel="noopener" style="color:#2ECC71;font-weight:700">FIFA.com</a>.</div>
-  </section>
-
-  <!-- ===== COLOMBIA ===== -->
-  <section class="section" id="colombia">
-    <div class="section-head">
-      <div>
-        <h2>🇨🇴 Selección <span class="accent">Colombia</span></h2>
-        <p>Grupo K · Néstor Lorenzo · Calendario oficial</p>
+      
+       <div class="card">
+        <div class="card-image">
+          <img src="https://cdn.futbol-libres.su/img/fox_sports.webp" alt="Fox Sports">
+        </div>
+        <div class="card-content">
+          <h3>Fox Sports</h3>
+          <p>Ver Fox Sports online en vivo y en directo.</p>
+          <a href="/fox-sports/" class="btn-watch">Ver Canal</a>
+        </div>
       </div>
-      <span class="section-tag">Grupo K</span>
-    </div>
-    <div class="mundial-sub">
-      <div class="mundial-mini">
-        <div class="mundial-mini-head">📅 Calendario · Fase de Grupos</div>
-        <div id="colombia-matches" role="list"></div>
+      
+       <div class="card">
+        <div class="card-image">
+          <img src="https://cdn.futbol-libres.su/img/tudn.webp" alt="TUDN">
+        </div>
+        <div class="card-content">
+          <h3>TUDN</h3>
+          <p>Ver TUDN online en vivo y en directo.</p>
+          <a href="/tudn/" class="btn-watch">Ver Canal</a>
+        </div>
       </div>
-      <div class="mundial-mini">
-        <div class="mundial-mini-head">🏴 Rivales del Grupo K</div>
-        <div class="flag-grid" id="grupo-k-flags" role="list"></div>
-        <div class="mundial-empty">Clasifican los 2 primeros + 8 mejores terceros. Tabla en vivo: <a href="https://www.fifa.com/es/tournaments/mens/worldcup/canadamexicousa2026/standings" target="_blank" rel="noopener" style="color:#2ECC71;font-weight:700">FIFA.com →</a></div>
+      
+       <div class="card">
+        <div class="card-image">
+          <img src="https://cdn.futbol-libres.su/img/espn_premium.webp" alt="ESPN Premium">
+        </div>
+        <div class="card-content">
+          <h3>ESPN Premium</h3>
+          <p>Ver ESPN Premium en vivo y en directo.</p>
+          <a href="/espn-premium/" class="btn-watch">Ver Canal</a>
+        </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ===== FASE FINAL ===== -->
-  <section class="section" id="fase-final">
-    <div class="section-head">
-      <div>
-        <h2>🏆 Fase <span class="accent">Final</span></h2>
-        <p>Camino a la final · Mundial FIFA 2026</p>
-      </div>
-    </div>
-    <div class="bracket" role="list">
-      <div class="bracket-stage"><span class="bs-num">1</span><strong>Dieciseisavos</strong><small>Ronda de 32</small></div>
-      <div class="bracket-arrow">→</div>
-      <div class="bracket-stage"><span class="bs-num">2</span><strong>Octavos</strong><small>Ronda de 16</small></div>
-      <div class="bracket-arrow">→</div>
-      <div class="bracket-stage"><span class="bs-num">3</span><strong>Cuartos</strong><small>Ronda de 8</small></div>
-      <div class="bracket-arrow">→</div>
-      <div class="bracket-stage"><span class="bs-num">4</span><strong>Semifinales</strong><small>Ronda de 4</small></div>
-      <div class="bracket-arrow">→</div>
-      <div class="bracket-stage bs-final"><span class="bs-num">🏆</span><strong>Final</strong><small>19 jul · MetLife Stadium</small></div>
-    </div>
-    <div class="note">Tercer puesto: 18 de julio · Hard Rock Stadium, Miami. Bracket actualizado en <a href="https://www.fifa.com/es/tournaments/mens/worldcup/canadamexicousa2026/standings" target="_blank" rel="noopener" style="color:#2ECC71;font-weight:700">FIFA.com</a>.</div>
-  </section>
-
-  <!-- ===== CALENDARIO FIFA ===== -->
-  <section class="section" id="calendario">
-    <div class="section-head">
-      <div>
-        <h2>📅 Calendario <span class="accent">Oficial FIFA</span></h2>
+      
+       <div class="card">
+        <div class="card-image">
+          <img src="https://cdn.futbol-libres.su/img/tnt_sport.webp" alt="TNT Sports">
+        </div>
+        <div class="card-content">
+          <h3>TNT Sports</h3>
+          <p>Ver TNT Sports online en vivo y en directo.</p>
+          <a href="/tnt-sports/" class="btn-watch">Ver Canal</a>
+        </div>
       </div>
     </div>
-    <div class="news-grid">
-      <a class="news-card" href="https://www.fifa.com/es/tournaments/mens/worldcup/canadamexicousa2026/articles/calendario-fixture-mundial-2026-partidos-fechas" target="_blank"><div class="nc-ic">📅</div><strong>Calendario FIFA</strong><span>104 partidos, fechas y sedes</span><span class="nc-go">Abrir →</span></a>
-      <a class="news-card" href="https://www.fifa.com/es/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures" target="_blank"><div class="nc-ic">⚽</div><strong>Resultados FIFA</strong><span>Marcadores en vivo</span><span class="nc-go">Abrir →</span></a>
-      <a class="news-card" href="https://www.fifa.com/es/tournaments/mens/worldcup/canadamexicousa2026/standings" target="_blank"><div class="nc-ic">📊</div><strong>Clasificación FIFA</strong><span>Tablas de los 12 grupos</span><span class="nc-go">Abrir →</span></a>
-      <a class="news-card" href="https://www.fifa.com/es/tournaments/mens/worldcup/canadamexicousa2026" target="_blank"><div class="nc-ic">🌎</div><strong>Equipos FIFA</strong><span>Perfiles y plantillas</span><span class="nc-go">Abrir →</span></a>
-    </div>
-  </section>
+    
+    <h3 class="preguntas-title">Preguntas Frecuentes</h3>
+<h3>¿Qué es Futbol Libre?</h3>
+<p><a href="https://futbol-libres.su/"><strong>Futbol Libre</strong></a> tiene todos los <strong>canales gratis en vivo y en directo</strong> para ver <strong>fútbol Argentino</strong> por internet, ademas de la <strong>Copa Sudamericana</strong>, <strong>Copa Libertadores</strong>, partidos de <strong>Boca Juniors</strong> y <strong>River Plate</strong>, Selección Argentina y mucho más.</p>
 
-  <!-- ===== PAÍSES DESTACADOS ===== -->
-  <section class="section">
-    <div class="section-head"><div><h2>🌍 Selecciones <span class="accent">Destacadas</span></h2></div></div>
-    <div class="flag-grid" id="featured-flags" role="list"></div>
-  </section>
+<h3>¿Cómo ver un partido por fútbol libre en vivo y en directo?</h3>
+<p>Para ver <strong><a href="https://futbol-libres.su/">Futbol Libre</a></strong> online en vivo y en directo debes ingresar a esta pagina y luego seleccionar el partido de fútbol en vivo que quieres ver que aparecen en la agenda diaria o simplemente ingresar al canal que pasa el partido a la hora del encuentro.</p>
 
-  <!-- ===== CANALES ===== -->
-  <section class="section" id="canales">
-    <div class="section-head">
-      <div>
-        <h2>📡 Canales <span class="accent">Oficiales</span></h2>
-        <p>Transmisión del Mundial 2026 en Colombia y a nivel global</p>
-      </div>
-    </div>
+<h3>¿Cómo ver Futbol Libre en vivo desde la computadora / PC o desde el Teléfono móvil?</h3>
+<p>Para poder ver <strong>Futbol Libre TV</strong> desde la computadora o el Teléfono móvil solo debes ingresar a <strong>Futbol Libre</strong> desde Android o Iphone iOS y elegir el canal que deseas ver en directo.</p>
 
-    <h3 class="channels-title">Ver Canales de Fútbol Online en Vivo y en Directo</h3>
-    <div class="cards-container" id="channel-grid" role="list"></div>
-  </section>
-
-  <!-- ===== TRUST ===== -->
-  <section class="section">
-    <div class="section-head"><div><h2>¿Por qué <span class="accent">KONFÍO SPORTS</span>?</h2></div></div>
-    <div class="trust-grid">
-      <div class="trust-item"><div class="trust-icon">✅</div><strong>Datos Reales</strong><span>Grupos y calendario oficial</span></div>
-      <div class="trust-item"><div class="trust-icon">🔒</div><strong>Seguro</strong><span>Sin malware</span></div>
-      <div class="trust-item"><div class="trust-icon">💚</div><strong>Gratis</strong><span>Sin pagos ocultos</span></div>
-      <div class="trust-item"><div class="trust-icon">🚫</div><strong>Sin Registro</strong><span>Acceso directo</span></div>
-      <div class="trust-item"><div class="trust-icon">📡</div><strong>Oficial</strong><span>FIFA · Caracol · RCN</span></div>
-      <div class="trust-item"><div class="trust-icon">📱</div><strong>App PWA</strong><span>Instalable</span></div>
-    </div>
-    <div class="note">KONFÍO SPORTS no es un sitio afiliado a la FIFA. Los enlaces remiten a fuentes oficiales.</div>
-  </section>
-
-  <!-- ===== FOOTER ===== -->
-  <footer id="contacto">
-    <div class="kbrand">KONFÍO <span>SPORTS</span></div>
-    <p>Centro informativo del Mundial FIFA 2026 · Tarjetas digitales premium en Colombia</p>
-    <a class="footer-cta" id="footer-cta" href="#" target="_blank">Quiero una tarjeta digital como esta →</a>
-    <p class="disc">KONFÍO SPORTS es un proyecto independiente, no afiliado a la FIFA. "FIFA World Cup 2026" y nombres de selecciones son marcas de sus respectivos titulares.</p>
+<h3>¿Qué partidos de fútbol transmite Fútbol Libre TV?</h3>
+<p>En <strong><a href="https://futbol-libres.su/">Fútbol Libre TV</a></strong> se podran ver todos los partidos del futbol argentino que incluyen los de Boca Juniors y River Plate por el campeonato Argentino, Copa Libertadores y Copa Sudamericana.</p>
+      </main>
+<br>
+<br>
+  <footer>
+    <span class="footer-title">Fútbol Libre TV 2026 © Todos los derechos reservados.</span>
+    <ul class="redes">
+    <li><a href="https://pelotalibretv.su/" class="red-item">Pelota Libre</a></li>
+    <li><a href="https://futbol-libres.su/dmca/" class="red-item">DMCA</a></li>
+    </ul>
   </footer>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L0N11PVD63"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-</div>
-</main>
-
-<div id="toast-container"></div>
-
-<nav class="share-bar" id="share-bar">
-  <span class="share-label">Compartir</span>
-  <a class="s-btn" id="s-wa" href="#" target="_blank"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#25D366"/><path fill="#fff" d="M16 7.2A8.8 8.8 0 007.2 16c0 1.55.41 3.06 1.19 4.38L7 25l4.74-1.37A8.8 8.8 0 1016 7.2zm0 16.1a7.3 7.3 0 01-3.72-1.02l-.27-.16-2.8.81.78-2.73-.18-.28A7.3 7.3 0 1116 23.3zm4-5.46c-.22-.11-1.3-.64-1.5-.71-.2-.08-.35-.11-.5.11-.15.22-.57.71-.7.86-.13.14-.26.16-.48.05-.22-.11-.93-.34-1.77-1.09-.65-.58-1.09-1.3-1.22-1.52-.13-.22-.01-.34.1-.45.1-.1.22-.26.33-.39.11-.13.14-.22.22-.37.07-.15.04-.28-.02-.39-.06-.11-.5-1.2-.68-1.64-.18-.43-.36-.37-.5-.38h-.43c-.15 0-.39.06-.6.28-.2.22-.78.76-.78 1.86 0 1.1.8 2.16.91 2.31.11.15 1.57 2.4 3.8 3.36.53.23.94.37 1.26.47.53.17 1.01.14 1.39.09.42-.06 1.3-.53 1.48-1.05.18-.51.18-.95.13-1.04-.05-.1-.19-.16-.41-.27z"/></svg></a>
-  <a class="s-btn" id="s-fb" href="#" target="_blank"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#1877F2"/><path fill="#fff" d="M22 16h-4v-2c0-.83.34-1.33 1.5-1.33H22V9.1S20.9 9 19.65 9C16.7 9 15 10.7 15 13.7V16h-3v4h3v10h4V20h3.3L22 16z"/></svg></a>
-  <a class="s-btn" id="s-tt" href="#" target="_blank"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#000"/><path fill="#69C9D0" d="M21.5 10.3a4.5 4.5 0 01-1.1-.7 4.4 4.4 0 01-1.4-3h-2.6v10.1l-.01 5.5a2.6 2.6 0 01-2.59 2.3 2.6 2.6 0 01-2.6-2.6 2.6 2.6 0 012.6-2.6c.25 0 .5.04.72.1V17a5.2 5.2 0 00-.72-.05 5.25 5.25 0 00-5.25 5.25 5.25 5.25 0 005.25 5.25 5.25 5.25 0 005.24-5.25V14.5a7 7 0 004.08 1.3v-2.6a4.4 4.4 0 01-2.62-2.9z"/><path fill="#EE1D52" d="M21.5 10.3c.6.55 1.33.93 2.12 1.1v-2.6a4.4 4.4 0 01-2.12-1.1v2.6z"/></svg></a>
-  <a class="s-btn" id="s-yt" href="#" target="_blank"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#FF0000"/><path fill="#fff" d="M25.8 11.8a2.5 2.5 0 00-1.76-1.77C22.55 9.6 16 9.6 16 9.6s-6.55 0-8.04.43a2.5 2.5 0 00-1.76 1.77C5.77 13.3 5.77 16 5.77 16s0 2.7.43 4.2a2.5 2.5 0 001.76 1.77C9.45 22.4 16 22.4 16 22.4s6.55 0 8.04-.43a2.5 2.5 0 001.76-1.77C26.23 18.7 26.23 16 26.23 16s0-2.7-.43-4.2zM13.8 18.8v-5.6l5.38 2.8-5.38 2.8z"/></svg></a>
-  <button class="s-btn" id="s-cp"><svg viewBox="0 0 28 28" fill="none" stroke="#F97316" stroke-width="2"><rect x="10" y="10" width="13" height="13" rx="2"/><path d="M6 17H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v1"/></svg></button>
-</nav>
-
-<script src="script.js?v=18"></script>
+  gtag('config', 'G-L0N11PVD63');
+</script>
+<script id="aclib" type="text/javascript" src="//acscdn.com/script/aclib.js"></script>
+<script type="text/javascript">
+    aclib.runPop({
+        zoneId: '10652966',
+    });
+</script>
 </body>
 </html>
