@@ -1,6 +1,0 @@
-{
-  "_comment": "Datos estáticos de referencia para KONFÍO TV. El sitio NO depende de este archivo: script.js usa MOCK_MATCHES_BY_DOW embebido para garantizar funcionamiento 100% offline/estático en GitHub Pages. Este JSON queda disponible como fuente opcional para una futura integración (p.ej. GitHub Action que actualice este archivo con datos reales).",
-  "updated": "2026-06-14",
-  "source": "static-mock",
-  "matches": []
-}
