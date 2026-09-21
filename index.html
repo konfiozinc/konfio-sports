@@ -9,7 +9,7 @@
 
 <title>KONFÍO SPORTS — Fútbol en vivo gratis · Colombia, Sudamérica, España y Europa</title>
 <meta name="description" content="KONFÍO SPORTS reúne canales y señales abiertas para ver fútbol colombiano, sudamericano, español y europeo gratis. Sin suscripciones, sin planes de pago y sin anuncios agresivos.">
-<meta name="keywords" content="futbol en vivo gratis, liga betplay, copa libertadores, laliga, champions league, canales gratis, ver futbol gratis, konfio sports">
+<meta name="keywords" content="futbol en vivo gratis, canales en vivo, liga betplay, copa libertadores, copa sudamericana, laliga, champions league, mundial 2026, colombia, ver futbol gratis, konfio sports">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://konfiozinc.github.io/konfio-sports/">
 
@@ -37,7 +37,7 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-title" content="KONFÍO SPORTS">
 <link rel="manifest" href="manifest.json">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"KONFÍO SPORTS","url":"https://konfiozinc.github.io/konfio-sports/","description":"Fútbol en vivo gratis: canales y señales abiertas de Colombia, Sudamérica, España y Europa. Sin suscripciones ni anuncios agresivos.","inLanguage":"es-CO"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"KONFÍO SPORTS","url":"https://konfiozinc.github.io/konfio-sports/","description":"Canales de fútbol en vivo, gratis y legal. Fútbol colombiano, sudamericano, español y europeo.","inLanguage":"es-CO","publisher":{"@type":"Organization","name":"KONFÍO SPORTS","logo":{"@type":"ImageObject","url":"https://konfiozinc.github.io/konfio-sports/assets/icon-512.png"}}}</script>
 
 <!-- Fuentes -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -419,6 +419,25 @@ html[data-theme="light"] .theme-toggle{background:rgba(0,0,0,.04);border-color:v
 .share-btn[data-net="facebook"]:hover{background:#1877f2;color:#fff;border-color:#1877f2}
 .share-btn[data-net="whatsapp"]:hover{background:#25d366;color:#fff;border-color:#25d366}
 .share-btn[data-net="copy"]:hover{background:var(--naranja);color:#fff;border-color:var(--naranja)}
+
+/* ============ AGENDA ============ */
+.agenda-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-bottom:8px}
+.match{background:linear-gradient(180deg,var(--panel),var(--bg-2));border:1px solid var(--line);border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:14px;transition:.2s}
+.match:hover{border-color:rgba(255,140,0,.35);transform:translateY(-2px)}
+.match-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.match-torneo{font-size:.62rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--naranja)}
+.match-fecha{font-size:.76rem;color:var(--muted);font-weight:600}
+.match-equipos{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.match-team{flex:1;text-align:center;font-weight:800;font-size:1.04rem;line-height:1.3}
+.match-vs{color:var(--dim);font-weight:800;font-size:.78rem;flex-shrink:0}
+.match-canal-label{font-size:.6rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-bottom:6px}
+.match-canal a,.match-canal span{display:inline-block;font-size:.82rem;font-weight:700;color:var(--verde);text-decoration:none;margin:0 12px 6px 0}
+.match-canal a:hover{color:var(--naranja)}
+.agenda-fallback{text-align:center;color:var(--muted);padding:26px 20px;background:var(--panel);border:1px dashed var(--line-2);border-radius:16px}
+.agenda-fallback p{font-size:.92rem}
+.agenda-fallback p+p{font-size:.82rem;margin-top:4px}
+.agenda-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:18px}
+.agenda-updated{text-align:center;font-size:.72rem;color:var(--dim);margin-top:16px}
 </style>
 </head>
 <body>
@@ -432,6 +451,7 @@ html[data-theme="light"] .theme-toggle{background:rgba(0,0,0,.04);border-color:v
     </a>
     <nav class="nav-links" id="navLinks">
       <a href="#inicio">Inicio</a>
+      <a href="#agenda">Agenda</a>
       <a href="#ligas">Ligas</a>
       <a href="#canales">Canales</a>
       <a href="#como-ver">Cómo ver</a>
@@ -491,6 +511,30 @@ html[data-theme="light"] .theme-toggle{background:rgba(0,0,0,.04);border-color:v
     <span>🇩🇪 <b>Bundesliga</b> · Alemania</span>
   </div>
 </div>
+
+<!-- ============ AGENDA ============ -->
+<section id="agenda">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">📅 Próximos partidos</span>
+      <h2>Agenda de la <em>semana</em></h2>
+      <p>Qué se juega y en qué canal verlo. La agenda se actualiza manualmente con datos verificados.</p>
+    </div>
+    <div class="agenda-grid" id="agendaGrid"></div>
+    <div class="agenda-fallback" id="agendaFallback">
+      <p>📭 Aún no hay partidos cargados en la agenda.</p>
+      <p>Consulta el calendario oficial de cada torneo:</p>
+      <div class="agenda-links">
+        <a class="btn btn-ghost" href="https://dimayor.com.co" target="_blank" rel="noopener noreferrer">Liga BetPlay</a>
+        <a class="btn btn-ghost" href="https://www.conmebollibertadores.com" target="_blank" rel="noopener noreferrer">Copa Libertadores</a>
+        <a class="btn btn-ghost" href="https://www.conmebolsudamericana.com" target="_blank" rel="noopener noreferrer">Sudamericana</a>
+        <a class="btn btn-ghost" href="https://www.laliga.com" target="_blank" rel="noopener noreferrer">LaLiga</a>
+        <a class="btn btn-ghost" href="https://www.uefa.com/uefachampionsleague/" target="_blank" rel="noopener noreferrer">Champions</a>
+      </div>
+    </div>
+    <div class="agenda-updated" id="agendaUpdated"></div>
+  </div>
+</section>
 
 <!-- ============ PROPS ============ -->
 <section id="porque">
@@ -975,8 +1019,12 @@ function applyTheme(t){
   if(themeToggle) themeToggle.textContent = (t === 'light') ? '☀️' : '🌙';
   if(themeMeta) themeMeta.setAttribute('content', (t === 'light') ? '#ffffff' : '#050505');
 }
-let savedTheme = 'dark';
-try{ savedTheme = localStorage.getItem('konfio-theme') || 'dark'; }catch(e){}
+let savedTheme = null;
+try{ savedTheme = localStorage.getItem('konfio-theme'); }catch(e){}
+if(!savedTheme){
+  const sysLight = !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches);
+  savedTheme = sysLight ? 'light' : 'dark';
+}
 applyTheme(savedTheme);
 if(themeToggle) themeToggle.addEventListener('click', ()=>{
   const cur = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
@@ -1017,6 +1065,44 @@ if(btnNotif){
     }catch(e){ alert('No se pudo activar: ' + e.message); }
   });
 }
+
+/* Agenda de partidos */
+function findChannelLink(name){
+  const cards = document.querySelectorAll('.channel');
+  for(const card of cards){
+    const n = (card.querySelector('.ch-name')?.textContent || '').toLowerCase();
+    if(n && name && n.includes(name.toLowerCase())) return card.getAttribute('href');
+  }
+  return null;
+}
+(async function loadAgenda(){
+  const grid = document.getElementById('agendaGrid');
+  const fb = document.getElementById('agendaFallback');
+  const upd = document.getElementById('agendaUpdated');
+  let data = null;
+  try{
+    const r = await fetch('api/agenda.json', {cache:'no-store'});
+    if(r.ok) data = await r.json();
+  }catch(e){ /* sin red: fallback */ }
+  const matches = (data && Array.isArray(data.matches)) ? data.matches : [];
+  if(upd && data && data.updated){
+    const d = new Date(data.updated);
+    if(!isNaN(d)) upd.textContent = 'Agenda actualizada: ' + d.toLocaleString('es-CO');
+  }
+  if(matches.length === 0){ if(fb) fb.style.display = 'block'; return; }
+  if(fb) fb.style.display = 'none';
+  grid.innerHTML = matches.map(m=>{
+    const canales = (Array.isArray(m.canales) ? m.canales : []).map(c=>{
+      const link = findChannelLink(c);
+      return link ? `<a href="${link}" target="_blank" rel="noopener noreferrer">📺 ${c}</a>` : `<span>📺 ${c}</span>`;
+    }).join('');
+    return `<article class="match">
+      <div class="match-top"><span class="match-torneo">${m.torneo || ''}</span><span class="match-fecha">${m.fecha || ''}${m.hora ? ' · ' + m.hora : ''}</span></div>
+      <div class="match-equipos"><span class="match-team">${m.equipoA || ''}</span><span class="match-vs">VS</span><span class="match-team">${m.equipoB || ''}</span></div>
+      <div class="match-canal"><div class="match-canal-label">Dónde ver</div>${canales || '<span>Consultar canales</span>'}</div>
+    </article>`;
+  }).join('');
+})();
 
 /* PWA: Service Worker */
 if('serviceWorker' in navigator){

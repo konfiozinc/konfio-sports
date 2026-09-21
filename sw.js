@@ -1,7 +1,7 @@
 /* KONFÍO SPORTS — Service Worker v2 */
 'use strict';
 
-const CACHE_NAME = 'konfio-sports-v3';
+const CACHE_NAME = 'konfio-sports-v4';
 const PRECACHE = [
   '/konfio-sports/',
   '/konfio-sports/index.html',
@@ -44,6 +44,12 @@ self.addEventListener('fetch', (e) => {
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
   if (url.origin !== location.origin) return;
+
+  // Datos de agenda: siempre red primero (datos frescos)
+  if (url.pathname.includes('/api/')) {
+    e.respondWith(fetch(req).catch(() => caches.match(req)));
+    return;
+  }
 
   // Navegación: red primero, offline -> index.html cacheado
   if (req.mode === 'navigate') {

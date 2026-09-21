@@ -1,0 +1,5 @@
+{
+  "updated": "2026-09-20T12:00:00-05:00",
+  "_comment": "Agenda de partidos. Llenar 'matches' SOLO con datos reales y verificados (fecha ISO, hora local, torneo, equipoA/equipoB, canales y pais). Los nombres de 'canales' deben coincidir con los de la seccion Canales para poder enlazarlos. Si 'matches' esta vacio, el sitio muestra automaticamente los enlaces a los calendarios oficiales.",
+  "matches": []
+}
