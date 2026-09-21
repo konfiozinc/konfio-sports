@@ -1,7 +1,7 @@
 /* KONFÍO SPORTS — Service Worker v2 */
 'use strict';
 
-const CACHE_NAME = 'konfio-sports-v2';
+const CACHE_NAME = 'konfio-sports-v3';
 const PRECACHE = [
   '/konfio-sports/',
   '/konfio-sports/index.html',
