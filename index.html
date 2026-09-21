@@ -1050,19 +1050,27 @@ document.querySelectorAll('.share-btn').forEach(b=>b.addEventListener('click', (
   if(link) window.open(link, '_blank', 'noopener,noreferrer');
 }));
 
-/* Notificaciones (permiso + aviso local; el push real requiere backend) */
+/* Notificaciones (ServiceWorkerRegistration.showNotification — compatible con móviles) */
 const btnNotif = document.getElementById('btnNotif');
 if(btnNotif){
   btnNotif.addEventListener('click', async ()=>{
     if(!('Notification' in window)){ alert('Tu navegador no soporta notificaciones.'); return; }
+    const perm = await Notification.requestPermission();
+    if(perm !== 'granted'){ alert('Permiso denegado. Activa las notificaciones en la configuración del navegador.'); return; }
+    if(!('serviceWorker' in navigator)){ alert('Este navegador no admite notificaciones de Service Worker.'); return; }
     try{
-      const perm = await Notification.requestPermission();
-      if(perm === 'granted'){
-        new Notification('KONFÍO SPORTS ⚽', { body: 'Notificaciones activadas. Te avisaremos cuando haya partidos importantes.' });
-      } else {
-        alert('Permiso denegado. Puedes activarlo desde la configuración del navegador.');
-      }
-    }catch(e){ alert('No se pudo activar: ' + e.message); }
+      const registration = await navigator.serviceWorker.ready;
+      await registration.showNotification('KONFÍO SPORTS ⚽', {
+        body: 'Notificaciones activadas. Te avisaremos de los partidos importantes.',
+        icon: '/konfio-sports/assets/icon-192.png',
+        badge: '/konfio-sports/assets/favicon-32.png',
+        vibrate: [200, 100, 200],
+        tag: 'konfio-sports-bienvenida'
+      });
+    }catch(e){
+      console.warn('Error al mostrar notificación:', e);
+      alert('Permiso activado, pero no se pudo mostrar la notificación.');
+    }
   });
 }
 
