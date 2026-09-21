@@ -1,0 +1,10 @@
+{
+  "name": "konfio-sports-push",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Backend Web Push de KONFÍO SPORTS (Cloudflare Worker)",
+  "dependencies": {
+    "web-push": "^3.6.7"
+  }
+}

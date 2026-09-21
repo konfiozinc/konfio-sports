@@ -1,0 +1,10 @@
+name = "konfio-sports-push"
+main = "worker.js"
+compatibility_date = "2026-01-01"
+
+[[kv_namespaces]]
+binding = "PUSH_KV"
+id = "REEMPLAZAR_CON_TU_KV_NAMESPACE_ID"
+
+[triggers]
+crons = ["*/5 * * * *"]

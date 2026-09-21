@@ -438,6 +438,11 @@ html[data-theme="light"] .theme-toggle{background:rgba(0,0,0,.04);border-color:v
 .agenda-fallback p+p{font-size:.82rem;margin-top:4px}
 .agenda-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:18px}
 .agenda-updated{text-align:center;font-size:.72rem;color:var(--dim);margin-top:16px}
+
+/* ============ BOTÓN INSTALAR PWA ============ */
+.install-fab{position:fixed;right:18px;bottom:18px;z-index:120;display:inline-flex;align-items:center;gap:8px;padding:13px 20px;border-radius:99px;background:var(--grad-nv);color:#050505;font-weight:800;font-size:.86rem;border:none;cursor:pointer;box-shadow:0 12px 32px rgba(0,0,0,.45);transition:.2s;font-family:var(--font-body)}
+.install-fab:hover{transform:translateY(-2px)}
+.install-fab svg{width:18px;height:18px}
 </style>
 </head>
 <body>
@@ -935,6 +940,12 @@ html[data-theme="light"] .theme-toggle{background:rgba(0,0,0,.04);border-color:v
   </div>
 </footer>
 
+<!-- Botón instalar PWA -->
+<button class="install-fab" id="installBtn" aria-label="Instalar aplicación" title="Instalar KONFÍO SPORTS" style="display:none">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+  Instalar app
+</button>
+
 <script>
 'use strict';
 /* Año dinámico */
@@ -1050,7 +1061,19 @@ document.querySelectorAll('.share-btn').forEach(b=>b.addEventListener('click', (
   if(link) window.open(link, '_blank', 'noopener,noreferrer');
 }));
 
-/* Notificaciones (ServiceWorkerRegistration.showNotification — compatible con móviles) */
+/* Push + Notificaciones */
+const VAPID_PUBLIC_KEY = 'BCSVowQGMdbWTlbhM2aKsuEuEBJkNOAMos6WPr87COHy-2Uh-yOhEQ_UTw8lzaUyr5s-6nm-3Lwc0m_r8vw-7ns';
+const PUSH_ENDPOINT = ''; // URL del Worker de push, ej: 'https://konfio-sports-push.tu-subcuenta.workers.dev'
+
+function urlBase64ToUint8Array(base64String){
+  const padding = '='.repeat((4 - base64String.length % 4) % 4);
+  const base64 = (base64String + padding).replace(/\-/g, '+').replace(/_/g, '/');
+  const raw = atob(base64);
+  const out = new Uint8Array(raw.length);
+  for(let i = 0; i < raw.length; i++) out[i] = raw.charCodeAt(i);
+  return out;
+}
+
 const btnNotif = document.getElementById('btnNotif');
 if(btnNotif){
   btnNotif.addEventListener('click', async ()=>{
@@ -1060,16 +1083,28 @@ if(btnNotif){
     if(!('serviceWorker' in navigator)){ alert('Este navegador no admite notificaciones de Service Worker.'); return; }
     try{
       const registration = await navigator.serviceWorker.ready;
+      // Suscripción a push (requiere el Worker desplegado y PUSH_ENDPOINT configurado)
+      if(PUSH_ENDPOINT && VAPID_PUBLIC_KEY && 'PushManager' in window){
+        let sub = await registration.pushManager.getSubscription();
+        if(!sub){
+          sub = await registration.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY) });
+        }
+        await fetch(PUSH_ENDPOINT + '/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(sub.toJSON())
+        });
+      }
       await registration.showNotification('KONFÍO SPORTS ⚽', {
-        body: 'Notificaciones activadas. Te avisaremos de los partidos importantes.',
+        body: PUSH_ENDPOINT ? 'Notificaciones activadas. Te avisaremos cuando empiecen los partidos.' : 'Notificaciones activadas.',
         icon: '/konfio-sports/assets/icon-192.png',
         badge: '/konfio-sports/assets/favicon-32.png',
         vibrate: [200, 100, 200],
         tag: 'konfio-sports-bienvenida'
       });
     }catch(e){
-      console.warn('Error al mostrar notificación:', e);
-      alert('Permiso activado, pero no se pudo mostrar la notificación.');
+      console.warn('Error al activar notificaciones:', e);
+      alert('Permiso activado, pero hubo un error al suscribir.');
     }
   });
 }
@@ -1111,6 +1146,35 @@ function findChannelLink(name){
     </article>`;
   }).join('');
 })();
+
+/* Instalar PWA */
+let deferredPrompt = null;
+const installBtn = document.getElementById('installBtn');
+const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) && !window.navigator.standalone;
+window.addEventListener('beforeinstallprompt', (e)=>{
+  e.preventDefault();
+  deferredPrompt = e;
+  if(installBtn) installBtn.style.display = 'inline-flex';
+});
+window.addEventListener('appinstalled', ()=>{
+  deferredPrompt = null;
+  if(installBtn) installBtn.style.display = 'none';
+});
+if(installBtn){
+  if(isIOS) installBtn.style.display = 'inline-flex';
+  installBtn.addEventListener('click', async ()=>{
+    if(deferredPrompt){
+      deferredPrompt.prompt();
+      await deferredPrompt.userChoice;
+      deferredPrompt = null;
+      installBtn.style.display = 'none';
+    } else if(isIOS){
+      alert('Para instalar en iPhone/iPad: toca el botón Compartir (cuadro con flecha hacia arriba) en Safari y elige "Añadir a pantalla de inicio".');
+    } else {
+      alert('Tu navegador no permite la instalación automática. Busca "Instalar" o "Añadir a pantalla de inicio" en el menú del navegador.');
+    }
+  });
+}
 
 /* PWA: Service Worker */
 if('serviceWorker' in navigator){

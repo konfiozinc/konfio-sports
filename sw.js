@@ -1,7 +1,7 @@
 /* KONFÍO SPORTS — Service Worker v2 */
 'use strict';
 
-const CACHE_NAME = 'konfio-sports-v4';
+const CACHE_NAME = 'konfio-sports-v5';
 const PRECACHE = [
   '/konfio-sports/',
   '/konfio-sports/index.html',
@@ -69,6 +69,36 @@ self.addEventListener('fetch', (e) => {
         })
         .catch(() => cached);
       return cached || network;
+    })
+  );
+});
+
+self.addEventListener('push', (event) => {
+  let data = { title: 'KONFÍO SPORTS ⚽', body: 'Hay un partido en juego', url: '/konfio-sports/' };
+  try {
+    if (event.data) data = { ...data, ...event.data.json() };
+  } catch (e) {}
+  event.waitUntil(
+    self.registration.showNotification(data.title, {
+      body: data.body,
+      icon: '/konfio-sports/assets/icon-192.png',
+      badge: '/konfio-sports/assets/favicon-32.png',
+      vibrate: [200, 100, 200],
+      tag: 'konfio-sports-match',
+      data: { url: data.url }
+    })
+  );
+});
+
+self.addEventListener('notificationclick', (event) => {
+  event.notification.close();
+  const url = (event.notification.data && event.notification.data.url) || '/konfio-sports/';
+  event.waitUntil(
+    clients.matchAll({ type: 'window', includeUncontrolled: true }).then((list) => {
+      for (const c of list) {
+        if ('focus' in c) { c.navigate(url); return c.focus(); }
+      }
+      if (clients.openWindow) return clients.openWindow(url);
     })
   );
 });
