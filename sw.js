@@ -1,33 +1,32 @@
-/* KONFÍO SPORTS — Service Worker (PWA)
-   Caché de recursos estáticos para carga rápida y soporte offline básico. */
+/* KONFÍO SPORTS — Service Worker v2 */
 'use strict';
 
-const CACHE = 'konfio-sports-v1';
-const CORE = [
-  './',
-  './index.html',
-  './manifest.json',
-  './assets/favicon.ico',
-  './assets/favicon-16.png',
-  './assets/favicon-32.png',
-  './assets/apple-touch-icon.png',
-  './assets/icon-192.png',
-  './assets/icon-512.png',
-  './assets/icon-maskable.png',
-  './assets/logos/gol-caracol.png',
-  './assets/logos/rcn.png',
-  './assets/logos/telefe.png',
-  './assets/logos/canal13.png',
-  './assets/logos/canal5.png',
-  './assets/logos/rtve-deportes.png',
-  './assets/logos/fifa-plus.png',
-  './assets/logos/pluto-tv.png'
+const CACHE_NAME = 'konfio-sports-v2';
+const PRECACHE = [
+  '/konfio-sports/',
+  '/konfio-sports/index.html',
+  '/konfio-sports/manifest.json',
+  '/konfio-sports/assets/icon-192.png',
+  '/konfio-sports/assets/icon-512.png',
+  '/konfio-sports/assets/icon-maskable.png',
+  '/konfio-sports/assets/apple-touch-icon.png',
+  '/konfio-sports/assets/favicon-16.png',
+  '/konfio-sports/assets/favicon-32.png',
+  '/konfio-sports/assets/favicon.ico',
+  '/konfio-sports/assets/logos/gol-caracol.png',
+  '/konfio-sports/assets/logos/rcn.png',
+  '/konfio-sports/assets/logos/telefe.png',
+  '/konfio-sports/assets/logos/canal13.png',
+  '/konfio-sports/assets/logos/canal5.png',
+  '/konfio-sports/assets/logos/rtve-deportes.png',
+  '/konfio-sports/assets/logos/fifa-plus.png',
+  '/konfio-sports/assets/logos/pluto-tv.png'
 ];
 
 self.addEventListener('install', (e) => {
   e.waitUntil(
-    caches.open(CACHE)
-      .then((c) => c.addAll(CORE))
+    caches.open(CACHE_NAME)
+      .then((c) => c.addAll(PRECACHE))
       .then(() => self.skipWaiting())
   );
 });
@@ -35,7 +34,7 @@ self.addEventListener('install', (e) => {
 self.addEventListener('activate', (e) => {
   e.waitUntil(
     caches.keys()
-      .then((keys) => Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k))))
+      .then((keys) => Promise.all(keys.filter((k) => k !== CACHE_NAME).map((k) => caches.delete(k))))
       .then(() => self.clients.claim())
   );
 });
@@ -46,13 +45,19 @@ self.addEventListener('fetch', (e) => {
   const url = new URL(req.url);
   if (url.origin !== location.origin) return;
 
+  // Navegación: red primero, offline -> index.html cacheado
+  if (req.mode === 'navigate') {
+    e.respondWith(fetch(req).catch(() => caches.match('/konfio-sports/index.html')));
+    return;
+  }
+
   e.respondWith(
     caches.match(req).then((cached) => {
       const network = fetch(req)
         .then((res) => {
           if (res && res.status === 200 && res.type === 'basic') {
-            const copy = res.clone();
-            caches.open(CACHE).then((c) => c.put(req, copy));
+            const clone = res.clone();
+            caches.open(CACHE_NAME).then((c) => c.put(req, clone));
           }
           return res;
         })
