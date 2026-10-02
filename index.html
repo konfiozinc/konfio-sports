@@ -7,6 +7,21 @@
 <meta name="color-scheme" content="dark">
 <script>document.documentElement.classList.add('js')</script>
 
+<!-- Google Analytics 4 -->
+<script>
+const GA_ID = 'G-0JKTZNMPWX';
+if (GA_ID && !/^G-XXXX/.test(GA_ID)) {
+  const s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', GA_ID);
+}
+</script>
+
 <title>KONFÍO SPORTS — Fútbol en vivo gratis · Colombia, Sudamérica, España y Europa</title>
 <meta name="description" content="KONFÍO SPORTS reúne canales y señales abiertas para ver fútbol colombiano, sudamericano, español y europeo gratis. Sin suscripciones, sin planes de pago y sin anuncios agresivos.">
 <meta name="keywords" content="futbol en vivo gratis, canales en vivo, liga betplay, copa libertadores, copa sudamericana, laliga, champions league, mundial 2026, colombia, ver futbol gratis, konfio sports">
@@ -490,7 +505,7 @@ html[data-theme="light"] .theme-toggle{background:rgba(0,0,0,.04);border-color:v
         Ver canales gratis
       </a>
       <a href="#ligas" class="btn btn-ghost">Ver ligas y torneos</a>
-      <button class="btn btn-ghost" id="btnNotif" type="button">🔔 Notificaciones</button>
+      <button class="btn btn-ghost" id="btnNotif" type="button" disabled title="Notificaciones disponibles próximamente" style="opacity:.55;cursor:not-allowed">🔔 Notificaciones · Próximamente</button>
     </div>
     <div class="hero-points">
       <span class="hp"><span class="tick">✓</span> <b>Gratis</b>&nbsp;de verdad</span>
@@ -517,27 +532,26 @@ html[data-theme="light"] .theme-toggle{background:rgba(0,0,0,.04);border-color:v
   </div>
 </div>
 
-<!-- ============ AGENDA ============ -->
+<!-- ============ PARTIDOS DE HOY ============ -->
 <section id="agenda">
   <div class="container">
     <div class="section-head reveal">
-      <span class="eyebrow">📅 Próximos partidos</span>
-      <h2>Agenda de la <em>semana</em></h2>
-      <p>Qué se juega y en qué canal verlo. La agenda se actualiza manualmente con datos verificados.</p>
+      <span class="eyebrow">📅 Partidos de hoy</span>
+      <h2>Encuentra qué se juega <em>hoy</em></h2>
+      <p>Busca la cartelera del día o consulta los calendarios oficiales. Sin mantenimiento: siempre al día.</p>
     </div>
-    <div class="agenda-grid" id="agendaGrid"></div>
-    <div class="agenda-fallback" id="agendaFallback">
-      <p>📭 Aún no hay partidos cargados en la agenda.</p>
-      <p>Consulta el calendario oficial de cada torneo:</p>
-      <div class="agenda-links">
-        <a class="btn btn-ghost" href="https://dimayor.com.co" target="_blank" rel="noopener noreferrer">Liga BetPlay</a>
-        <a class="btn btn-ghost" href="https://www.conmebollibertadores.com" target="_blank" rel="noopener noreferrer">Copa Libertadores</a>
-        <a class="btn btn-ghost" href="https://www.conmebolsudamericana.com" target="_blank" rel="noopener noreferrer">Sudamericana</a>
-        <a class="btn btn-ghost" href="https://www.laliga.com" target="_blank" rel="noopener noreferrer">LaLiga</a>
-        <a class="btn btn-ghost" href="https://www.uefa.com/uefachampionsleague/" target="_blank" rel="noopener noreferrer">Champions</a>
-      </div>
+    <div class="agenda-links" style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:860px;margin:0 auto;">
+      <a class="btn btn-ghost" href="https://www.google.com/search?q=partidos+de+futbol+hoy" target="_blank" rel="noopener noreferrer">🔍 Partidos de fútbol hoy</a>
+      <a class="btn btn-ghost" href="https://www.google.com/search?q=Champions+League+hoy" target="_blank" rel="noopener noreferrer">🔍 Champions League hoy</a>
+      <a class="btn btn-ghost" href="https://www.google.com/search?q=Liga+BetPlay+hoy" target="_blank" rel="noopener noreferrer">🔍 Liga BetPlay hoy</a>
+      <a class="btn btn-ghost" href="https://www.google.com/search?q=Premier+League+hoy" target="_blank" rel="noopener noreferrer">🔍 Premier League hoy</a>
     </div>
-    <div class="agenda-updated" id="agendaUpdated"></div>
+    <p style="text-align:center;color:var(--muted);margin:20px 0 12px;font-size:.9rem;">Calendarios oficiales:</p>
+    <div class="agenda-links" style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;">
+      <a class="btn btn-ghost" href="https://www.fifa.com/fifaplus/es/match-center" target="_blank" rel="noopener noreferrer">FIFA Match Center</a>
+      <a class="btn btn-ghost" href="https://www.conmebol.com/calendario/" target="_blank" rel="noopener noreferrer">Conmebol</a>
+      <a class="btn btn-ghost" href="https://www.uefa.com/" target="_blank" rel="noopener noreferrer">UEFA</a>
+    </div>
   </div>
 </section>
 
@@ -925,8 +939,9 @@ html[data-theme="light"] .theme-toggle{background:rgba(0,0,0,.04);border-color:v
       <div>
         <h4>Legal</h4>
         <ul>
+          <li><a href="privacidad.html">Política de privacidad</a></li>
+          <li><a href="terminos.html">Términos de uso</a></li>
           <li><a href="#faq">Preguntas frecuentes</a></li>
-          <li><a href="#canales">Canales oficiales</a></li>
         </ul>
       </div>
     </div>
@@ -1061,91 +1076,17 @@ document.querySelectorAll('.share-btn').forEach(b=>b.addEventListener('click', (
   if(link) window.open(link, '_blank', 'noopener,noreferrer');
 }));
 
-/* Push + Notificaciones */
-const VAPID_PUBLIC_KEY = 'BCSVowQGMdbWTlbhM2aKsuEuEBJkNOAMos6WPr87COHy-2Uh-yOhEQ_UTw8lzaUyr5s-6nm-3Lwc0m_r8vw-7ns';
-const PUSH_ENDPOINT = ''; // URL del Worker de push, ej: 'https://konfio-sports-push.tu-subcuenta.workers.dev'
-
-function urlBase64ToUint8Array(base64String){
-  const padding = '='.repeat((4 - base64String.length % 4) % 4);
-  const base64 = (base64String + padding).replace(/\-/g, '+').replace(/_/g, '/');
-  const raw = atob(base64);
-  const out = new Uint8Array(raw.length);
-  for(let i = 0; i < raw.length; i++) out[i] = raw.charCodeAt(i);
-  return out;
-}
-
-const btnNotif = document.getElementById('btnNotif');
-if(btnNotif){
-  btnNotif.addEventListener('click', async ()=>{
-    if(!('Notification' in window)){ alert('Tu navegador no soporta notificaciones.'); return; }
-    const perm = await Notification.requestPermission();
-    if(perm !== 'granted'){ alert('Permiso denegado. Activa las notificaciones en la configuración del navegador.'); return; }
-    if(!('serviceWorker' in navigator)){ alert('Este navegador no admite notificaciones de Service Worker.'); return; }
-    try{
-      const registration = await navigator.serviceWorker.ready;
-      // Suscripción a push (requiere el Worker desplegado y PUSH_ENDPOINT configurado)
-      if(PUSH_ENDPOINT && VAPID_PUBLIC_KEY && 'PushManager' in window){
-        let sub = await registration.pushManager.getSubscription();
-        if(!sub){
-          sub = await registration.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY) });
-        }
-        await fetch(PUSH_ENDPOINT + '/subscribe', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(sub.toJSON())
-        });
-      }
-      await registration.showNotification('KONFÍO SPORTS ⚽', {
-        body: PUSH_ENDPOINT ? 'Notificaciones activadas. Te avisaremos cuando empiecen los partidos.' : 'Notificaciones activadas.',
-        icon: '/konfio-sports/assets/icon-192.png',
-        badge: '/konfio-sports/assets/favicon-32.png',
-        vibrate: [200, 100, 200],
-        tag: 'konfio-sports-bienvenida'
-      });
-    }catch(e){
-      console.warn('Error al activar notificaciones:', e);
-      alert('Permiso activado, pero hubo un error al suscribir.');
-    }
-  });
-}
-
-/* Agenda de partidos */
-function findChannelLink(name){
-  const cards = document.querySelectorAll('.channel');
-  for(const card of cards){
-    const n = (card.querySelector('.ch-name')?.textContent || '').toLowerCase();
-    if(n && name && n.includes(name.toLowerCase())) return card.getAttribute('href');
-  }
-  return null;
-}
-(async function loadAgenda(){
-  const grid = document.getElementById('agendaGrid');
-  const fb = document.getElementById('agendaFallback');
-  const upd = document.getElementById('agendaUpdated');
-  let data = null;
-  try{
-    const r = await fetch('api/agenda.json', {cache:'no-store'});
-    if(r.ok) data = await r.json();
-  }catch(e){ /* sin red: fallback */ }
-  const matches = (data && Array.isArray(data.matches)) ? data.matches : [];
-  if(upd && data && data.updated){
-    const d = new Date(data.updated);
-    if(!isNaN(d)) upd.textContent = 'Agenda actualizada: ' + d.toLocaleString('es-CO');
-  }
-  if(matches.length === 0){ if(fb) fb.style.display = 'block'; return; }
-  if(fb) fb.style.display = 'none';
-  grid.innerHTML = matches.map(m=>{
-    const canales = (Array.isArray(m.canales) ? m.canales : []).map(c=>{
-      const link = findChannelLink(c);
-      return link ? `<a href="${link}" target="_blank" rel="noopener noreferrer">📺 ${c}</a>` : `<span>📺 ${c}</span>`;
-    }).join('');
-    return `<article class="match">
-      <div class="match-top"><span class="match-torneo">${m.torneo || ''}</span><span class="match-fecha">${m.fecha || ''}${m.hora ? ' · ' + m.hora : ''}</span></div>
-      <div class="match-equipos"><span class="match-team">${m.equipoA || ''}</span><span class="match-vs">VS</span><span class="match-team">${m.equipoB || ''}</span></div>
-      <div class="match-canal"><div class="match-canal-label">Dónde ver</div>${canales || '<span>Consultar canales</span>'}</div>
-    </article>`;
-  }).join('');
-})();
+/* Tracking de clics en enlaces externos (GA4, si está cargado) */
+document.addEventListener('click', (e)=>{
+  const a = e.target.closest('a[href^="http"]');
+  if(!a) return;
+  const url = a.href || '';
+  if(url.startsWith(location.origin)) return;
+  const label = (a.querySelector('.ch-name')?.textContent || a.textContent || url).trim().slice(0, 60);
+  try {
+    if(typeof gtag === 'function') gtag('event', 'click_external', { event_category: 'link', event_label: label, destination: url });
+  } catch(err) {}
+});
 
 /* Instalar PWA */
 let deferredPrompt = null;
